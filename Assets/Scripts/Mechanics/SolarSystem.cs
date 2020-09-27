@@ -2,11 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Universe
-{
-    public const float gravitationnalConstant = 0.0001f;
-}
-
 public class SolarSystem : MonoBehaviour
 {
     public bool simulating = false;
