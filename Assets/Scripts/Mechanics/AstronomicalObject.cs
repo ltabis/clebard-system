@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AstronomicalObject : MonoBehaviour
 {
+    private bool isInitialized = false;
+
     public string objectName = "unknown";
     public float mass;
     public float radius;
@@ -15,8 +17,12 @@ public class AstronomicalObject : MonoBehaviour
     {
         velocity = initialVelocity;
         rb = GetComponent<Rigidbody>();
+
+        isInitialized = true;
     }
 
+    // update the velocity of the body using
+    // all of the solar system's content.
     public void UpdateVelocity(AstronomicalObject[] objects, float timeSpeed)
     {
         // no need to redeclare all variables for each loop.
@@ -25,22 +31,25 @@ public class AstronomicalObject : MonoBehaviour
         foreach (var other in objects) {
 
             if (other != this) {
-
                 // calculating the force to get the current velocity of the body.
                 // G(m1m2/r2)
-                distance = other.GetComponent<Rigidbody>().position - rb.position;
+                distance = other.Position - rb.position;
                 force = distance.normalized * mass * other.mass / distance.sqrMagnitude;
                 acceleration = force / mass;
 
-                velocity += acceleration * timeSpeed;
+                velocity += force * timeSpeed;
             }
         }
     }
 
+    // Update the current position of the body
+    // using the current velocity.
     public void UpdatePosition(float timeSpeed)
     {
-        rb.MovePosition(rb.position + velocity * timeSpeed);
+        rb.position += velocity * timeSpeed;
     }
+
+    // Getters.
 
     public Vector3 Velocity
     {
@@ -54,5 +63,17 @@ public class AstronomicalObject : MonoBehaviour
         get {
             return rb.position;
         }
+    }
+
+    public bool IsInitialized
+    {
+        get {
+            return isInitialized;
+        }
+    }
+
+    public void SetPosition(Vector3 pos)
+    {
+        rb.position = pos;
     }
 }
