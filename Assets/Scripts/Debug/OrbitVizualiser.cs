@@ -37,7 +37,7 @@ public class OrbitVizualiser : MonoBehaviour
         Vector3 currentPosition = reference.Position,
                 previousPosition = reference.Position;
 
-        velocity = reference.Velocity;
+        velocity = reference.initialVelocity;
         position = reference.Position;
 
         for (uint i = 0; i < iterations; ++i) {

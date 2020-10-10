@@ -8,7 +8,6 @@ public class AstronomicalObject : MonoBehaviour
 
     public string objectName = "unknown";
     public float mass;
-    public float radius;
     public Vector3 initialVelocity = new Vector3();
     private Vector3 velocity;
     private Rigidbody rb;
@@ -37,7 +36,7 @@ public class AstronomicalObject : MonoBehaviour
                 force = distance.normalized * mass * other.mass / distance.sqrMagnitude;
                 acceleration = force / mass;
 
-                velocity += force * timeSpeed;
+                velocity += acceleration * timeSpeed;
             }
         }
     }

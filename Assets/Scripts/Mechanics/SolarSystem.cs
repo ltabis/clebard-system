@@ -6,6 +6,7 @@ using UnityEditor;
 public class SolarSystem : MonoBehaviour
 {
     public bool simulating = false;
+    public bool debugging = true;
     public float timeSpeed = 1;
     private AstronomicalObject[] objects;
     private Vector3[] initialObjectPosition;
@@ -29,6 +30,19 @@ public class SolarSystem : MonoBehaviour
             UpdateAllVeclocities();
             UpdateAllPositions();
         }
+
+        DebugAllOrbits();
+    }
+
+    void DebugAllOrbits() {
+        for (uint i = 0; i < objects.Length; ++i)
+            if (objects[i].IsInitialized) {
+                OrbitVizualiser vizualiser = objects[i].GetComponent<OrbitVizualiser>();
+
+                if (vizualiser) {
+                    vizualiser.debug = debugging;
+                }
+            }
     }
 
     // iterating trought all bodies
