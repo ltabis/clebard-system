@@ -153,7 +153,8 @@ Transform:
   - {fileID: 1996398427}
   - {fileID: 1409182886}
   - {fileID: 962613224}
-  - {fileID: 2017415019}
+  - {fileID: 1553431272}
+  - {fileID: 857065772}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -198,11 +199,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 232026892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fce274b8250a5174a814cca1410c050a, type: 3}
+  m_Script: {fileID: 11500000, guid: 96f6a697f24e8ba4593463947b6de7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 963194227}
-  camSpeed: 10
+  cam: {fileID: 0}
+  camSpeed: 1
 --- !u!1 &857065771
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +218,6 @@ GameObject:
   - component: {fileID: 857065776}
   - component: {fileID: 857065775}
   - component: {fileID: 857065774}
-  - component: {fileID: 857065773}
   m_Layer: 0
   m_Name: moon1
   m_TagString: Untagged
@@ -233,28 +233,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857065771}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.9712715, y: 73.43098, z: 250.39139}
+  m_LocalPosition: {x: 0, y: 0, z: 601}
   m_LocalScale: {x: 2.6935, y: 2.6935, z: 2.6935}
   m_Children: []
-  m_Father: {fileID: 2017415019}
-  m_RootOrder: 1
+  m_Father: {fileID: 196292502}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &857065773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 857065771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a705a584c18a7348893abdbebba3b29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  orbitColor: {r: 1, g: 0.37588555, b: 0, a: 1}
-  debug: 1
-  timeSpeed: 1
-  iterations: 100
 --- !u!114 &857065774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,7 +353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &962613224
 Transform:
   m_ObjectHideFlags: 0
@@ -396,10 +380,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a705a584c18a7348893abdbebba3b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitColor: {r: 0.07615614, g: 1, b: 0, a: 1}
+  orbitLineSize: 1
   debug: 1
   timeSpeed: 1
   iterations: 100
+  solarSystemCenter: {fileID: 0}
 --- !u!114 &962613226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,7 +582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1409182883
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -717,10 +702,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a705a584c18a7348893abdbebba3b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitColor: {r: 0, g: 0.105707884, b: 1, a: 1}
+  orbitLineSize: 1
   debug: 1
   timeSpeed: 1
   iterations: 100
+  solarSystemCenter: {fileID: 0}
 --- !u!1 &1422717845
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,6 +717,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1422717847}
   - component: {fileID: 1422717846}
+  - component: {fileID: 1422717848}
   m_Layer: 0
   m_Name: SolarSystemLogic
   m_TagString: Untagged
@@ -766,6 +753,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1422717848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422717845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a705a584c18a7348893abdbebba3b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbitLineSize: 1
+  debug: 1
+  timeSpeed: 1
+  iterations: 100
+  solarSystemCenter: {fileID: 0}
 --- !u!1 &1553431271
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,7 +784,6 @@ GameObject:
   - component: {fileID: 1553431276}
   - component: {fileID: 1553431275}
   - component: {fileID: 1553431274}
-  - component: {fileID: 1553431273}
   m_Layer: 0
   m_Name: Planet3
   m_TagString: Untagged
@@ -796,28 +799,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553431271}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -69.05845, y: 73.43098, z: 249.0914}
+  m_LocalPosition: {x: -48.2, y: 0, z: 531}
   m_LocalScale: {x: 19.180674, y: 19.180674, z: 19.180674}
   m_Children: []
-  m_Father: {fileID: 2017415019}
-  m_RootOrder: 0
+  m_Father: {fileID: 196292502}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1553431273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1553431271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a705a584c18a7348893abdbebba3b29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  orbitColor: {r: 1, g: 0.05638304, b: 0, a: 1}
-  debug: 1
-  timeSpeed: 1
-  iterations: 100
 --- !u!114 &1553431274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,7 +819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: planet 2
   mass: 1
-  initialVelocity: {x: 30, y: 0, z: 0}
+  initialVelocity: {x: 38.59, y: 0, z: 0}
 --- !u!54 &1553431275
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1225,35 +1212,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &2017415018
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2017415019}
-  m_Layer: 0
-  m_Name: compound
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2017415019
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2017415018}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 66.77127, y: -67.59908, z: 368}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1553431272}
-  - {fileID: 857065772}
-  m_Father: {fileID: 196292502}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

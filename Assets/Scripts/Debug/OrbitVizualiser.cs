@@ -2,77 +2,128 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrbitVizualiser : MonoBehaviour
+public class DebugBody {
+    public AstronomicalObject reference;
+    public Color orbitColor;
+    public Vector3 position;
+    public Vector3 velocity;
+    public float mass;
+    public string name;
+    public DebugBody(AstronomicalObject reference)
+    {
+        this.reference = reference;
+        this.orbitColor = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        this.position = reference.Position;
+        this.velocity = reference.initialVelocity;
+        this.mass = reference.mass;
+        this.name = reference.name;
+    }
+
+    public void Reininitialize()
+    {
+        if (!reference)
+            return;
+        position = reference.Position;
+        velocity = reference.initialVelocity;
+        mass = reference.mass;
+        name = reference.name;
+    }
+}
+
+[ExecuteInEditMode] public class OrbitVizualiser : MonoBehaviour
 {
-    public Color orbitColor = Color.white;
+    public float orbitLineSize = 1.0f;
     public bool debug = true;
     public float timeSpeed = 1;
     public uint iterations = 100;
+    public AstronomicalObject solarSystemCenter;
 
-    private Vector3 velocity;
-    private Vector3 position;
-    private Vector3 initialPosition;
-    private AstronomicalObject reference;
     private AstronomicalObject[] allBodies;
+    private List<DebugBody> allDebugBodies;
 
-    private void Start()
+    private void Initialize()
     {
-        allBodies = FindObjectsOfType<AstronomicalObject>();
-        reference = GetComponent<AstronomicalObject>();
+        if (!Application.isPlaying) {
+            allBodies = FindObjectsOfType<AstronomicalObject>();
+            allDebugBodies = new List<DebugBody>(allBodies.Length);
 
-        velocity = reference.initialVelocity;
-        position = reference.Position;
-        initialPosition = reference.Position;
+            foreach (var body in allBodies)
+                allDebugBodies.Add(new DebugBody(body));
+        }
     }
-
     private void Update()
     {
-        if (debug)
-            Simulate();
+        if (allDebugBodies == null)
+            Initialize();
+        // Simulating orbits from all celestial bodies.
+        if (debug && !Application.isPlaying) {
+
+            allBodies = FindObjectsOfType<AstronomicalObject>();
+
+            if (allBodies.Length > allDebugBodies.Count)
+                AddDebugBodies();
+            else if (allBodies.Length < allDebugBodies.Count)
+                removeDebugBodies();
+            for (uint i = 0; i < iterations; ++i)
+                Simulate();
+
+            // reinitializing debug bodies with their reference
+            // in case changes were made.
+            ReInitilializeDebugBodies();
+        }
+    }
+
+    private void ReInitilializeDebugBodies()
+    {
+        foreach (var debugBody in allDebugBodies)
+            debugBody.Reininitialize();
+    }
+
+    private void AddDebugBodies()
+    {
+        for (int i = 0; i < allBodies.Length; ++i)
+            if (allDebugBodies.Find(debugBody => debugBody.name == allBodies[i].name) == null)
+                allDebugBodies.Add(new DebugBody(allBodies[i]));
+    }
+
+    private void removeDebugBodies()
+    {
+        allDebugBodies.RemoveAll(debugBody => !debugBody.reference);
     }
 
     // simulating the orbit of the body.
     private void Simulate()
     {
-        Vector3 currentPosition = reference.Position,
-                previousPosition = reference.Position;
+        // updating velocities.
+        foreach (var body in allDebugBodies)
+            foreach (var other in allDebugBodies)
+                UpdateDebugBodyVelocity(body, other);
 
-        velocity = reference.initialVelocity;
-        position = reference.Position;
+        Vector3 previousPosition;
 
-        for (uint i = 0; i < iterations; ++i) {
-            UpdateVelocity(allBodies, timeSpeed);
-            UpdatePosition(timeSpeed);
-
-            currentPosition = position;
-            Debug.DrawLine(previousPosition, currentPosition, orbitColor, 0.01f);
-            previousPosition = currentPosition;
+        // updating position and drawing orbits.
+        foreach (var body in allDebugBodies)
+        {
+            previousPosition = body.position;
+            UpdateDebugBodyPosition(body);
+            Debug.DrawLine(previousPosition, body.position, body.orbitColor, 0.01f);
         }
     }
 
-    // update a preview of the velocity of the
-    // referenced body.
-    public void UpdateVelocity(AstronomicalObject[] objects, float timeSpeed)
+    public void UpdateDebugBodyVelocity(DebugBody body, DebugBody other)
     {
-        // no need to redeclare all variables for each loop.
-        Vector3 distance, force, acceleration;
+        if (body == other)
+            return;
+        // calculating the force to get the current velocity of the body.
+        // G(m1m2/r2)
+        Vector3 distance = other.position - body.position;
+        Vector3 acceleration = Universe.GravitationalConstant * distance.normalized * other.mass / distance.sqrMagnitude;
 
-        foreach (var other in objects) {
-            if (other != reference) {
-                // calculating the force to get the current velocity of the body.
-                // G(m1m2/r2)
-                distance = other.Position - position;
-                force = distance.normalized * reference.mass * other.mass / distance.sqrMagnitude;
-                acceleration = force / reference.mass;
-                velocity += acceleration * timeSpeed;
-            }
-        }
+        body.velocity += acceleration * timeSpeed;
     }
 
-    // update a preview of the position of the
-    // referenced body.
-    public void UpdatePosition(float timeSpeed)
+    public void UpdateDebugBodyPosition(DebugBody body)
     {
-        position += velocity * timeSpeed;
+        body.position += body.velocity * timeSpeed;
     }
 }
