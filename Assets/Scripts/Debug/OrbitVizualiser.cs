@@ -94,13 +94,9 @@ public class DebugBody {
     private void Simulate()
     {
         // updating velocities.
-        foreach (var body in allDebugBodies) {
-            Vector3 acceleration = Vector3.zero;
-
+        foreach (var body in allDebugBodies)
             foreach (var other in allDebugBodies)
-                acceleration += UpdateDebugBodyVelocity(body, other);
-            body.velocity += acceleration * timeSpeed;
-        }
+                UpdateDebugBodyVelocity(body, other);
 
         Vector3 previousPosition;
 
@@ -112,17 +108,17 @@ public class DebugBody {
         }
     }
 
-    public Vector3 UpdateDebugBodyVelocity(DebugBody body, DebugBody other)
+    public void UpdateDebugBodyVelocity(DebugBody body, DebugBody other)
     {
         if (body == other)
-            return Vector3.zero;
+            return;
 
         // calculating the force to get the current velocity of the body.
         // G(m1m2/r2)
         Vector3 distance = other.position - body.position;
         Vector3 acceleration = Universe.GravitationalConstant * distance.normalized * other.mass / distance.sqrMagnitude;
 
-        return acceleration;
+        body.velocity += acceleration * timeSpeed;
     }
 
     public void UpdateDebugBodyPosition(DebugBody body)
