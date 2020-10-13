@@ -13,7 +13,7 @@ public class DebugBody {
     {
         this.reference = reference;
         this.orbitColor = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-        this.position = reference.Position;
+        this.position = reference.transform.position;
         this.velocity = reference.initialVelocity;
         this.mass = reference.mass;
         this.name = reference.name;
@@ -23,7 +23,7 @@ public class DebugBody {
     {
         if (!reference)
             return;
-        position = reference.Position;
+        position = reference.transform.position;
         velocity = reference.initialVelocity;
         mass = reference.mass;
         name = reference.name;
@@ -32,7 +32,6 @@ public class DebugBody {
 
 [ExecuteInEditMode] public class OrbitVizualiser : MonoBehaviour
 {
-    public float orbitLineSize = 1.0f;
     public bool debug = true;
     public float timeSpeed = 1;
     public uint iterations = 100;
@@ -95,31 +94,35 @@ public class DebugBody {
     private void Simulate()
     {
         // updating velocities.
-        foreach (var body in allDebugBodies)
+        foreach (var body in allDebugBodies) {
+            Vector3 acceleration = Vector3.zero;
+
             foreach (var other in allDebugBodies)
-                UpdateDebugBodyVelocity(body, other);
+                acceleration += UpdateDebugBodyVelocity(body, other);
+            body.velocity += acceleration * timeSpeed;
+        }
 
         Vector3 previousPosition;
 
         // updating position and drawing orbits.
-        foreach (var body in allDebugBodies)
-        {
+        foreach (var body in allDebugBodies) {
             previousPosition = body.position;
             UpdateDebugBodyPosition(body);
             Debug.DrawLine(previousPosition, body.position, body.orbitColor, 0.01f);
         }
     }
 
-    public void UpdateDebugBodyVelocity(DebugBody body, DebugBody other)
+    public Vector3 UpdateDebugBodyVelocity(DebugBody body, DebugBody other)
     {
         if (body == other)
-            return;
+            return Vector3.zero;
+
         // calculating the force to get the current velocity of the body.
         // G(m1m2/r2)
         Vector3 distance = other.position - body.position;
         Vector3 acceleration = Universe.GravitationalConstant * distance.normalized * other.mass / distance.sqrMagnitude;
 
-        body.velocity += acceleration * timeSpeed;
+        return acceleration;
     }
 
     public void UpdateDebugBodyPosition(DebugBody body)

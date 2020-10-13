@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AstronomicalObject : MonoBehaviour
 {
-    public string objectName = "unknown";
     public float mass;
     public Vector3 initialVelocity;
     private Vector3 velocity;
