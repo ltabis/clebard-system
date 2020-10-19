@@ -181,7 +181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232026892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 165}
+  m_LocalPosition: {x: 0, y: 0, z: 328.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
@@ -323,7 +323,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857065771}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 160}
+  m_LocalPosition: {x: -0.76, y: 0, z: 121.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 196292502}
@@ -341,8 +341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55fd2583c2e96d7498583f7181e72ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 0.01
-  initialVelocity: {x: 95.1, y: 0, z: 0}
+  mass: 100
+  initialVelocity: {x: -20.24, y: 0, z: 0}
 --- !u!54 &857065775
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -533,7 +533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134159727}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 150}
+  m_LocalPosition: {x: 0, y: 0, z: 110.65}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 196292502}
@@ -551,8 +551,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55fd2583c2e96d7498583f7181e72ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 1000
-  initialVelocity: {x: 65, y: 0, z: 0}
+  mass: 600
+  initialVelocity: {x: -11.49, y: 0, z: 0}
 --- !u!54 &1134159730
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -691,8 +691,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug: 1
   timeSpeed: 0.1
-  iterations: 100
-  solarSystemCenter: {fileID: 0}
+  iterations: 100000
+  relativeBody: {fileID: 0}
 --- !u!1 &1831458308
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,7 +988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55fd2583c2e96d7498583f7181e72ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 1000000
+  mass: 10000
   initialVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &2001784638
 Rigidbody:
