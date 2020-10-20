@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 100
-  initialVelocity: {x: -20.24, y: 0, z: 0}
+  initialVelocity: {x: -12.8, y: 0, z: 0}
 --- !u!54 &857065775
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -552,7 +552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 600
-  initialVelocity: {x: -11.49, y: 0, z: 0}
+  initialVelocity: {x: -6.32, y: 0, z: 0}
 --- !u!54 &1134159730
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -691,7 +691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug: 1
   timeSpeed: 0.1
-  iterations: 100000
+  iterations: 3762
   relativeBody: {fileID: 0}
 --- !u!1 &1831458308
 GameObject:
