@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotatingObject : MonoBehaviour
+[ExecuteInEditMode] public class RotatingObject : MonoBehaviour
 {
+    public float raySize = 5.0f;
     public float rotateSpeed = 1.0f;
     public Vector3 rotationAxis = new Vector3(1.0f, 0.0f, 0.0f);
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 rotation = rotationAxis * rotateSpeed * Time.deltaTime;
-        transform.Rotate(rotationAxis * rotateSpeed * Time.deltaTime);
 
-        // if (!Application.isPlaying)
-        //     Debug.DrawLine(rotation);
+        if (Application.isPlaying)
+            transform.Rotate(rotation);
+        else
+            Debug.DrawLine(transform.position,  (rotationAxis + rotation) * raySize, Color.red, 0.1f);
     }
 }

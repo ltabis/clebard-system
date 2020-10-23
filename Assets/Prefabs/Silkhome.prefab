@@ -123,7 +123,7 @@ Transform:
   m_GameObject: {fileID: 915768082486297056}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.09, z: 1.45}
-  m_LocalScale: {x: 1.0410208, y: 1.0410208, z: 1.0410208}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 915768083361086864}
   m_RootOrder: 0
@@ -5094,7 +5094,7 @@ Transform:
   m_GameObject: {fileID: 915768083888970052}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.09, z: 1.45}
-  m_LocalScale: {x: 1.5918, y: 1.5918, z: 1.5918}
+  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_Children: []
   m_Father: {fileID: 915768083361086864}
   m_RootOrder: 1
@@ -5298,7 +5298,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4941083255916472981}
-  - component: {fileID: 6554012392407802366}
+  - component: {fileID: 5065833048850896353}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -5322,7 +5322,7 @@ Transform:
   m_Father: {fileID: 915768082719563645}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6554012392407802366
+--- !u!114 &5065833048850896353
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5334,8 +5334,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42078a5ca409c049934a79513b6e31a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raySize: 5
   rotateSpeed: 10
-  rotationAxis: {x: 0, y: 0, z: 1}
+  rotationAxis: {x: 0, y: 0.67, z: 1}
 --- !u!1 &4617515149931652240
 GameObject:
   m_ObjectHideFlags: 0
@@ -10157,7 +10158,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4953687495184547771}
-  - component: {fileID: 6810007289374421129}
   m_Layer: 0
   m_Name: AstroidRing
   m_TagString: Untagged
@@ -10180,17 +10180,3 @@ Transform:
   m_Father: {fileID: 915768082719563645}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6810007289374421129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6907935999768666856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f42078a5ca409c049934a79513b6e31a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: 10
-  rotationAxis: {x: 1, y: 0, z: 0}
