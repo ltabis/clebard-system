@@ -501,6 +501,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1439882392830548071, guid: 1b4dad40d5a2cdc4d841516c57fd4717, type: 3}
+      propertyPath: beltRotation.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439882392830548071, guid: 1b4dad40d5a2cdc4d841516c57fd4717, type: 3}
+      propertyPath: beltRotation.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439882392830548071, guid: 1b4dad40d5a2cdc4d841516c57fd4717, type: 3}
+      propertyPath: orbitSpeed
+      value: 15.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439882392830548071, guid: 1b4dad40d5a2cdc4d841516c57fd4717, type: 3}
+      propertyPath: orbitAngle.x
+      value: 7.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859840988076350632, guid: 1b4dad40d5a2cdc4d841516c57fd4717, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4941083255916472981, guid: 1b4dad40d5a2cdc4d841516c57fd4717, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
@@ -517,5 +537,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: -0.8575943
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1439882392830548071, guid: 1b4dad40d5a2cdc4d841516c57fd4717, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1b4dad40d5a2cdc4d841516c57fd4717, type: 3}
