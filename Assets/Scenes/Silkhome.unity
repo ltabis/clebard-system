@@ -497,6 +497,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 915768083534241146, guid: 1b4dad40d5a2cdc4d841516c57fd4717, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 915768084072589146, guid: 1b4dad40d5a2cdc4d841516c57fd4717, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -519,7 +523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2859840988076350632, guid: 1b4dad40d5a2cdc4d841516c57fd4717, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4941083255916472981, guid: 1b4dad40d5a2cdc4d841516c57fd4717, type: 3}
       propertyPath: m_LocalRotation.z
