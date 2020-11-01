@@ -49,17 +49,17 @@ public class PlayerController : MonoBehaviour {
     void InitRigidbody() {
         rb = GetComponent<Rigidbody>();
         rb.interpolation = RigidbodyInterpolation.Interpolate;
-        rb.useGravity = false;
-        rb.isKinematic = false;
-        rb.mass = mass;
+       // rb.useGravity = false;
+       // rb.isKinematic = false;
+       // rb.mass = mass;
     }
 
     void Update() {
-        HandleMovement();
+        //HandleMovement();
     }
 
     void HandleMovement() {
-        // Look input
+       /* // Look input
         yaw += Input.GetAxisRaw("Mouse X") * mouseSensitivity;
         pitch -= Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
         pitch = Mathf.Clamp(pitch - Input.GetAxisRaw("Mouse Y") * mouseSensitivity, pitchMinMax.x, pitchMinMax.y);
@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour {
         smoothYaw = Mathf.SmoothDampAngle(smoothYaw, yaw, ref yawSmoothV, rotationSmoothTime);
         cam.transform.localEulerAngles = Vector3.right * smoothPitch;
         transform.Rotate(Vector3.up * Mathf.DeltaAngle(smoothYawOld, smoothYaw), Space.Self);
+       */ 
 
         // Movement
         bool isGrounded = IsGrounded();
@@ -90,8 +91,8 @@ public class PlayerController : MonoBehaviour {
     bool IsGrounded() {
         // Sphere must not overlay terrain at origin otherwise no collision will be detected
         // so rayRadius should not be larger than controller's capsule collider radius
-        const float rayRadius = .3f;
-        const float groundedRayDst = .2f;
+        const float rayRadius = .5f;
+        const float groundedRayDst = .3f;
         bool grounded = false;
 
         if (referenceBody) {
@@ -111,7 +112,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        AstronomicalObject[] bodies = FindObjectsOfType<AstronomicalObject>();
+        /*AstronomicalObject[] bodies = FindObjectsOfType<AstronomicalObject>();
 
         Vector3 strongestGravitionalPull = Vector3.zero;
 
@@ -135,6 +136,7 @@ public class PlayerController : MonoBehaviour {
 
         // Move
         rb.MovePosition(rb.position + smoothVelocity * Time.fixedDeltaTime);
+        */
     }
 
     public void SetVelocity(Vector3 velocity) {
