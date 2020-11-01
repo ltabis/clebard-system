@@ -18,7 +18,10 @@ public class Player : MonoBehaviour {
 
             rb.AddForce(gravityUp * gravitationalPull.Gravity);
             rb.rotation = Quaternion.FromToRotation(localUp, gravityUp) * rb.rotation;
-            //rb.AddForce((gravitationalPull.transform.position - transform.position).normalized * gravitationalPull.Gravity);
+        } else {
+            float RandomRotationStrenght = 0.1f;
+            rb.AddForce(Vector3.up * 0.0001f);
+            transform.Rotate(RandomRotationStrenght, RandomRotationStrenght, RandomRotationStrenght);
         }
     }
 }
