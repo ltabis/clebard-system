@@ -302,7 +302,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4726
+  m_Name: pb_Mesh-48522
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -467,6 +467,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2096896607}
     m_Modifications:
+    - target: {fileID: 5725354696459919778, guid: c316bdeef3346b74bba7771cc84e9d74, type: 3}
+      propertyPath: prewarm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725354696459919778, guid: c316bdeef3346b74bba7771cc84e9d74, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725354696459919778, guid: c316bdeef3346b74bba7771cc84e9d74, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725354696459919778, guid: c316bdeef3346b74bba7771cc84e9d74, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5725354696912766072, guid: c316bdeef3346b74bba7771cc84e9d74, type: 3}
       propertyPath: m_Name
       value: Sun
@@ -526,6 +542,18 @@ PrefabInstance:
     - target: {fileID: 5725354696912766079, guid: c316bdeef3346b74bba7771cc84e9d74, type: 3}
       propertyPath: m_LocalScale.z
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725354696934520916, guid: c316bdeef3346b74bba7771cc84e9d74, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725354696934520916, guid: c316bdeef3346b74bba7771cc84e9d74, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725354696934520916, guid: c316bdeef3346b74bba7771cc84e9d74, type: 3}
+      propertyPath: prewarm
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c316bdeef3346b74bba7771cc84e9d74, type: 3}
@@ -825,7 +853,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928177856}
   m_LocalRotation: {x: -0, y: 0.38981166, z: -0, w: 0.9208946}
-  m_LocalPosition: {x: 56.5, y: 0, z: 128.4}
+  m_LocalPosition: {x: 28.1, y: 0.4, z: 40.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1113583731}

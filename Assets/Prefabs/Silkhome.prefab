@@ -199,7 +199,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 915768082719563645}
-  - component: {fileID: 1439882392830548071}
   m_Layer: 0
   m_Name: Silkhome
   m_TagString: Untagged
@@ -223,29 +222,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1439882392830548071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915768082719563644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5de9db75ccc23b24485ab381e5f13ff6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  innerRadius: 8
-  outerRadius: 10
-  astroidPrefab: {fileID: 100000, guid: d4a62d24394e94c32ae623e5edbc0584, type: 3}
-  astroidDensity: 200
-  seed: 0
-  height: 0.5
-  orbitAngle: {x: 0, y: 0, z: 0}
-  minRotationSpeed: 0.1
-  maxRotationSpeed: 0.4
-  orbitSpeed: 10
-  scale: {x: 0.1, y: 0.1, z: 0.1}
 --- !u!1 &915768083361086867
 GameObject:
   m_ObjectHideFlags: 0
