@@ -5682,7 +5682,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Siklhome island
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5237813662277209509, guid: d29f974df71b23540849ad50ec6a9130, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d29f974df71b23540849ad50ec6a9130, type: 3}
 --- !u!4 &8790912852446300077 stripped
 Transform:
