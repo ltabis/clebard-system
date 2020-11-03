@@ -1,4 +1,4 @@
 ﻿public class Universe
 {
-    public const float GravitationalConstant = 1f;
+    public const float GravitationalConstant = 0.01f;
 }

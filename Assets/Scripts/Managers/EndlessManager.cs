@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class EndlessManager : MonoBehaviour {
 
-    public float distanceThreshold = 1000;
+    public float distanceThreshold = 1100;
     List<Transform> physicsObjects;
-    PlayerController player;
+    public GameObject player;
     Camera playerCamera;
 
     public event System.Action PostFloatingOriginUpdate;
 
     void Awake() {
-        var player = FindObjectOfType<PlayerController>();
         var bodies = FindObjectsOfType<AstronomicalObject>();
 
         physicsObjects = new List<Transform>();
@@ -20,21 +19,20 @@ public class EndlessManager : MonoBehaviour {
         foreach (var c in bodies) {
             physicsObjects.Add(c.transform);
         }
-
-        playerCamera = Camera.main;
     }
 
     void LateUpdate() {
-        UpdateFloatingOrigin();
-        if (PostFloatingOriginUpdate != null) {
-            PostFloatingOriginUpdate();
+        if (player) {
+            UpdateFloatingOrigin();
+            if (PostFloatingOriginUpdate != null) {
+                PostFloatingOriginUpdate();
+            }
         }
     }
 
     void UpdateFloatingOrigin() {
-        Vector3 originOffset = playerCamera.transform.position;
+        Vector3 originOffset = player.gameObject.transform.position;
         float dstFromOrigin = originOffset.magnitude;
-
         if (dstFromOrigin > distanceThreshold) {
             foreach (Transform t in physicsObjects) {
                 t.position -= originOffset;
