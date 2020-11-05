@@ -1,78 +1,14 @@
 fileFormatVersion: 2
-guid: 11b06a43b36eb41f7846c482e27a6255
-timeCreated: 1570014069
-licenseType: Store
+guid: e0e44aa44e3730746a84a6b2f1a344fb
 ModelImporter:
-  serializedVersion: 21
-  fileIDToRecycleName:
-    100000: con-rod_L
-    100002: con-rod_R
-    100004: drive-rod_BL
-    100006: drive-rod_BR
-    100008: drive-rod_FL
-    100010: drive-rod_FR
-    100012: locomotive-bell-western
-    100014: locomotive-western
-    100016: //RootNode
-    100018: locomotive-western-base
-    100020: locomotive-wheel1
-    100022: locomotive-wheel2
-    100024: locomotive-wheel3
-    100026: locomotive-wheel4
-    400000: con-rod_L
-    400002: con-rod_R
-    400004: drive-rod_BL
-    400006: drive-rod_BR
-    400008: drive-rod_FL
-    400010: drive-rod_FR
-    400012: locomotive-bell-western
-    400014: locomotive-western
-    400016: //RootNode
-    400018: locomotive-western-base
-    400020: locomotive-wheel1
-    400022: locomotive-wheel2
-    400024: locomotive-wheel3
-    400026: locomotive-wheel4
-    2300000: con-rod_L
-    2300002: con-rod_R
-    2300004: drive-rod_BL
-    2300006: drive-rod_BR
-    2300008: drive-rod_FL
-    2300010: drive-rod_FR
-    2300012: locomotive-bell-western
-    2300014: locomotive-western-base
-    2300016: locomotive-wheel1
-    2300018: locomotive-wheel2
-    2300020: locomotive-wheel3
-    2300022: locomotive-wheel4
-    3300000: con-rod_L
-    3300002: con-rod_R
-    3300004: drive-rod_BL
-    3300006: drive-rod_BR
-    3300008: drive-rod_FL
-    3300010: drive-rod_FR
-    3300012: locomotive-bell-western
-    3300014: locomotive-western-base
-    3300016: locomotive-wheel1
-    3300018: locomotive-wheel2
-    3300020: locomotive-wheel3
-    3300022: locomotive-wheel4
-    4300000: locomotive-bell-western
-    4300002: locomotive-wheel4
-    4300004: locomotive-western-base
-    4300006: drive-rod_BL
-    4300008: locomotive-wheel3
-    4300010: locomotive-wheel2
-    4300012: locomotive-wheel1
-    4300014: con-rod_L
-    4300016: drive-rod_FL
-    4300018: con-rod_R
-    4300020: drive-rod_BR
-    4300022: drive-rod_FR
+  serializedVersion: 20101
+  internalIDToNameTable: []
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -85,6 +21,8 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -93,36 +31,51 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importVisibility: 0
-    importBlendShapes: 0
-    importCameras: 0
-    importLights: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
-    weldVertices: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-    normalCalculationMode: 0
-  importAnimation: 0
-  copyAvatar: 0
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -132,14 +85,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

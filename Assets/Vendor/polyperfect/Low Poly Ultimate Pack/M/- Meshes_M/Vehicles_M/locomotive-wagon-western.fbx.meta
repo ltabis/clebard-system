@@ -1,51 +1,14 @@
 fileFormatVersion: 2
-guid: 14a35fbd047474f969273021c3389fab
-timeCreated: 1570220062
-licenseType: Store
+guid: 2b08cb90041c19846abb6c0aec54b38f
 ModelImporter:
-  serializedVersion: 21
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: locomotive-wagon-western-base
-    100004: locomotive-wagon-wheel-base1
-    100006: locomotive-wagon-wheel-base2
-    100008: locomotive-wagon-wheel1
-    100010: locomotive-wagon-wheel2
-    100012: locomotive-wagon-wheel3
-    100014: locomotive-wagon-wheel4
-    400000: //RootNode
-    400002: locomotive-wagon-western-base
-    400004: locomotive-wagon-wheel-base1
-    400006: locomotive-wagon-wheel-base2
-    400008: locomotive-wagon-wheel1
-    400010: locomotive-wagon-wheel2
-    400012: locomotive-wagon-wheel3
-    400014: locomotive-wagon-wheel4
-    2300000: locomotive-wagon-western-base
-    2300002: locomotive-wagon-wheel-base1
-    2300004: locomotive-wagon-wheel-base2
-    2300006: locomotive-wagon-wheel1
-    2300008: locomotive-wagon-wheel2
-    2300010: locomotive-wagon-wheel3
-    2300012: locomotive-wagon-wheel4
-    3300000: locomotive-wagon-western-base
-    3300002: locomotive-wagon-wheel-base1
-    3300004: locomotive-wagon-wheel-base2
-    3300006: locomotive-wagon-wheel1
-    3300008: locomotive-wagon-wheel2
-    3300010: locomotive-wagon-wheel3
-    3300012: locomotive-wagon-wheel4
-    4300000: locomotive-wagon-wheel-base1
-    4300002: locomotive-wagon-wheel-base2
-    4300004: locomotive-wagon-wheel4
-    4300006: locomotive-wagon-wheel3
-    4300008: locomotive-wagon-wheel2
-    4300010: locomotive-wagon-wheel1
-    4300012: locomotive-wagon-western-base
+  serializedVersion: 20101
+  internalIDToNameTable: []
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -58,6 +21,8 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -66,36 +31,51 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importVisibility: 0
-    importBlendShapes: 0
-    importCameras: 0
-    importLights: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-    normalCalculationMode: 0
-  importAnimation: 0
-  copyAvatar: 0
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -105,14 +85,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
