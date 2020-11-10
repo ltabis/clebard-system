@@ -49,6 +49,7 @@ public class Player : MonoBehaviour {
 
         // Movement
         bool isGrounded = IsGrounded();
+
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         targetVelocity = transform.TransformDirection(input.normalized) * moveSpeed;
         smoothVelocity = Vector3.SmoothDamp(smoothVelocity, targetVelocity, ref smoothVRef, (isGrounded) ? vSmoothTime : airSmoothTime);
@@ -57,7 +58,7 @@ public class Player : MonoBehaviour {
                 rb.AddForce(transform.up * 10f, ForceMode.VelocityChange);
                 isGrounded = false;
             } else {
-                rb.AddForce(-transform.up * 1f, ForceMode.VelocityChange);
+                rb.AddForce(-transform.up * 0.5f, ForceMode.VelocityChange);
             }
         }
     }
@@ -84,18 +85,6 @@ public class Player : MonoBehaviour {
         Vector3 gravityUp = -strongestPull.normalized;
         rb.rotation = Quaternion.FromToRotation(transform.up, gravityUp) * rb.rotation;
         rb.MovePosition(rb.position + smoothVelocity * Time.fixedDeltaTime);
-
-        /*if (gravitationalPull) {
-            Vector3 gravityUp = (transform.position - gravitationalPull.transform.position).normalized;
-            Vector3 localUp = transform.up;
-
-            rb.AddForce(gravityUp * gravitationalPull.Gravity);
-            rb.rotation = Quaternion.FromToRotation(localUp, gravityUp) * rb.rotation;
-        } else {
-            float RandomRotationStrenght = 0.1f;
-            rb.AddForce(Vector3.up * 0.0001f);
-            transform.Rotate(RandomRotationStrenght, RandomRotationStrenght, RandomRotationStrenght);
-        }*/
     }
 
     private bool IsGrounded() {
