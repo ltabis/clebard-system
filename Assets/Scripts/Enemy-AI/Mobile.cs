@@ -196,7 +196,7 @@ public class Mobile : Entity
         agent.speed = walkSpeed;
     }
 
-    protected void Trot()
+    protected virtual void Trot()
     {
         anim.Play("Trot");
         agent.speed = trotSpeed;

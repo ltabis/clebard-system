@@ -17,6 +17,8 @@ public class Barking : MonoBehaviour
     public float scareTime = 5;
     public float[] cooldownTab;
 
+    private Transform player;
+    private Animator anim;
     enum BarkType : int
     {
         Push = 0,
@@ -26,7 +28,8 @@ public class Barking : MonoBehaviour
 
     void Start()
     {
-        
+        player = GameObject.Find("Player").transform;
+        anim = GameObject.Find("Player").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -50,6 +53,7 @@ public class Barking : MonoBehaviour
     private void PlayBarks()
     {
         barks[activeBark].Play();
+        anim.Play("IdleBarking");
         if (activeBark == (int)BarkType.Push)
             PushBark();
         if (activeBark == (int)BarkType.Charm)

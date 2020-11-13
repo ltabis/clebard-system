@@ -16,7 +16,10 @@ public class SC_TPSController : MonoBehaviour
     Vector2 rotation = Vector2.zero;
 
     public bool canMove = true;
+    public Animator anim;
 
+    private bool tp = false;
+    private Vector3 teleport;
 
     void Start()
     {
@@ -38,6 +41,7 @@ public class SC_TPSController : MonoBehaviour
             if (Input.GetButton("Jump") && canMove)
             {
                 moveDirection.y = jumpSpeed;
+                anim.Play("Jump");
             }
         }
 
@@ -47,6 +51,8 @@ public class SC_TPSController : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
 
         // Move the controller
+        if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
+            anim.Play("Walk");
         characterController.Move(moveDirection * Time.deltaTime);
 
         // Player and Camera rotation
@@ -58,7 +64,18 @@ public class SC_TPSController : MonoBehaviour
             playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);
             transform.eulerAngles = new Vector2(0, rotation.y);
         }*/
-        
+        if (tp)
+        {
+            characterController.transform.position = teleport;
+            tp = false;
+        }
+
+    }
+
+    public void Teleportation(Vector3 tep)
+    {
+        teleport = tep;
+        tp = true;
     }
 
 }
