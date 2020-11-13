@@ -90,22 +90,22 @@ public class Player : MonoBehaviour {
     private bool IsGrounded() {
         // Sphere must not overlay terrain at origin otherwise no collision will be detected
         // so rayRadius should not be larger than controller's capsule collider radius
-        const float rayRadius = .49f;
+        const float rayRadius = .3f;
         const float groundedRayDst = .2f;
         bool grounded = false;
 
         if (referenceBody) {
             var relativeVelocity = rb.velocity - referenceBody.Velocity;
             // Don't cast ray down if player is jumping up from surface
-            if (relativeVelocity.y <= 12 * .5f) {
+            if (relativeVelocity.y <= 10 * 0.5f) {
                 RaycastHit hit;
                 Vector3 offsetToFeet = (feet.position - transform.position);
                 Vector3 rayOrigin = rb.position + offsetToFeet + transform.up * rayRadius;
                 Vector3 rayDir = -transform.up;
+
                 grounded = Physics.SphereCast(rayOrigin, rayRadius, rayDir, out hit, groundedRayDst, groundedMask);
             }
         }
-
         return grounded;
     }
 }
