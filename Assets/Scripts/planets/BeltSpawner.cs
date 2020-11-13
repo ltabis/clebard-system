@@ -62,6 +62,7 @@ public class BeltSpawner : MonoBehaviour
             aroundC.speed = orbitSpeed;
 
             asteroid.transform.localScale = scale;
+            asteroid.transform.parent = gameObject.transform;
         }
 
     }
