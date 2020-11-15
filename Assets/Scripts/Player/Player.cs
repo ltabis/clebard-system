@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
     public float vSmoothTime = 0.1f;
     public float airSmoothTime = 0.5f;
     public Transform feet;
+    public Animator anim;
     private Rigidbody rb;
     private AstronomicalObject[] objects;
     private AstronomicalObject referenceBody;
@@ -57,9 +58,15 @@ public class Player : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Space)) {
                 rb.AddForce(transform.up * 10f, ForceMode.VelocityChange);
                 isGrounded = false;
+                anim.Play("Jump");
             } else {
+                if (smoothVelocity != Vector3.zero && !anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+                    anim.Play("Walk");
                 rb.AddForce(-transform.up * 0.5f, ForceMode.VelocityChange);
             }
+        } else {
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+                anim.Play("Run");
         }
     }
 
