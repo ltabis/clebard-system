@@ -50,9 +50,6 @@ public class Player : MonoBehaviour {
         // Movement
         bool isGrounded = IsGrounded();
 
-        if (isGrounded)
-            Debug.Log("IS GROUNDED");
-
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         targetVelocity = transform.TransformDirection(input.normalized) * moveSpeed;
         smoothVelocity = Vector3.SmoothDamp(smoothVelocity, targetVelocity, ref smoothVRef, (isGrounded) ? vSmoothTime : airSmoothTime);
