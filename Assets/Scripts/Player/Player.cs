@@ -50,6 +50,9 @@ public class Player : MonoBehaviour {
         // Movement
         bool isGrounded = IsGrounded();
 
+        if (isGrounded)
+            Debug.Log("IS GROUNDED");
+
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         targetVelocity = transform.TransformDirection(input.normalized) * moveSpeed;
         smoothVelocity = Vector3.SmoothDamp(smoothVelocity, targetVelocity, ref smoothVRef, (isGrounded) ? vSmoothTime : airSmoothTime);
@@ -90,22 +93,22 @@ public class Player : MonoBehaviour {
     private bool IsGrounded() {
         // Sphere must not overlay terrain at origin otherwise no collision will be detected
         // so rayRadius should not be larger than controller's capsule collider radius
-        const float rayRadius = .3f;
-        const float groundedRayDst = .2f;
+        const float rayRadius = 4.9f;
+        const float groundedRayDst = 2;
         bool grounded = false;
 
         if (referenceBody) {
             var relativeVelocity = rb.velocity - referenceBody.Velocity;
             // Don't cast ray down if player is jumping up from surface
-            if (relativeVelocity.y <= 10 * 0.5f) {
+            if (relativeVelocity.y <= 12 * .5f) {
                 RaycastHit hit;
                 Vector3 offsetToFeet = (feet.position - transform.position);
                 Vector3 rayOrigin = rb.position + offsetToFeet + transform.up * rayRadius;
                 Vector3 rayDir = -transform.up;
-
                 grounded = Physics.SphereCast(rayOrigin, rayRadius, rayDir, out hit, groundedRayDst, groundedMask);
             }
         }
+
         return grounded;
     }
 }
