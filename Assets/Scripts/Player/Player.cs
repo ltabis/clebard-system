@@ -62,7 +62,7 @@ public class Player : MonoBehaviour {
             } else {
                 if (smoothVelocity != Vector3.zero && !anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
                     anim.Play("Walk");
-                rb.AddForce(-transform.up * 0.5f, ForceMode.VelocityChange);
+                rb.AddForce(-transform.up * 1f, ForceMode.VelocityChange);
             }
         } else {
             if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
@@ -91,14 +91,14 @@ public class Player : MonoBehaviour {
 
         Vector3 gravityUp = -strongestPull.normalized;
         rb.rotation = Quaternion.FromToRotation(transform.up, gravityUp) * rb.rotation;
-        rb.MovePosition(rb.position + smoothVelocity * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + smoothVelocity * Time.deltaTime);
     }
 
     private bool IsGrounded() {
         // Sphere must not overlay terrain at origin otherwise no collision will be detected
         // so rayRadius should not be larger than controller's capsule collider radius
-        const float rayRadius = 4.9f;
-        const float groundedRayDst = 2;
+        const float rayRadius = 5f;
+        const float groundedRayDst = 2f;
         bool grounded = false;
 
         if (referenceBody) {
