@@ -79,6 +79,7 @@ public class OrbitCamera : MonoBehaviour
 		regularCamera = GetComponent<Camera>();
 		focusPoint = focus.position;
 		transform.localRotation = Quaternion.Euler(orbitAngles);
+		Cursor.visible = false;
 	}
 
 	void LateUpdate()
@@ -86,13 +87,10 @@ public class OrbitCamera : MonoBehaviour
 		UpdateFocusPoint();
 
 		Quaternion lookRotation;
-		if (ManualRotation() || AutomaticRotation())
-		{
+		if (ManualRotation() || AutomaticRotation()) {
 			ConstrainAngles();
 			lookRotation = Quaternion.Euler(orbitAngles);
-		}
-		else
-		{
+		} else {
 			lookRotation = transform.localRotation;
 		}
 
@@ -104,7 +102,8 @@ public class OrbitCamera : MonoBehaviour
 			distance = 0.02f;
 
 		Vector3 lookDirection = lookRotation * Vector3.forward;
-		Vector3 lookPosition = focusPoint - lookDirection * distance ;
+		// Vector3 lookDirection = lookRotation * focus.forward;
+		Vector3 lookPosition = focusPoint - lookDirection * distance;
 
 		Vector3 rectOffset = lookDirection * regularCamera.nearClipPlane;
 		Vector3 rectPosition = lookPosition + rectOffset;
@@ -156,17 +155,10 @@ public class OrbitCamera : MonoBehaviour
 
 		if (GUIUtility.hotControl == 0)
 		{
-			if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
-			{
-				Cursor.lockState = CursorLockMode.Confined;
-				Cursor.visible = false;
-				input.y += Input.GetAxis("Mouse X") * manualRotationSensivity * 0.02f;
-				input.x -= Input.GetAxis("Mouse Y") * manualRotationSensivity * 0.02f;
-			}
-			else if (!Cursor.visible)
-				Cursor.visible = true;
+			// Cursor.lockState = CursorLockMode.Confined;
+			input.y += Input.GetAxis("Mouse X") * manualRotationSensivity * 0.02f;
+			input.x -= Input.GetAxis("Mouse Y") * manualRotationSensivity * 0.02f;
 		}
-	
 
 		const float e = 0.001f;
 		if (input.x < -e || input.x > e || input.y < -e || input.y > e)

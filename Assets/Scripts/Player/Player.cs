@@ -14,9 +14,9 @@ public class Player : MonoBehaviour {
     Vector3 smoothVRef;
     Vector3 targetVelocity;
     public LayerMask groundedMask;
-    public float moveSpeed = 6;
+    public float moveSpeed = 6f;
 
-    public float mouseSensitivity = 10;
+    public float mouseSensitivity = 10f;
     public Vector2 pitchMinMax = new Vector2(-40, 85);
     public float rotationSmoothTime = 0.1f;
 
@@ -38,17 +38,7 @@ public class Player : MonoBehaviour {
     }
 
     private void Movement() {
-        // Camera
-        yaw += Input.GetAxisRaw("Mouse X") * mouseSensitivity;
-        pitch -= Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
-        pitch = Mathf.Clamp(pitch - Input.GetAxisRaw("Mouse Y") * mouseSensitivity, pitchMinMax.x, pitchMinMax.y);
-        smoothPitch = Mathf.SmoothDampAngle(smoothPitch, pitch, ref pitchSmoothV, rotationSmoothTime);
-        float smoothYawOld = smoothYaw;
-        smoothYaw = Mathf.SmoothDampAngle(smoothYaw, yaw, ref yawSmoothV, rotationSmoothTime);
-        cam.transform.localEulerAngles = Vector3.right * smoothPitch;
-        transform.Rotate(Vector3.up * Mathf.DeltaAngle(smoothYawOld, smoothYaw), Space.Self);
-
-        // Movement
+        // Movement.
         bool isGrounded = IsGrounded();
 
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
@@ -64,9 +54,17 @@ public class Player : MonoBehaviour {
                     anim.Play("Walk");
                 rb.AddForce(-transform.up * 1f, ForceMode.VelocityChange);
             }
-        } else {
+        } else
             if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
                 anim.Play("Run");
+
+        // Player body orientation.
+        if (input.x != 0 || input.z != 0) {
+            // rotating the dog only if the player is moving.
+            yaw += Input.GetAxisRaw("Mouse X") * mouseSensitivity;
+            float smoothYawOld = smoothYaw;
+            smoothYaw = Mathf.SmoothDampAngle(smoothYaw, yaw, ref yawSmoothV, rotationSmoothTime);
+            transform.Rotate(Vector3.up * Mathf.DeltaAngle(smoothYawOld, smoothYaw), Space.Self);
         }
     }
 
@@ -104,7 +102,7 @@ public class Player : MonoBehaviour {
         if (referenceBody) {
             var relativeVelocity = rb.velocity - referenceBody.Velocity;
             // Don't cast ray down if player is jumping up from surface
-            if (relativeVelocity.y <= 12 * .5f) {
+            if (relativeVelocity.y <= 12f * .5f) {
                 RaycastHit hit;
                 Vector3 offsetToFeet = (feet.position - transform.position);
                 Vector3 rayOrigin = rb.position + offsetToFeet + transform.up * rayRadius;
