@@ -872,7 +872,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   woBarks: 0101010000
-  agent: {fileID: 0}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
@@ -882,7 +881,6 @@ MonoBehaviour:
     m_Bits: 0
   walkPointRange: 0
   sightRange: 0
-  anim: {fileID: 0}
   walkSpeed: 3.5
   trotSpeed: 5
   runSpeed: 8
@@ -1064,7 +1062,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   woBarks: 010101
-  agent: {fileID: 0}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
@@ -1074,7 +1071,6 @@ MonoBehaviour:
     m_Bits: 0
   walkPointRange: 0
   sightRange: 0
-  anim: {fileID: 0}
   walkSpeed: 3.5
   trotSpeed: 5
   runSpeed: 8
@@ -1977,7 +1973,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   woBarks: 0000010000
-  agent: {fileID: 0}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
@@ -1987,7 +1982,6 @@ MonoBehaviour:
     m_Bits: 0
   walkPointRange: 0
   sightRange: 0
-  anim: {fileID: 0}
   walkSpeed: 3.5
   trotSpeed: 5
   runSpeed: 8
@@ -2388,7 +2382,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   woBarks: 0100010000
-  agent: {fileID: 0}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
@@ -2398,7 +2391,6 @@ MonoBehaviour:
     m_Bits: 0
   walkPointRange: 0
   sightRange: 0
-  anim: {fileID: 0}
   walkSpeed: 3.5
   trotSpeed: 5
   runSpeed: 8
@@ -2445,11 +2437,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!95 &1695950670 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 95891157859700264, guid: a4de01c43a6b748caaee82a2c75c4968, type: 3}
-  m_PrefabInstance: {fileID: 265413504}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1695950672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2463,7 +2450,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   woBarks: 000101
-  agent: {fileID: 1695950667}
   player: {fileID: 1742452204}
   whatIsGround:
     serializedVersion: 2
@@ -2473,7 +2459,6 @@ MonoBehaviour:
     m_Bits: 512
   walkPointRange: 6
   sightRange: 0
-  anim: {fileID: 1695950670}
   walkSpeed: 3.5
   trotSpeed: 5
   runSpeed: 8
@@ -2932,6 +2917,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1437103540}
     m_Modifications:
+    - target: {fileID: 5805448910441257869, guid: a785c53fa7c747f4783605aaa70fcb47, type: 3}
+      propertyPath: ShapeModule.type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805448910441257869, guid: a785c53fa7c747f4783605aaa70fcb47, type: 3}
+      propertyPath: ShapeModule.m_Texture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805448910441257869, guid: a785c53fa7c747f4783605aaa70fcb47, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805448910441257869, guid: a785c53fa7c747f4783605aaa70fcb47, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805448910441257869, guid: a785c53fa7c747f4783605aaa70fcb47, type: 3}
+      propertyPath: ShapeModule.m_TextureAlphaAffectsParticles
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6652731400103265752, guid: a785c53fa7c747f4783605aaa70fcb47, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.5724907
@@ -2984,5 +2989,17 @@ PrefabInstance:
       propertyPath: hole2
       value: 
       objectReference: {fileID: 435429887}
+    - target: {fileID: 6655629917211870591, guid: a785c53fa7c747f4783605aaa70fcb47, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655629917211870591, guid: a785c53fa7c747f4783605aaa70fcb47, type: 3}
+      propertyPath: TriggerModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801485658076969304, guid: a785c53fa7c747f4783605aaa70fcb47, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b20fc9e84b968641b7312bdcdd1ffd8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a785c53fa7c747f4783605aaa70fcb47, type: 3}
