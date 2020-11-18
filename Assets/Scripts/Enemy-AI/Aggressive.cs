@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class Aggressive : Mobile
 {
+    public float sightRange;
+    protected bool playerInSightRange;
 
-    void Start()
+    protected override void Wander()
     {
-        
-    }
-
-    void Update()
-    {
-        
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        if (isScared)
+            Scared();
+        else if (isCharmed)
+            Charmed();
+        else if (!playerInSightRange)
+            Patroling();
+        else if (playerInSightRange)
+            ChasePlayer();
     }
 }
