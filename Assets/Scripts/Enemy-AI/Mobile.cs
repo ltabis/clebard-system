@@ -10,7 +10,8 @@ public class Mobile : Entity
    public Material initialMaterial;
    public Material scaredMaterial;*/
 
-    public NavMeshAgent agent;
+    protected NavMeshAgent agent;
+    protected Animator anim;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
 
@@ -31,7 +32,6 @@ public class Mobile : Entity
     protected float moveTimer = 5f;
     protected float noStuck = 4f;
 
-    public Animator anim;
     public float walkSpeed = 3.5f;
     public float trotSpeed = 5f;
     public float runSpeed = 8f;
@@ -42,7 +42,7 @@ public class Mobile : Entity
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        Idle();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -56,8 +56,6 @@ public class Mobile : Entity
             Patroling();
         else if (playerInSightRange)
             ChasePlayer();
-        else
-            Idle();
     }
 
     protected void Charmed()
@@ -149,7 +147,7 @@ public class Mobile : Entity
 
     protected void Flee()
     {
-        Run();
+        anim.Play("Run");
         Vector3 fleeDirection = transform.position - player.position;
         Vector3 newPos = transform.position + fleeDirection;
         agent.SetDestination(newPos);
@@ -187,34 +185,28 @@ public class Mobile : Entity
 
     protected void Idle()
     {
-        if (!anim.GetCurrentAnimatorStateInfo(2).IsName("Idle"))
-            anim.CrossFade("Idle", 0.1f);
-        //anim.SetBool("Walk", true);
+        anim.Play("Idle");
         //anim.CrossFade("Idle", 0.25f);
     }
 
     protected void Walk()
     {
-        if (!anim.GetCurrentAnimatorStateInfo(5).IsName("Walk"))
-            anim.CrossFade("Walk", 0.1f);
+        anim.Play("Walk");
         //anim.Play("Walk");
         agent.speed = walkSpeed;
     }
 
     protected virtual void Trot()
     {
-        //anim.Play("Trot");
+        anim.Play("Trot");
         agent.speed = trotSpeed;
     }
 
     protected void Run()
     {
-        print("run ?? :  " + anim.GetCurrentAnimatorStateInfo(3).IsName("Run"));
-        if (!anim.GetCurrentAnimatorStateInfo(3).IsName("Run"))
-            anim.CrossFade("Run", 0.1f);
         //anim.SetFloat("Run", 4);
         //anim.SetTrigger("Run");
-        //anim.SetBool("Run", true);
+        anim.Play("Run");
         //anim.Play("Run");
         agent.speed = runSpeed;
     }
