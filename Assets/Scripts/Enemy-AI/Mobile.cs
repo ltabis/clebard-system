@@ -187,30 +187,41 @@ public class Mobile : Entity
 
     protected void Idle()
     {
-        anim.CrossFade("Idle", 0.25f);
+        if (!anim.GetCurrentAnimatorStateInfo(2).IsName("Idle"))
+            anim.CrossFade("Idle", 0.1f);
+        //anim.SetBool("Walk", true);
+        //anim.CrossFade("Idle", 0.25f);
     }
 
     protected void Walk()
     {
-        anim.Play("Walk");
+        if (!anim.GetCurrentAnimatorStateInfo(5).IsName("Walk"))
+            anim.CrossFade("Walk", 0.1f);
+        //anim.Play("Walk");
         agent.speed = walkSpeed;
     }
 
     protected virtual void Trot()
     {
-        anim.Play("Trot");
+        //anim.Play("Trot");
         agent.speed = trotSpeed;
     }
 
     protected void Run()
     {
-        anim.Play("Run");
+        print("run ?? :  " + anim.GetCurrentAnimatorStateInfo(3).IsName("Run"));
+        if (!anim.GetCurrentAnimatorStateInfo(3).IsName("Run"))
+            anim.CrossFade("Run", 0.1f);
+        //anim.SetFloat("Run", 4);
+        //anim.SetTrigger("Run");
+        //anim.SetBool("Run", true);
+        //anim.Play("Run");
         agent.speed = runSpeed;
     }
 
     protected void Sit()
     {
-        anim.CrossFade("SitIdle", 0.25f);
+        //anim.CrossFade("SitIdle", 0.25f);
     }
 
     protected void CharmParticle()
