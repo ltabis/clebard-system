@@ -6,7 +6,9 @@ public class Player : MonoBehaviour {
     public float vSmoothTime = 0.1f;
     public float airSmoothTime = 0.5f;
     public Transform feet;
+    public Transform body;
     public Animator anim;
+    public OrbitCamera cam;
     private Rigidbody rb;
     private AstronomicalObject[] objects;
     private AstronomicalObject referenceBody;
@@ -27,14 +29,12 @@ public class Player : MonoBehaviour {
 
     float yawSmoothV;
     float pitchSmoothV;
-    private Camera cam;
 
     void Start() {
         objects = FindObjectsOfType<AstronomicalObject>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
-        cam = Camera.main;
     }
 
     private void Movement() {
@@ -60,11 +60,13 @@ public class Player : MonoBehaviour {
 
         // Player body orientation.
         if (input.x != 0 || input.z != 0) {
-            // rotating the dog only if the player is moving.
-            yaw += Input.GetAxisRaw("Mouse X") * mouseSensitivity;
-            float smoothYawOld = smoothYaw;
-            smoothYaw = Mathf.SmoothDampAngle(smoothYaw, yaw, ref yawSmoothV, rotationSmoothTime);
-            transform.Rotate(Vector3.up * Mathf.DeltaAngle(smoothYawOld, smoothYaw), Space.Self);
+            // rotating the player body only if the user is moving.
+            // yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
+            // float smoothYawOld = smoothYaw;
+            // smoothYaw = Mathf.SmoothDampAngle(smoothYaw, yaw, ref yawSmoothV, rotationSmoothTime);
+            // body.transform.Rotate(Vector3.up * Mathf.DeltaAngle(smoothYawOld, smoothYaw), Space.Self);
+
+            body.forward = new Vector3(cam.transform.forward.x, cam.transform.forward.y, cam.transform.forward.z);
         }
     }
 
