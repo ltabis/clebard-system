@@ -880,7 +880,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   walkPointRange: 0
-  sightRange: 0
   walkSpeed: 3.5
   trotSpeed: 5
   runSpeed: 8
@@ -1070,7 +1069,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   walkPointRange: 0
-  sightRange: 0
   walkSpeed: 3.5
   trotSpeed: 5
   runSpeed: 8
@@ -1981,7 +1979,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   walkPointRange: 0
-  sightRange: 0
   walkSpeed: 3.5
   trotSpeed: 5
   runSpeed: 8
@@ -2390,7 +2387,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   walkPointRange: 0
-  sightRange: 0
   walkSpeed: 3.5
   trotSpeed: 5
   runSpeed: 8
@@ -2458,7 +2454,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   walkPointRange: 6
-  sightRange: 0
   walkSpeed: 3.5
   trotSpeed: 5
   runSpeed: 8
