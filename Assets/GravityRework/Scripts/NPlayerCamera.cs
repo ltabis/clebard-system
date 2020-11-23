@@ -17,16 +17,25 @@ public class NPlayerCamera : MonoBehaviour
     private float focusRadius = 1f;
     // the speed of the camera adjusting when the player isn't moving.
     [SerializeField, Range(0f, 1f)]
-    float focusCentering = .5f;
+    private float focusCentering = .5f;
     // current point targeted by the camera.
     [SerializeField, Range(0f, 360f)]
-    float rotationSpeed = 90f;
-
+    private float rotationSpeed = 90f;
+    // time before the alignement algorithm kicks in.
+    [SerializeField, Min(0f)]
+    private float alignDelay = 0f;
+    // max and minimum values for the vertical angles.
     [SerializeField, Range(0f, 360f)]
-    float minVerticalAngle = -30f, maxVerticalAngle = 45f;
+    private float minVerticalAngle = -30f, maxVerticalAngle = 45f;
+
+    // the current point focused, slowly converging towards the focus transform.
     private Vector3 focusPoint;
+    // the last point focused. Is used to rotate the camera back to the front of the player
+    private Vector3 previousFocusPoint;
     // camera orientation.
     private Vector2 orbitAngles = new Vector2(45.0f, 0f);
+    //
+    private float lastManualRotationTime = 0f;
 
     void Awake()
     {
@@ -48,7 +57,7 @@ public class NPlayerCamera : MonoBehaviour
     {
         Quaternion lookRotation;
         // we only need to clamp angles if inputs were received.
-        if (ManualRotation()) {
+        if (ManualRotation() || AutomaticRotation()) {
             clampAngles();
             lookRotation = Quaternion.Euler(orbitAngles);
         } else
@@ -73,9 +82,41 @@ public class NPlayerCamera : MonoBehaviour
         float threshold = 0.001f;
         if (input.x < -threshold || input.x > threshold || input.y < -threshold || input.y > threshold) {
             orbitAngles += rotationSpeed * Time.unscaledDeltaTime * input;
+            lastManualRotationTime = Time.unscaledDeltaTime;
             return true;
         }
         return false;
+    }
+
+    bool AutomaticRotation()
+    {
+        if (Time.unscaledDeltaTime - lastManualRotationTime < alignDelay)
+            return false;
+
+        Vector2 movement = new Vector2(
+            focusPoint.x - previousFocusPoint.x,
+            focusPoint.z - previousFocusPoint.z
+        );
+
+        float length = movement.sqrMagnitude;
+
+        if (length < 0.000001f)
+            return false;
+
+        // we calculate the manually has its faster and we already have the square
+        // magnitude of the vector.
+        float headingAngle = GetAngle(movement / Mathf.Sqrt(length));
+
+        // setting the new angle
+        orbitAngles.y = headingAngle;
+
+        return true;
+    }
+
+    float GetAngle(Vector2 direction)
+    {
+        float angle = Mathf.Acos(direction.y) * Mathf.Rad2Deg; 
+        return direction.x < 0f ? 360 - angle : angle;
     }
 
     void clampAngles()
@@ -94,6 +135,8 @@ public class NPlayerCamera : MonoBehaviour
     void UpdateFocusPoint()
     {
         Vector3 currentPostion = focus.position;
+
+        previousFocusPoint = focusPoint;
         if (focusRadius > 0f) {
             float dst = Vector3.Distance(currentPostion, focusPoint);
             float t = 1f;
