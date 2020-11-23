@@ -51,6 +51,10 @@ public class NPlayerController : MonoBehaviour
 
 	int stepsSinceLastGrounded, stepsSinceLastJump;
 
+	// debug.
+	public bool debugPlayerPath = true;
+	private List<Vector3> playerPath;
+
 	void OnValidate()
 	{
 		minGroundDotProduct = Mathf.Cos(maxGroundAngle * Mathf.Deg2Rad);
@@ -59,6 +63,7 @@ public class NPlayerController : MonoBehaviour
 
 	void Awake()
 	{
+		playerPath = new List<Vector3>();
 		body = GetComponent<Rigidbody>();
 		OnValidate();
 	}
@@ -102,6 +107,7 @@ public class NPlayerController : MonoBehaviour
 		}
 
 		body.velocity = velocity;
+		playerPath.Add(body.position);
 		ClearState();
 	}
 
@@ -277,5 +283,15 @@ public class NPlayerController : MonoBehaviour
 	{
 		return (stairsMask & (1 << layer)) == 0 ?
 			minGroundDotProduct : minStairsDotProduct;
+	}
+
+	void OnDrawGizmos()
+	{
+		if (!debugPlayerPath)
+			return;
+	
+		Gizmos.color = Color.yellow;
+		for (int i = 0; playerPath != null && i < playerPath.Count - 1; ++i)
+	        Gizmos.DrawLine(playerPath[i], playerPath[i + 1]);
 	}
 }
