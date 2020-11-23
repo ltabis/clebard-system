@@ -60,13 +60,25 @@ public class Player : MonoBehaviour {
 
         // Player body orientation.
         if (input.x != 0 || input.z != 0) {
+            // Vector2 playerInput;
+            // playerInput.x = Input.GetAxis("Horizontal");
+            // playerInput.y = Input.GetAxis("Vertical");
+            // playerInput = Vector2.ClampMagnitude(playerInput, 1f);
+
+            // Vector3 forward = body.position - cam.transform.position;
+            // forward.Normalize();
+            // Vector3 right = cam.transform.right;
+            // right.Normalize();
+
+            // body.transform.forward = forward;
+            // body.transform.right = right;
             // rotating the player body only if the user is moving.
             // yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
             // float smoothYawOld = smoothYaw;
             // smoothYaw = Mathf.SmoothDampAngle(smoothYaw, yaw, ref yawSmoothV, rotationSmoothTime);
             // body.transform.Rotate(Vector3.up * Mathf.DeltaAngle(smoothYawOld, smoothYaw), Space.Self);
 
-            body.forward = new Vector3(cam.transform.forward.x, cam.transform.forward.y, cam.transform.forward.z);
+            // body.forward = new Vector3(cam.transform.forward.x, cam.transform.forward.y, cam.transform.forward.z);
         }
     }
 
