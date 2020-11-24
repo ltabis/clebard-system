@@ -75,9 +75,17 @@ public class NPlayerCamera : MonoBehaviour
         Vector3 lookPosition = focusPoint - lookDirection * distance;
 
         // checking camera collision with the obstruction mask.
-        if (Physics.BoxCast(focusPoint, CameraHalfExtend, -lookDirection, out RaycastHit hit, lookRotation, distance, ObstructionMask)) {
+        if (Physics.BoxCast(
+                    focusPoint,
+                    CameraHalfExtend,
+                    -lookDirection,
+                    out RaycastHit hit,
+                    lookRotation,
+                    distance - cam.nearClipPlane,
+                    ObstructionMask
+                )) {
             // computing position of the camera if it's clipping throught a specific layer.
-            lookPosition = focusPoint - lookDirection * hit.distance;
+            lookPosition = focusPoint - lookDirection * (hit.distance + cam.nearClipPlane);
         }
 
 

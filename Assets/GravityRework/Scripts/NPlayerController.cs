@@ -5,6 +5,8 @@ using UnityEngine;
 public class NPlayerController : MonoBehaviour
 {
 	[SerializeField]
+	private Transform model = default;
+	[SerializeField]
 	private Transform playerInputSpace = default;
 	[SerializeField, Range(0f, 100f)]
 	float maxSpeed = 10f;
@@ -64,7 +66,6 @@ public class NPlayerController : MonoBehaviour
 	{
 		playerPath = new List<Vector3>();
 		body = GetComponent<Rigidbody>();
-		OnValidate();
 	}
 
 	void Update()
@@ -82,8 +83,14 @@ public class NPlayerController : MonoBehaviour
 			Vector3 right = playerInputSpace.right;
 			right.y = 0f;
 			right.Normalize();
+
+			// updating the velocity.
 			desiredVelocity =
 				(forward * playerInput.y + right * playerInput.x) * maxSpeed;
+
+			// aligning the player model to the forward direction.
+			model.forward = forward;
+			model.right = right;
 		}
 		else
 		{
