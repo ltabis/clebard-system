@@ -52,6 +52,8 @@ public class NPlayerController : MonoBehaviour
 
 	int stepsSinceLastGrounded, stepsSinceLastJump;
 
+	Vector3 worldUp, worldRight, worldForward;
+
 	// debug.
 	public bool debugPlayerPath = true;
 	private List<Vector3> playerPath;
@@ -77,36 +79,34 @@ public class NPlayerController : MonoBehaviour
 
 		if (playerInputSpace)
 		{
-			Vector3 forward = playerInputSpace.forward;
-			forward.y = 0f;
-			forward.Normalize();
-			Vector3 right = playerInputSpace.right;
-			right.y = 0f;
-			right.Normalize();
-
-			// updating the velocity.
-			desiredVelocity =
-				(forward * playerInput.y + right * playerInput.x) * maxSpeed;
+			// computing the direction of the veclocity.
+			worldRight = ProjectDirectionOnPlane(playerInputSpace.right, worldUp);
+			worldForward = ProjectDirectionOnPlane(playerInputSpace.forward, worldUp);
 
 			// aligning the player model to the forward direction.
 			float threshold = 0.001f;
 			if (playerInput.x < -threshold || playerInput.x > threshold ||
 				playerInput.y < -threshold || playerInput.y > threshold) {
-				model.forward = forward;
-				model.right = right;
+				model.forward = worldForward;
+				model.right = worldRight;
+				Debug.Log("model.right assigned");
 			}
+			model.up = worldUp;
 		}
 		else
 		{
-			desiredVelocity =
-				new Vector3(playerInput.x, 0f, playerInput.y) * maxSpeed;
+			worldRight = ProjectDirectionOnPlane(Vector3.right, worldUp);
+			worldForward = ProjectDirectionOnPlane(Vector3.forward, worldUp);
 		}
 
+		desiredVelocity = new Vector3(playerInput.x, 0f, playerInput.y) * maxSpeed;
 		desiredJump |= Input.GetButtonDown("Jump");
 	}
 
 	void FixedUpdate()
 	{
+		worldUp = -Physics.gravity.normalized;
+
 		UpdateState();
 		AdjustVelocity();
 
@@ -146,7 +146,7 @@ public class NPlayerController : MonoBehaviour
 		}
 		else
 		{
-			contactNormal = Vector3.up;
+			contactNormal = worldUp;
 		}
 	}
 
@@ -162,13 +162,13 @@ public class NPlayerController : MonoBehaviour
 			return false;
 		}
 		if (!Physics.Raycast(
-			body.position, Vector3.down, out RaycastHit hit,
+			body.position, -worldUp, out RaycastHit hit,
 			probeDistance, probeMask
 		))
 		{
 			return false;
 		}
-		if (hit.normal.y < GetMinDot(hit.collider.gameObject.layer))
+		if (Vector3.Dot(worldUp, hit.normal) < GetMinDot(hit.collider.gameObject.layer))
 		{
 			return false;
 		}
@@ -188,7 +188,7 @@ public class NPlayerController : MonoBehaviour
 		if (steepContactCount > 1)
 		{
 			steepNormal.Normalize();
-			if (steepNormal.y >= minGroundDotProduct)
+			if (Vector3.Dot(worldUp, steepNormal) >= minGroundDotProduct)
 			{
 				steepContactCount = 0;
 				groundContactCount = 1;
@@ -201,8 +201,8 @@ public class NPlayerController : MonoBehaviour
 
 	void AdjustVelocity()
 	{
-		Vector3 xAxis = ProjectOnContactPlane(Vector3.right).normalized;
-		Vector3 zAxis = ProjectOnContactPlane(Vector3.forward).normalized;
+		Vector3 xAxis = ProjectDirectionOnPlane(worldRight, contactNormal);
+		Vector3 zAxis = ProjectDirectionOnPlane(worldForward, contactNormal);
 
 		float currentX = Vector3.Dot(velocity, xAxis);
 		float currentZ = Vector3.Dot(velocity, zAxis);
@@ -245,8 +245,8 @@ public class NPlayerController : MonoBehaviour
 
 		stepsSinceLastJump = 0;
 		jumpPhase += 1;
-		float jumpSpeed = Mathf.Sqrt(-2f * Physics.gravity.y * jumpHeight);
-		jumpDirection = (jumpDirection + Vector3.up).normalized;
+		float jumpSpeed = Mathf.Sqrt(2f * Physics.gravity.magnitude * jumpHeight);
+		jumpDirection = (jumpDirection + worldUp).normalized;
 		float alignedSpeed = Vector3.Dot(velocity, jumpDirection);
 		if (alignedSpeed > 0f)
 		{
@@ -271,12 +271,13 @@ public class NPlayerController : MonoBehaviour
 		for (int i = 0; i < collision.contactCount; i++)
 		{
 			Vector3 normal = collision.GetContact(i).normal;
-			if (normal.y >= minDot)
+			float dotUp = Vector3.Dot(worldUp, normal);
+			if (dotUp >= minDot)
 			{
 				groundContactCount += 1;
 				contactNormal += normal;
 			}
-			else if (normal.y > -0.01f)
+			else if (dotUp > -0.01f)
 			{
 				steepContactCount += 1;
 				steepNormal += normal;
@@ -284,9 +285,9 @@ public class NPlayerController : MonoBehaviour
 		}
 	}
 
-	Vector3 ProjectOnContactPlane(Vector3 vector)
+	Vector3 ProjectDirectionOnPlane(Vector3 direction, Vector3 normal)
 	{
-		return vector - contactNormal * Vector3.Dot(vector, contactNormal);
+		return (direction - normal * Vector3.Dot(direction, normal)).normalized;
 	}
 
 	float GetMinDot(int layer)
