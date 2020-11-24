@@ -89,8 +89,12 @@ public class NPlayerController : MonoBehaviour
 				(forward * playerInput.y + right * playerInput.x) * maxSpeed;
 
 			// aligning the player model to the forward direction.
-			model.forward = forward;
-			model.right = right;
+			float threshold = 0.001f;
+			if (playerInput.x < -threshold || playerInput.x > threshold ||
+				playerInput.y < -threshold || playerInput.y > threshold) {
+				model.forward = forward;
+				model.right = right;
+			}
 		}
 		else
 		{
