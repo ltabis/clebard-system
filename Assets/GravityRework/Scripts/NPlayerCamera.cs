@@ -57,7 +57,10 @@ public class NPlayerCamera : MonoBehaviour
     // main update loop.
     void LateUpdate()
     {
-        gravityAlignment = Quaternion.FromToRotation(gravityAlignment * Vector3.up, -Physics.gravity.normalized) * gravityAlignment;
+        gravityAlignment = Quaternion.FromToRotation(
+                gravityAlignment * Vector3.up,
+                CustomGravity.GetWorldUp(focusPoint)
+            ) * gravityAlignment;
 
         UpdateFocusPoint();
 

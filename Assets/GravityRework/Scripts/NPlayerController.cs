@@ -68,6 +68,9 @@ public class NPlayerController : MonoBehaviour
 	{
 		playerPath = new List<Vector3>();
 		body = GetComponent<Rigidbody>();
+
+		// we are using a custom gravity script.
+		body.useGravity = false;
 	}
 
 	void Update()
@@ -104,7 +107,7 @@ public class NPlayerController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		worldUp = -Physics.gravity.normalized;
+		Vector3 gravity = CustomGravity.GetGravity(body.position, out worldUp);
 
 		UpdateState();
 		AdjustVelocity();
@@ -112,8 +115,10 @@ public class NPlayerController : MonoBehaviour
 		if (desiredJump)
 		{
 			desiredJump = false;
-			Jump();
+			Jump(gravity);
 		}
+
+		velocity += gravity * Time.deltaTime;
 
 		body.velocity = velocity;
 		playerPath.Add(body.position);
@@ -217,7 +222,7 @@ public class NPlayerController : MonoBehaviour
 		velocity += xAxis * (newX - currentX) + zAxis * (newZ - currentZ);
 	}
 
-	void Jump()
+	void Jump(Vector3 gravity)
 	{
 		Vector3 jumpDirection;
 		if (OnGround)
@@ -244,7 +249,7 @@ public class NPlayerController : MonoBehaviour
 
 		stepsSinceLastJump = 0;
 		jumpPhase += 1;
-		float jumpSpeed = Mathf.Sqrt(2f * Physics.gravity.magnitude * jumpHeight);
+		float jumpSpeed = Mathf.Sqrt(2f * gravity.magnitude * jumpHeight);
 		jumpDirection = (jumpDirection + worldUp).normalized;
 		float alignedSpeed = Vector3.Dot(velocity, jumpDirection);
 		if (alignedSpeed > 0f)
