@@ -30,6 +30,8 @@ public class NPlayerCamera : MonoBehaviour
     // max and minimum values for the vertical angles.
     [SerializeField, Range(0f, 360f)]
     private float minVerticalAngle = -30f, maxVerticalAngle = 45f;
+    private Quaternion gravityAlignment = Quaternion.identity;
+    private Quaternion orbitRotation;
 
     // the current point focused, slowly converging towards the focus transform.
     // the last point focused. Is used to rotate the camera back to the front of the player
@@ -43,7 +45,7 @@ public class NPlayerCamera : MonoBehaviour
     {
         focusPoint = focus.position;
         cam = GetComponent<Camera>();
-        transform.localRotation = Quaternion.Euler(orbitAngles);
+        transform.localRotation = orbitRotation = Quaternion.Euler(orbitAngles);
     }
 
     // called only once when the script is first launch.
@@ -58,19 +60,19 @@ public class NPlayerCamera : MonoBehaviour
     // main update loop.
     void LateUpdate()
     {
-        UpdateFocusPoint();
+        gravityAlignment = Quaternion.FromToRotation(gravityAlignment * Vector3.up, -Physics.gravity.normalized) * gravityAlignment;
 
-        Quaternion lookRotation;
+        UpdateFocusPoint();
 
         // we only need to clamp angles if inputs were received.
         // Automatic rotation isn't needed for the moment.
         if (ManualRotation()) {
             clampAngles();
-            lookRotation = Quaternion.Euler(orbitAngles);
-        } else
-            lookRotation = transform.localRotation;
+            orbitRotation = Quaternion.Euler(orbitAngles);
+        }
     
-        // computing direction and position of the camera.
+        // computing rotation, direction and position of the camera.
+        Quaternion lookRotation = gravityAlignment * orbitRotation;
         Vector3 lookDirection = lookRotation * Vector3.forward;
         Vector3 lookPosition = focusPoint - lookDirection * distance;
 
@@ -110,6 +112,7 @@ public class NPlayerCamera : MonoBehaviour
         return false;
     }
 
+    // For now it won't be used.
     bool AutomaticRotation()
     {
         if (Time.unscaledDeltaTime - lastManualRotationTime < alignDelay)

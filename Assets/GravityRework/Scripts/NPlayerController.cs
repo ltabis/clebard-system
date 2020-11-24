@@ -89,7 +89,6 @@ public class NPlayerController : MonoBehaviour
 				playerInput.y < -threshold || playerInput.y > threshold) {
 				model.forward = worldForward;
 				model.right = worldRight;
-				Debug.Log("model.right assigned");
 			}
 			model.up = worldUp;
 		}
