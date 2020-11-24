@@ -6,6 +6,9 @@ using UnityEngine;
 public class NPlayerCamera : MonoBehaviour
 {
     public float sensitivity = 1f;
+    [SerializeField]
+    private LayerMask ObstructionMask = default;
+    private Camera cam;
     // focus on an object.
     [SerializeField]
 	private Transform focus = default;
@@ -23,15 +26,14 @@ public class NPlayerCamera : MonoBehaviour
     private float rotationSpeed = 90f;
     // time before the alignement algorithm kicks in.
     [SerializeField, Min(0f)]
-    private float alignDelay = 0f;
+    private float alignDelay = 5f;
     // max and minimum values for the vertical angles.
     [SerializeField, Range(0f, 360f)]
     private float minVerticalAngle = -30f, maxVerticalAngle = 45f;
 
     // the current point focused, slowly converging towards the focus transform.
-    private Vector3 focusPoint;
     // the last point focused. Is used to rotate the camera back to the front of the player
-    private Vector3 previousFocusPoint;
+    private Vector3 focusPoint, previousFocusPoint;
     // camera orientation.
     private Vector2 orbitAngles = new Vector2(45.0f, 0f);
     //
@@ -40,6 +42,7 @@ public class NPlayerCamera : MonoBehaviour
     void Awake()
     {
         focusPoint = focus.position;
+        cam = GetComponent<Camera>();
         transform.localRotation = Quaternion.Euler(orbitAngles);
     }
 
@@ -55,17 +58,28 @@ public class NPlayerCamera : MonoBehaviour
     // main update loop.
     void LateUpdate()
     {
+        UpdateFocusPoint();
+
         Quaternion lookRotation;
+
         // we only need to clamp angles if inputs were received.
-        if (ManualRotation() || AutomaticRotation()) {
+        // Automatic rotation isn't needed for the moment.
+        if (ManualRotation()) {
             clampAngles();
             lookRotation = Quaternion.Euler(orbitAngles);
         } else
             lookRotation = transform.localRotation;
     
-        UpdateFocusPoint();
+        // computing direction and position of the camera.
         Vector3 lookDirection = lookRotation * Vector3.forward;
         Vector3 lookPosition = focusPoint - lookDirection * distance;
+
+        // checking camera collision with the obstruction mask.
+        if (Physics.BoxCast(focusPoint, CameraHalfExtend, -lookDirection, out RaycastHit hit, lookRotation, distance, ObstructionMask)) {
+            // computing position of the camera if it's clipping throught a specific layer.
+            lookPosition = focusPoint - lookDirection * hit.distance;
+        }
+
 
         // relocating the camera at the desired distance from the focus point.
         transform.SetPositionAndRotation(lookPosition, lookRotation);
@@ -100,15 +114,15 @@ public class NPlayerCamera : MonoBehaviour
 
         float length = movement.sqrMagnitude;
 
-        if (length < 0.000001f)
+        if (length < 0.0001f)
             return false;
 
         // we calculate the manually has its faster and we already have the square
         // magnitude of the vector.
         float headingAngle = GetAngle(movement / Mathf.Sqrt(length));
 
-        // setting the new angle
-        orbitAngles.y = headingAngle;
+        // setting the new angle, moving slowly towards it.
+        orbitAngles.y = Mathf.MoveTowardsAngle(orbitAngles.y, headingAngle, rotationSpeed * Time.unscaledDeltaTime);
 
         return true;
     }
@@ -147,5 +161,16 @@ public class NPlayerCamera : MonoBehaviour
             focusPoint = Vector3.Lerp(currentPostion, focusPoint, t);
         } else
             focusPoint = currentPostion;
+    }
+
+    Vector3 CameraHalfExtend {
+        get {
+            float y = cam.nearClipPlane * Mathf.Tan(0.5f * Mathf.Deg2Rad * cam.fieldOfView);
+            return new Vector3(
+                y * cam.aspect,
+                y,
+                0
+            );
+        }
     }
 }

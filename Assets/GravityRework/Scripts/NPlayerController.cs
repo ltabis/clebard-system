@@ -5,8 +5,7 @@ using UnityEngine;
 public class NPlayerController : MonoBehaviour
 {
 	[SerializeField]
-	Transform playerInputSpace = default;
-
+	private Transform playerInputSpace = default;
 	[SerializeField, Range(0f, 100f)]
 	float maxSpeed = 10f;
 
