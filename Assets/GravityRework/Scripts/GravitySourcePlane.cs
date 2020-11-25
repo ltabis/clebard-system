@@ -14,7 +14,14 @@ public class GravitySourcePlane : GravitySource
     {
         float distance = Vector3.Dot(transform.up, position - transform.position);
 
-        return distance > range ? Vector3.zero : -gravity * transform.up;
+        if (distance > range)
+            return Vector3.zero;
+
+        float g = -gravity;
+        if (distance > 0f)
+            g *= 1f - distance / range; 
+
+        return g * transform.up;
     }
 
     void OnDrawGizmos()
