@@ -30,6 +30,8 @@ public class NPlayerCamera : MonoBehaviour
     // max and minimum values for the vertical angles.
     [SerializeField, Range(0f, 360f)]
     private float minVerticalAngle = -30f, maxVerticalAngle = 45f;
+    [SerializeField, Min(0)]
+    private float alignmentSpeed = 360f;
     private Quaternion gravityAlignment = Quaternion.identity;
     private Quaternion orbitRotation;
 
@@ -57,11 +59,7 @@ public class NPlayerCamera : MonoBehaviour
     // main update loop.
     void LateUpdate()
     {
-        gravityAlignment = Quaternion.FromToRotation(
-                gravityAlignment * Vector3.up,
-                CustomGravity.GetWorldUp(focusPoint)
-            ) * gravityAlignment;
-
+        UpdateGravityAlignment();
         UpdateFocusPoint();
 
         // we only need to clamp angles if inputs were received.
@@ -121,6 +119,25 @@ public class NPlayerCamera : MonoBehaviour
             orbitAngles.y += 360f;
         else if (orbitAngles.y >= 360)
             orbitAngles.y -= 360f;
+    }
+
+    void UpdateGravityAlignment()
+    {
+        Vector3 fromUp = gravityAlignment * Vector3.up;
+        Vector3 toUp = CustomGravity.GetWorldUp(focusPoint);
+        float dot = Mathf.Clamp(Vector3.Dot(fromUp, toUp), -1f, 1f);
+        float angle = Mathf.Acos(dot) * Mathf.Rad2Deg;
+        float maxAngle = alignmentSpeed * Time.deltaTime;
+
+        Quaternion newAlignment = Quaternion.FromToRotation(fromUp, toUp) * gravityAlignment;
+        if (angle <= maxAngle)
+            gravityAlignment = newAlignment;
+        else {
+            gravityAlignment = Quaternion.SlerpUnclamped(
+                gravityAlignment, newAlignment, maxAngle / angle
+            );
+        }
+
     }
 
     // update the focus point of the camera reach frame.
