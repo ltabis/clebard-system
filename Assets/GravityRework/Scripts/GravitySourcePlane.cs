@@ -19,7 +19,7 @@ public class GravitySourcePlane : GravitySource
 
         float g = -gravity;
         if (distance > 0f)
-            g *= 1f - distance / range; 
+            g *= 1f - distance / range;
 
         return g * transform.up;
     }

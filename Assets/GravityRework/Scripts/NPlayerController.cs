@@ -94,6 +94,9 @@ public class NPlayerController : MonoBehaviour
 				model.right = worldRight;
 			}
 			model.up = worldUp;
+			Debug.DrawLine(transform.position, transform.position + worldForward.normalized, Color.blue, 0.01f);
+			Debug.DrawLine(transform.position, transform.position + worldRight.normalized, Color.red, 0.01f);
+			Debug.DrawLine(transform.position, transform.position + worldUp.normalized, Color.green, 0.01f);
 		}
 		else
 		{
