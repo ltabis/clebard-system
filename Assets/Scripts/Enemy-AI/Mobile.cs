@@ -185,29 +185,29 @@ public class Mobile : Entity
 
     protected void Idle()
     {
-        anim.Play("Idle");
+        anim.SetBool("isWalking", false);
+        anim.SetBool("isRunning", false);
         //anim.CrossFade("Idle", 0.25f);
     }
 
     protected void Walk()
     {
-        anim.Play("Walk");
-        //anim.Play("Walk");
+        anim.SetBool("isWalking", true);
+        anim.SetBool("isRunning", false);
         agent.speed = walkSpeed;
     }
 
     protected virtual void Trot()
     {
-        anim.Play("Trot");
+        anim.SetBool("isWalking", false);
+        anim.SetBool("isRunning", true);
         agent.speed = trotSpeed;
     }
 
     protected void Run()
     {
-        //anim.SetFloat("Run", 4);
-        //anim.SetTrigger("Run");
-        anim.Play("Run");
-        //anim.Play("Run");
+        anim.SetBool("isWalking", false);
+        anim.SetBool("isRunning", true);
         agent.speed = runSpeed;
     }
 

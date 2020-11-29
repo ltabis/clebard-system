@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestDig.unity
     guid: 0ac06a233f77f1b48863948f8c8f8fe8
   - enabled: 1

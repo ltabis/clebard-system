@@ -4,10 +4,5 @@ using UnityEngine;
 
 public class Cat : Peaceful
 {
-    protected override void Trot()
-    {
-        anim.Play("Walk");
-        agent.speed = trotSpeed;
-    }
 
 }
