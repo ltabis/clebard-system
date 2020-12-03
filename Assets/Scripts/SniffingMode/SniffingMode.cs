@@ -5,12 +5,17 @@ using UnityEngine.Rendering.Universal;
 
 public class SniffingMode : MonoBehaviour {
     private Camera mainCamera;
-    private UniversalAdditionalCameraData postProcessCamera;
+    private Camera ppCamera;
+    private UniversalAdditionalCameraData mainCameraURP;
+    private UniversalAdditionalCameraData ppCameraURP;
+    public GameObject palmTree;
     public bool sniffingMode;
 
     void Start() {
         mainCamera = Camera.main;
-        postProcessCamera = mainCamera.GetComponent<UniversalAdditionalCameraData>();
+        ppCamera = GameObject.FindGameObjectWithTag("PPCamera").GetComponent<Camera>();
+        mainCameraURP = mainCamera.GetComponent<UniversalAdditionalCameraData>();
+        ppCameraURP = ppCamera.GetComponent<UniversalAdditionalCameraData>();
         sniffingMode = false;
     }
 
@@ -20,10 +25,16 @@ public class SniffingMode : MonoBehaviour {
 
     void SniffingModeCheck() {
         if (Input.GetKeyDown(KeyCode.A)) {
-            if (sniffingMode)
-                postProcessCamera.renderPostProcessing = false;
-            else
-                postProcessCamera.renderPostProcessing = true;
+            if (sniffingMode) {
+                mainCameraURP.renderPostProcessing = false;
+                ppCameraURP.renderPostProcessing = false;
+                palmTree.layer = LayerMask.NameToLayer("Default");
+            }
+            else {
+                mainCameraURP.renderPostProcessing = true;
+                ppCameraURP.renderPostProcessing = true;
+                palmTree.layer = LayerMask.NameToLayer("PostProcessing");
+            }
             sniffingMode = !sniffingMode;
         }
     }
