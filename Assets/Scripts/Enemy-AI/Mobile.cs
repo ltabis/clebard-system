@@ -5,6 +5,11 @@ using UnityEngine.AI;
 
 public class Mobile : Entity
 {
+    /*public Material charmedMaterial;
+   public Material aggressiveMaterial;
+   public Material initialMaterial;
+   public Material scaredMaterial;*/
+
     protected NavMeshAgent agent;
     protected Animator anim;
     public Transform player;
@@ -13,6 +18,9 @@ public class Mobile : Entity
     protected Vector3 walkPoint;
     protected bool walkPointSet;
     public float walkPointRange;
+
+    public float sightRange;
+    protected bool playerInSightRange;
 
     protected bool isCharmed;
     protected float timeCharmed;
@@ -37,19 +45,23 @@ public class Mobile : Entity
         anim = GetComponent<Animator>();
     }
 
-    protected virtual void Update()
+    void Update()
     {
-        Wander();
-    }
-
-    protected virtual void Wander()
-    {
-
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        if (isScared)
+            Scared();
+        else if (isCharmed)
+            Charmed();
+        else if (!playerInSightRange)
+            Patroling();
+        else if (playerInSightRange)
+            ChasePlayer();
     }
 
     protected void Charmed()
     {
         Trot();
+        //CharmParticle();
         walkPointSet = false;
         if (timeCharmed > 0)
             timeCharmed -= Time.deltaTime;
@@ -78,7 +90,6 @@ public class Mobile : Entity
         if (timeScared <= 0)
         {
             isScared = false;
-            anim.Play("Idle");
             return;
         }
         Flee();
@@ -109,7 +120,7 @@ public class Mobile : Entity
                 agent.SetDestination(walkPoint);
                 Walk();
             }
-            moveTimer = Random.Range(6f, 9f);
+            moveTimer = Random.Range(4f, 6f);
         }
     }
 
@@ -122,7 +133,7 @@ public class Mobile : Entity
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
         {
             walkPointSet = true;
-            noStuck = 12f;
+            noStuck = 8f;
         }
     }
 
@@ -146,7 +157,7 @@ public class Mobile : Entity
     {
         if (Random.Range(0, 6) == 3)
         {
-            RandomAnim();
+            Sit();
             return true;
         }
         return false;
@@ -174,38 +185,38 @@ public class Mobile : Entity
 
     protected void Idle()
     {
-        anim.Play("Idle");
+        anim.SetBool("isWalking", false);
+        anim.SetBool("isRunning", false);
+        //anim.CrossFade("Idle", 0.25f);
     }
 
     protected void Walk()
     {
-        anim.Play("Walk");
+        anim.SetBool("isWalking", true);
+        anim.SetBool("isRunning", false);
         agent.speed = walkSpeed;
     }
 
     protected virtual void Trot()
     {
-        anim.Play("Trot");
+        anim.SetBool("isWalking", false);
+        anim.SetBool("isRunning", true);
         agent.speed = trotSpeed;
     }
 
     protected void Run()
     {
-        anim.Play("Run");
+        anim.SetBool("isWalking", false);
+        anim.SetBool("isRunning", true);
         agent.speed = runSpeed;
-    }
-
-    protected virtual void RandomAnim()
-    {
-        Sit();
     }
 
     protected void Sit()
     {
-        anim.Play("Sit");
+        //anim.CrossFade("SitIdle", 0.25f);
     }
 
-    protected virtual void CharmParticle(bool play)
+    protected void CharmParticle()
     {
       //  charmedParticle.Play();
     }

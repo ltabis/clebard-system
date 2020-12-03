@@ -79,10 +79,10 @@ public class Barking : MonoBehaviour
 
                 if (Mathf.Abs(angle) < 90)
                 {
-                    if (animalFound[i].GetComponent<Mobile>())
+                    /*if (animalFound[i].GetComponent<Mobile>())
                         print("MOBILE LOL");
                     else
-                        print("PAS MOBEULE LOL xD");
+                        print("PAS MOBEULE LOL xD");*/
                     animalFound[i].GetComponent<Rigidbody>().AddForce(dir.normalized * pushPower * mass, ForceMode.Impulse);
                 }
 

@@ -7,13 +7,13 @@ public class Dig : MonoBehaviour
 {
     public Animator anim;
     private GameObject[] holes;
-    private float diggingTime = 3f;
+    private float diggingTime = 2f;
     // Start is called before the first frame update
     void Start()
     {
         if (holes == null)
             holes = GameObject.FindGameObjectsWithTag("Hole");
-        diggingTime = 5f;
+        diggingTime = 2f;
     }
 
     // Update is called once per frame
@@ -21,11 +21,18 @@ public class Dig : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
             DogDig();
-       /* if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleDig"))
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleDig"))
+        {
             diggingTime -= Time.deltaTime;
-        print("DIG DIG BOUF WOUF : " + diggingTime);
-        if (diggingTime < 0)
-            DogDig();*/
+            if (diggingTime < 0)
+                DogDig();
+        }
+        else
+        {
+            diggingTime = 2f;
+        }
+       // if (diggingTime < 0)
+         //   DogDig();
 
     }
 
@@ -42,15 +49,14 @@ public class Dig : MonoBehaviour
                 anim.Play("IdleDig");
                 if (diggingTime > 0)
                 {
-                    diggingTime = diggingTime - 0.5f;
-                    DigParticle(hole);
-                    print("DIG DIG BOUF WOUF : " + diggingTime);
+                    diggingTime -= Time.deltaTime;
+                    //DigParticle(hole);
                 }
                 else
                 {
                     GetComponent<SC_TPSController>().Teleportation(hole.GetComponent<DigHole>().Teleportation());
                     anim.Play("Idle");
-                    diggingTime = 5f;
+                    diggingTime = 2f;
                 }
             }
         }
