@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Dig : MonoBehaviour
 {
     public Animator anim;
@@ -54,7 +53,8 @@ public class Dig : MonoBehaviour
                 }
                 else
                 {
-                    GetComponent<SC_TPSController>().Teleportation(hole.GetComponent<DigHole>().Teleportation());
+                    transform.position = hole.GetComponent<DigHole>().hole2.transform.position;
+                    // GetComponent<SC_TPSController>().Teleportation(hole.GetComponent<DigHole>().Teleportation());
                     anim.Play("Idle");
                     diggingTime = 2f;
                 }
