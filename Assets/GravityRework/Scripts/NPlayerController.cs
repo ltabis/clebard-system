@@ -55,7 +55,7 @@ public class NPlayerController : MonoBehaviour
 	Vector3 worldUp, worldRight, worldForward;
 
 	// debug.
-	public bool debugPlayerPath = true;
+	public bool debugPlayerPath = true, debugPlayerAxis = true;
 	private List<Vector3> playerPath;
 
 	void OnValidate()
@@ -88,15 +88,23 @@ public class NPlayerController : MonoBehaviour
 
 			// aligning the player model to the forward direction.
 			float threshold = 0.001f;
+
 			if (playerInput.x < -threshold || playerInput.x > threshold ||
 				playerInput.y < -threshold || playerInput.y > threshold) {
-				model.forward = worldForward;
-				model.right = worldRight;
+				model.forward = worldForward.normalized;
+				model.right = worldRight.normalized;
 			}
-			model.up = worldUp;
-			Debug.DrawLine(transform.position, transform.position + worldForward.normalized, Color.blue, 0.01f);
-			Debug.DrawLine(transform.position, transform.position + worldRight.normalized, Color.red, 0.01f);
-			Debug.DrawLine(transform.position, transform.position + worldUp.normalized, Color.green, 0.01f);
+			model.up = worldUp.normalized;
+
+			if (debugPlayerAxis) {
+				Debug.DrawLine(transform.position, transform.position + worldForward.normalized, Color.blue, 0.01f);
+				Debug.DrawLine(transform.position, transform.position + worldRight.normalized, Color.red, 0.01f);
+				Debug.DrawLine(transform.position, transform.position + worldUp.normalized, Color.green, 0.01f);
+
+				// Debug.DrawLine(transform.position, transform.position + playerInputSpace.forward.normalized, Color.blue, 0.01f);
+				// Debug.DrawLine(transform.position, transform.position + playerInputSpace.forward.normalized, Color.red, 0.01f);
+				// Debug.DrawLine(transform.position, transform.position + playerInputSpace.up.normalized, Color.green, 0.01f);
+			}
 		}
 		else
 		{
