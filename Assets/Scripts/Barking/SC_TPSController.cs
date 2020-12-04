@@ -20,6 +20,7 @@ public class SC_TPSController : MonoBehaviour
 
     private bool tp = false;
     private Vector3 teleport;
+    private bool isSpeaking = false;
 
     void Start()
     {
@@ -29,19 +30,30 @@ public class SC_TPSController : MonoBehaviour
 
     void Update()
     {
-        if (characterController.isGrounded)
+        isSpeaking = FindObjectOfType<DialogueManager>().getIsActive();
+        if (!isSpeaking)
         {
-            // We are grounded, so recalculate move direction based on axes
-            Vector3 forward = transform.TransformDirection(Vector3.forward);
-            Vector3 right = transform.TransformDirection(Vector3.right);
-            float curSpeedX = canMove ? speed * Input.GetAxis("Vertical") : 0;
-            float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;
-            moveDirection = (forward * curSpeedX) + (right * curSpeedY);
-
-            if (Input.GetButton("Jump") && canMove)
+            if (characterController.isGrounded)
             {
-                moveDirection.y = jumpSpeed;
-                anim.Play("Jump");
+                // We are grounded, so recalculate move direction based on axes
+                Vector3 forward = transform.TransformDirection(Vector3.forward);
+                Vector3 right = transform.TransformDirection(Vector3.right);
+                float curSpeedX = canMove ? speed * Input.GetAxis("Vertical") : 0;
+                float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;
+                moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+
+                if (Input.GetButton("Jump") && canMove)
+                {
+                    moveDirection.y = jumpSpeed;
+                    anim.Play("Jump");
+                }
+                if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
+                    anim.Play("Walk");
+                if (tp)
+                {
+                    characterController.transform.position = teleport;
+                    tp = false;
+                }
             }
         }
 
@@ -50,25 +62,18 @@ public class SC_TPSController : MonoBehaviour
         // as an acceleration (ms^-2)
         moveDirection.y -= gravity * Time.deltaTime;
 
-        // Move the controller
-        if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
-            anim.Play("Walk");
-        characterController.Move(moveDirection * Time.deltaTime);
+            // Move the controller
+            characterController.Move(moveDirection * Time.deltaTime);
 
-        // Player and Camera rotation
-        /*if (canMove)
-        {
-            rotation.y += Input.GetAxis("Mouse X") * lookSpeed;
-            rotation.x += -Input.GetAxis("Mouse Y") * lookSpeed;
-            rotation.x = Mathf.Clamp(rotation.x, -lookXLimit, lookXLimit);
-            playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);
-            transform.eulerAngles = new Vector2(0, rotation.y);
-        }*/
-        if (tp)
-        {
-            characterController.transform.position = teleport;
-            tp = false;
-        }
+            // Player and Camera rotation
+            /*if (canMove)
+            {
+                rotation.y += Input.GetAxis("Mouse X") * lookSpeed;
+                rotation.x += -Input.GetAxis("Mouse Y") * lookSpeed;
+                rotation.x = Mathf.Clamp(rotation.x, -lookXLimit, lookXLimit);
+                playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);
+                transform.eulerAngles = new Vector2(0, rotation.y);
+            }*/
 
     }
 
