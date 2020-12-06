@@ -6,6 +6,7 @@ public class GravitySourcePlane : GravitySource
 {
     // gravity force.
     public float gravity = 9.81f;
+    public bool debug = true;
     // gravity range.
     [SerializeField, Min(0f)]
     public float range = 1f;
@@ -26,6 +27,9 @@ public class GravitySourcePlane : GravitySource
 
     void OnDrawGizmos()
     {
+        if (!debug)
+            return;
+
         Vector3 GSize = new Vector3(1.0f, 0.0f, 1.0f);
         Vector3 scale = transform.localScale;
 

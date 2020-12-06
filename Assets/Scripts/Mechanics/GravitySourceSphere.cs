@@ -6,6 +6,7 @@ public class GravitySourceSphere : GravitySource
 {
     // gravity force.
     public float gravity = 9.81f;
+    public bool debug = true;
     // gravity range.
     [SerializeField, Min(0f)]
     private float gravityRadius = 10f, gravityFallOffRadius = 15f;
@@ -38,6 +39,8 @@ public class GravitySourceSphere : GravitySource
 
     void OnDrawGizmos()
     {
+        if (!debug)
+            return;
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, gravityRadius);
         Gizmos.color = Color.blue;
