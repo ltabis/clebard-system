@@ -10,10 +10,29 @@ public class SniffingMode : MonoBehaviour {
     private UniversalAdditionalCameraData ppCameraURP;
     public bool sniffingMode;
 
+    private List<GameObject> importantItems;
+
     void Start() {
         mainCameraURP = mainCamera.GetComponent<UniversalAdditionalCameraData>();
         ppCameraURP = ppCamera.GetComponent<UniversalAdditionalCameraData>();
         sniffingMode = false;
+        GetImportantItems();
+    }
+
+
+    void GetImportantItems()
+    {
+        importantItems = new List<GameObject>();
+        GameObject[] go = GameObject.FindObjectsOfType<GameObject>();
+        Debug.Log(go.Length);
+        foreach (GameObject gameObject in go)
+        {
+            Debug.Log(gameObject);
+            if (gameObject.layer == LayerMask.NameToLayer("Focused")) {
+                importantItems.Add(gameObject);
+                Debug.Log("found");
+            }
+        }
     }
 
     void Update() {
@@ -25,10 +44,14 @@ public class SniffingMode : MonoBehaviour {
             if (sniffingMode) {
                 mainCameraURP.renderPostProcessing = false;
                 ppCameraURP.renderPostProcessing = false;
+                foreach (GameObject item in importantItems)
+                    item.layer = LayerMask.NameToLayer("Focused");
             }
             else {
                 mainCameraURP.renderPostProcessing = true;
                 ppCameraURP.renderPostProcessing = true;
+                foreach (GameObject item in importantItems)
+                    item.layer = LayerMask.NameToLayer("PostProcessing");
             }
             sniffingMode = !sniffingMode;
         }
