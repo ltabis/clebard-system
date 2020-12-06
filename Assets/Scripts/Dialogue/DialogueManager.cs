@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    //public string[] sentences;
     public Text nameText;
     public Text dialogueText;
     private GameObject dialogueBox;
@@ -13,7 +12,6 @@ public class DialogueManager : MonoBehaviour
 
     public Queue<string> sentences;
 
-    // Start is called before the first frame update
     void Start()
     {
         dialogueBox = GameObject.Find("DialogueBox");

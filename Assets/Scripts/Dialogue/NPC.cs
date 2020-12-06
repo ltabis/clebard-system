@@ -8,24 +8,12 @@ public class NPC : MonoBehaviour
     private GameObject player;
     public float distance = 1;
 
-    public GameObject quest;
-    public bool gotQuest = false;
-    public float questY;
-
     private bool isSpeaking = false;
     private bool isBusy = false;
+    public KeyCode tempKey = KeyCode.R;
 
     public void Start()
     {
-        Vector3 questPos;
-
-        if (gotQuest)
-        {
-            questPos.x = transform.position.x;
-            questPos.y = transform.position.y + questY;
-            questPos.z = transform.position.z;
-            quest.transform.position = questPos;
-        }
         player = GameObject.Find("Player");
     }
 
@@ -34,13 +22,16 @@ public class NPC : MonoBehaviour
         isSpeaking = FindObjectOfType<DialogueManager>().getIsActive();
         if (!isSpeaking)
         {
+            Vector3 dir = player.transform.position - transform.position;
+            float angle = Vector3.Angle(transform.forward, dir);
+  
             isBusy = false;
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(tempKey))
                 Interact();
         }
         else if (isBusy)
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(tempKey))
                 FindObjectOfType<DialogueManager>().DisplayNextSentence();
         }
     }
