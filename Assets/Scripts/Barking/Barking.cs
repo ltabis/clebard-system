@@ -60,7 +60,6 @@ public class Barking : MonoBehaviour
             CharmBark();
         if (activeBark == (int)BarkType.Scare)
             ScareBark();
-            
     }
 
     private void PushBark()
