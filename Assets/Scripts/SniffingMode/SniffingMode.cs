@@ -24,14 +24,10 @@ public class SniffingMode : MonoBehaviour {
     {
         importantItems = new List<GameObject>();
         GameObject[] go = GameObject.FindObjectsOfType<GameObject>();
-        Debug.Log(go.Length);
         foreach (GameObject gameObject in go)
         {
-            Debug.Log(gameObject);
-            if (gameObject.layer == LayerMask.NameToLayer("Focused")) {
+            if (gameObject.layer == LayerMask.NameToLayer("Focused"))
                 importantItems.Add(gameObject);
-                Debug.Log("found");
-            }
         }
     }
 
