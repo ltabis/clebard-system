@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!20 &177329311 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1666154045021416220, guid: cc987b55ff9fdad4db38e6c3df02311f, type: 3}
+  m_PrefabInstance: {fileID: 907692341}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &223084895
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +327,7 @@ GameObject:
   - component: {fileID: 879218601}
   - component: {fileID: 879218600}
   - component: {fileID: 879218604}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Planet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,6 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnabled: 1
   gravity: 9.81
+  debug: 0
   gravityRadius: 10
   gravityFallOffRadius: 15
 --- !u!1001 &907692341
@@ -476,6 +482,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1666154045021416217, guid: cc987b55ff9fdad4db38e6c3df02311f, type: 3}
+      propertyPath: focus
+      value: 
+      objectReference: {fileID: 1945930749}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc987b55ff9fdad4db38e6c3df02311f, type: 3}
 --- !u!4 &907692342 stripped
@@ -514,6 +524,11 @@ Transform:
   m_Father: {fileID: 677959673}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1764105943 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4678451753546577400, guid: cc987b55ff9fdad4db38e6c3df02311f, type: 3}
+  m_PrefabInstance: {fileID: 907692341}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1945930748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -521,6 +536,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 223084896}
     m_Modifications:
+    - target: {fileID: 7118601461900718969, guid: 2ceb4cb2a66631c44aeb015b953d0cb1, type: 3}
+      propertyPath: playerInputSpace
+      value: 
+      objectReference: {fileID: 907692342}
     - target: {fileID: 7118601461900718971, guid: 2ceb4cb2a66631c44aeb015b953d0cb1, type: 3}
       propertyPath: m_Name
       value: Controller
@@ -569,6 +588,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8106981381174622012, guid: 2ceb4cb2a66631c44aeb015b953d0cb1, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 177329311}
+    - target: {fileID: 8106981381174622012, guid: 2ceb4cb2a66631c44aeb015b953d0cb1, type: 3}
+      propertyPath: ppCamera
+      value: 
+      objectReference: {fileID: 1764105943}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ceb4cb2a66631c44aeb015b953d0cb1, type: 3}
 --- !u!4 &1945930749 stripped
