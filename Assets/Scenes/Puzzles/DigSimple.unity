@@ -744,7 +744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
-  gravity: 19.62
+  gravity: 9.81
   debug: 1
   gravityRadius: 15
   gravityFallOffRadius: 20
@@ -915,10 +915,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3253605797833948240, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+      propertyPath: m_Radius
+      value: 0.34605223
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253605797833948240, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+      propertyPath: m_Center.y
+      value: 0.2242468
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253605797833948240, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+      propertyPath: m_Center.z
+      value: 0.012370169
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253605797833948240, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3253605797833948241, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: PlayerCamera
       value: 
       objectReference: {fileID: 2013447015}
+    - target: {fileID: 3253605797833948241, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+      propertyPath: maxSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253605797833948241, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+      propertyPath: maxAcceleration
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3253605797833948242, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: m_Constraints
       value: 112
@@ -971,6 +995,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3253605797833948240, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}

@@ -10,6 +10,7 @@ public class GravitySourceSphere : GravitySource
     // gravity range.
     [SerializeField, Min(0f)]
     private float gravityRadius = 10f, gravityFallOffRadius = 15f;
+    private float gravityFallOffFactor = 0f;
 
     void Awake()
     {
@@ -19,6 +20,7 @@ public class GravitySourceSphere : GravitySource
     void OnValidate()
     {
         gravityFallOffRadius = Mathf.Max(gravityFallOffRadius, gravityRadius);
+        gravityFallOffFactor = 1f / (gravityFallOffRadius - gravityRadius);
     }
 
     public override Vector3 GetGravity(Vector3 position)
@@ -32,7 +34,7 @@ public class GravitySourceSphere : GravitySource
         float g = gravity / distance;
 
         if (distance > gravityRadius)
-            g *= 1f - (distance - gravityRadius) * (1f / (gravityFallOffRadius - gravityRadius));
+            g *= 1f - (distance - gravityRadius) * gravityFallOffFactor;
 
         return g * vector;
     }
