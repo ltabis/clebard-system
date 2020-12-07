@@ -34,6 +34,8 @@ public class NPlayerCamera : MonoBehaviour
     private float alignmentSpeed = 360f;
     private Quaternion gravityAlignment = Quaternion.identity;
     private Quaternion orbitRotation;
+    private Quaternion ModelOrbitRotation;
+    private Quaternion ModelRotation;
 
     // the current point focused, slowly converging towards the focus transform.
     private Vector3 focusPoint;
@@ -45,6 +47,7 @@ public class NPlayerCamera : MonoBehaviour
         focusPoint = focus.position;
         cam = GetComponent<Camera>();
         transform.localRotation = orbitRotation = Quaternion.Euler(orbitAngles);
+        ModelOrbitRotation = Quaternion.Euler(0f, orbitAngles.y, 0f);
     }
 
     // called only once when the script is first launch.
@@ -67,12 +70,25 @@ public class NPlayerCamera : MonoBehaviour
         if (ManualRotation()) {
             clampAngles();
             orbitRotation = Quaternion.Euler(orbitAngles);
+
+            Vector2 playerInput;
+            playerInput.x = Input.GetAxis("Horizontal");
+            playerInput.y = Input.GetAxis("Vertical");
+
+            float threshold = 0.001f;
+
+            if (playerInput.x < -threshold || playerInput.x > threshold ||
+                playerInput.y < -threshold || playerInput.y > threshold)
+                ModelOrbitRotation = Quaternion.Euler(0f, orbitAngles.y, 0f);
         }
     
         // computing rotation, direction and position of the camera.
         Quaternion lookRotation = gravityAlignment * orbitRotation;
         Vector3 lookDirection = lookRotation * Vector3.forward;
         Vector3 lookPosition = focusPoint - lookDirection * distance;
+
+        // assigning the rotation to the player model.
+        ModelRotation = gravityAlignment * ModelOrbitRotation;
 
         // checking camera collision with the obstruction mask.
         if (Physics.BoxCast(
@@ -165,6 +181,12 @@ public class NPlayerCamera : MonoBehaviour
                 y,
                 0
             );
+        }
+    }
+
+    public Quaternion GetModelRotation {
+        get {
+            return ModelRotation;
         }
     }
 }
