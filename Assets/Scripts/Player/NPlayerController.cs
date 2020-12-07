@@ -8,6 +8,8 @@ public class NPlayerController : MonoBehaviour
 	private Transform model = default;
 	[SerializeField]
 	private Transform playerInputSpace = default;
+	[SerializeField]
+	private NPlayerCamera PlayerCamera = default;
 	[SerializeField, Range(0f, 100f)]
 	float maxSpeed = 10f;
 
@@ -55,8 +57,7 @@ public class NPlayerController : MonoBehaviour
 	Vector3 worldUp, worldRight, worldForward;
 
 	// debug.
-	public bool debugPlayerPath = true, debugPlayerAxis = true;
-	private List<Vector3> playerPath;
+	bool debugPlayerAxis = true;
 
 	void OnValidate()
 	{
@@ -66,7 +67,6 @@ public class NPlayerController : MonoBehaviour
 
 	void Awake()
 	{
-		playerPath = new List<Vector3>();
 		body = GetComponent<Rigidbody>();
 
 		// we are using a custom gravity script.
@@ -87,23 +87,12 @@ public class NPlayerController : MonoBehaviour
 			worldForward = ProjectDirectionOnPlane(playerInputSpace.forward, worldUp);
 
 			// aligning the player model to the forward direction.
-			float threshold = 0.001f;
-
-			if (playerInput.x < -threshold || playerInput.x > threshold ||
-				playerInput.y < -threshold || playerInput.y > threshold) {
-				model.forward = worldForward.normalized;
-				model.right = worldRight.normalized;
-			}
-			model.up = worldUp.normalized;
+			model.rotation = PlayerCamera.GetModelRotation;
 
 			if (debugPlayerAxis) {
 				Debug.DrawLine(transform.position, transform.position + worldForward.normalized, Color.blue, 0.01f);
 				Debug.DrawLine(transform.position, transform.position + worldRight.normalized, Color.red, 0.01f);
 				Debug.DrawLine(transform.position, transform.position + worldUp.normalized, Color.green, 0.01f);
-
-				// Debug.DrawLine(transform.position, transform.position + playerInputSpace.forward.normalized, Color.blue, 0.01f);
-				// Debug.DrawLine(transform.position, transform.position + playerInputSpace.forward.normalized, Color.red, 0.01f);
-				// Debug.DrawLine(transform.position, transform.position + playerInputSpace.up.normalized, Color.green, 0.01f);
 			}
 		}
 		else
@@ -132,7 +121,6 @@ public class NPlayerController : MonoBehaviour
 		velocity += gravity * Time.deltaTime;
 
 		body.velocity = velocity;
-		playerPath.Add(body.position);
 		ClearState();
 	}
 
@@ -309,15 +297,5 @@ public class NPlayerController : MonoBehaviour
 	{
 		return (stairsMask & (1 << layer)) == 0 ?
 			minGroundDotProduct : minStairsDotProduct;
-	}
-
-	void OnDrawGizmos()
-	{
-		if (!debugPlayerPath)
-			return;
-	
-		Gizmos.color = Color.yellow;
-		for (int i = 0; playerPath != null && i < playerPath.Count - 1; ++i)
-	        Gizmos.DrawLine(playerPath[i], playerPath[i + 1]);
 	}
 }
