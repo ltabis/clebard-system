@@ -18,7 +18,7 @@ public class Barking : MonoBehaviour
     public float[] cooldownTab;
 
     private Transform player;
-    private Animator anim;
+    public Animator anim;
     enum BarkType : int
     {
         Push = 0,
@@ -29,7 +29,7 @@ public class Barking : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player").transform;
-        anim = GameObject.Find("Player").GetComponent<Animator>();
+        //anim = GameObject.Find("Player").GetComponent<Animator>();
     }
 
     // Update is called once per frame

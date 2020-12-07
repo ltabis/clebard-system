@@ -1,15 +1,23 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Mobile : Entity
 {
+    /*public Material charmedMaterial;
+   public Material aggressiveMaterial;
+   public Material initialMaterial;
+   public Material scaredMaterial;*/
 
-    protected NavMeshAgent agent;
+/*    protected NavMeshAgent agent;
     protected Animator anim;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
+
+    protected Vector3 walkPoint;
+    protected bool walkPointSet;
+    public float walkPointRange;
 
     public float sightRange;
     protected bool playerInSightRange;
@@ -30,17 +38,11 @@ public class Mobile : Entity
 
     //public ParticleSystem charmedParticle;
 
-    //New AI
-    protected float timer;
-    public float wanderRadius = 12f;
-    public float wanderTimer = 3f;
-
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-        timer = wanderTimer;
     }
 
     void Update()
@@ -60,7 +62,7 @@ public class Mobile : Entity
     {
         Trot();
         //CharmParticle();
-        timer += wanderTimer;
+        walkPointSet = false;
         if (timeCharmed > 0)
             timeCharmed -= Time.deltaTime;
         if (timeCharmed <= 0)
@@ -82,7 +84,7 @@ public class Mobile : Entity
 
     protected void Scared()
     {
-        timer += wanderTimer;
+        walkPointSet = false;
         if (timeScared > 0)
             timeScared -= Time.deltaTime;
         if (timeScared <= 0)
@@ -95,36 +97,50 @@ public class Mobile : Entity
 
     protected virtual void Patroling()
     {
-        timer += Time.deltaTime;
+        moveTimer -= Time.deltaTime;
+        noStuck -= Time.deltaTime;
+        if (!walkPointSet || noStuck <= 0f)
+            SearchWalkPoint();
 
-        if (timer >= wanderTimer)
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+
+        //Walkpooint reached
+        if (distanceToWalkPoint.magnitude < 1f)
         {
-            Walk();
-            Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
-            agent.SetDestination(newPos);
-            timer = 0;
+            walkPointSet = false;
+            if (!RandomBehaviour())
+                Idle();
+            agent.velocity = Vector3.zero;
         }
-        else if (agent.remainingDistance <= 0)
-            Idle();
+        if (moveTimer <= 0)
+        {
+
+            if (walkPointSet)
+            {
+                agent.SetDestination(walkPoint);
+                Walk();
+            }
+            moveTimer = Random.Range(4f, 6f);
+        }
     }
 
-    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
+    protected void SearchWalkPoint()
     {
-        Vector3 randDirection = Random.insideUnitSphere * dist;
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
 
-        randDirection += origin;
-
-        NavMeshHit navHit;
-
-        NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
-
-        return navHit.position;
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        {
+            walkPointSet = true;
+            noStuck = 8f;
+        }
     }
 
     protected void ChasePlayer()
     {
         Trot();
-        timer += wanderTimer;
+        walkPointSet = false;
         agent.SetDestination(player.position);
         transform.LookAt(player);
     }
@@ -202,6 +218,7 @@ public class Mobile : Entity
 
     protected void CharmParticle()
     {
-      //  charmedParticle.Play();
+        //  charmedParticle.Play();
     }
 }
+*/
