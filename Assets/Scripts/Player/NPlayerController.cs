@@ -97,6 +97,8 @@ public class NPlayerController : MonoBehaviour
 
             if (playerInput.x < -threshold || playerInput.x > threshold ||
                 playerInput.y < -threshold || playerInput.y > threshold) {
+				StartIdle = 0f;
+				anim.SetBool("Sit", false);
 				if (OnGround && !anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
 					anim.Play("Run");
 			} else if (OnGround) {
