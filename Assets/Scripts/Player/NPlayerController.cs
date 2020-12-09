@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class NPlayerController : MonoBehaviour
 {
+	[Header("Movements")]
 	[SerializeField]
 	private Transform model = default;
-	private Animator anim;
 	[SerializeField]
 	private Transform playerInputSpace = default;
 	[SerializeField]
@@ -34,6 +34,13 @@ public class NPlayerController : MonoBehaviour
 
 	[SerializeField]
 	LayerMask probeMask = -1, stairsMask = -1;
+
+	[Header("Animations")]
+	[SerializeField]
+	float TimeUnilIdleAnimation = 10f;
+	float StartIdle = 0f;
+
+	Animator anim;
 
 	Rigidbody body, connectedBody, previousConnectedBody;
 
@@ -89,9 +96,16 @@ public class NPlayerController : MonoBehaviour
 			float threshold = 0.001f;
 
             if (playerInput.x < -threshold || playerInput.x > threshold ||
-                playerInput.y < -threshold || playerInput.y > threshold)
+                playerInput.y < -threshold || playerInput.y > threshold) {
 				if (OnGround && !anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
 					anim.Play("Run");
+				StartIdle = 0f;
+				anim.SetBool("Sit", true);
+			} else if (OnGround) {
+				if (TimeUnilIdleAnimation < StartIdle)
+					anim.SetBool("Sit", true);
+				StartIdle += Time.deltaTime;
+			}
 
 			// computing the direction of the veclocity.
 			worldRight = ProjectDirectionOnPlane(playerInputSpace.right, worldUp);

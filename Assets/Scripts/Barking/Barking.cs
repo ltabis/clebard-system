@@ -28,8 +28,8 @@ public class Barking : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player").transform;
-        anim = GameObject.Find("Player").GetComponent<Animator>();
+        player = transform;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -78,10 +78,6 @@ public class Barking : MonoBehaviour
 
                 if (Mathf.Abs(angle) < 90)
                 {
-                    /*if (animalFound[i].GetComponent<Mobile>())
-                        print("MOBILE LOL");
-                    else
-                        print("PAS MOBEULE LOL xD");*/
                     animalFound[i].GetComponent<Rigidbody>().AddForce(dir.normalized * pushPower * mass, ForceMode.Impulse);
                 }
 
