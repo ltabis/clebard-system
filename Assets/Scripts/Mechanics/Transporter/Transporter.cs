@@ -5,9 +5,14 @@ using UnityEngine;
 public class Transporter : MonoBehaviour
 {
     [SerializeField]
+    private bool isActive = true;
+
+    [SerializeField]
     private Transform pointA;
     [SerializeField]
     private Transform pointB;
+    [SerializeField]
+    private GameObject tunnel;
     [SerializeField]
     private float transitionTime = 10f;
 
@@ -18,7 +23,6 @@ public class Transporter : MonoBehaviour
     private Transform end;
 
     private bool bodyIsBeingAttracted = false;
-    private bool isActive = true;
     private float lerpPct = 0f;
 
     void Update()
@@ -45,6 +49,9 @@ public class Transporter : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (!isActive)
+            return;
+        
         AttractedBody = other.gameObject;
 
         // computing the point nearest to the player.
@@ -52,6 +59,8 @@ public class Transporter : MonoBehaviour
         float nearB = (AttractedBody.transform.position - pointB.position).sqrMagnitude;
 
         // the player will be teleported to the nearest point.
+        // for the start pos we do not use a transform because if the player
+        // transform is copied then the start point updates with the player position.
         startPosition = AttractedBody.transform.position;
         startRotation = AttractedBody.transform.rotation;
         end = nearA > nearB ? pointA : pointB;
@@ -76,6 +85,7 @@ public class Transporter : MonoBehaviour
         get { return isActive; }
         set {
             isActive = value;
+            tunnel.SetActive(isActive);
         }
     }
 }
