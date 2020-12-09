@@ -99,12 +99,13 @@ public class NPlayerController : MonoBehaviour
                 playerInput.y < -threshold || playerInput.y > threshold) {
 				if (OnGround && !anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
 					anim.Play("Run");
-				StartIdle = 0f;
-				anim.SetBool("Sit", true);
 			} else if (OnGround) {
 				if (TimeUnilIdleAnimation < StartIdle)
 					anim.SetBool("Sit", true);
 				StartIdle += Time.deltaTime;
+			} else {
+				StartIdle = 0f;
+				anim.SetBool("Sit", false);
 			}
 
 			// computing the direction of the veclocity.
