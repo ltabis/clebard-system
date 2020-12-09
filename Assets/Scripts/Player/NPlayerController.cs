@@ -6,6 +6,7 @@ public class NPlayerController : MonoBehaviour
 {
 	[SerializeField]
 	private Transform model = default;
+	private Animator anim;
 	[SerializeField]
 	private Transform playerInputSpace = default;
 	[SerializeField]
@@ -70,6 +71,7 @@ public class NPlayerController : MonoBehaviour
 	void Awake()
 	{
 		body = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
 
 		// we are using a custom gravity script.
 		body.useGravity = false;
@@ -84,6 +86,13 @@ public class NPlayerController : MonoBehaviour
 
 		if (playerInputSpace)
 		{
+			float threshold = 0.001f;
+
+            if (playerInput.x < -threshold || playerInput.x > threshold ||
+                playerInput.y < -threshold || playerInput.y > threshold)
+				if (OnGround && !anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+					anim.Play("Run");
+
 			// computing the direction of the veclocity.
 			worldRight = ProjectDirectionOnPlane(playerInputSpace.right, worldUp);
 			worldForward = ProjectDirectionOnPlane(playerInputSpace.forward, worldUp);
@@ -140,9 +149,6 @@ public class NPlayerController : MonoBehaviour
 		stepsSinceLastJump += 1;
 		velocity = body.velocity;
 
-		if (connectedBody && (connectedBody.isKinematic || connectedBody.mass >= body.mass))
-			UpdateConnectionState();
-
 		if (OnGround || SnapToGround() || CheckSteepContacts())
 		{
 			stepsSinceLastGrounded = 0;
@@ -158,7 +164,12 @@ public class NPlayerController : MonoBehaviour
 		else
 		{
 			contactNormal = worldUp;
+			if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+				anim.Play("Trot");
 		}
+
+		if (connectedBody && (connectedBody.isKinematic || connectedBody.mass >= body.mass))
+			UpdateConnectionState();
 	}
 
 	bool SnapToGround()
@@ -236,6 +247,7 @@ public class NPlayerController : MonoBehaviour
 		Vector3 jumpDirection;
 		if (OnGround)
 		{
+			anim.Play("Jump");
 			jumpDirection = contactNormal;
 		}
 		else if (OnSteep)
@@ -312,8 +324,8 @@ public class NPlayerController : MonoBehaviour
 			minGroundDotProduct : minStairsDotProduct;
 	}
 
-	void UpdateConnectionState() {
-
+	void UpdateConnectionState()
+	{
 		if (connectedBody == previousConnectedBody) {
 			Vector3 connectionMovement = connectedBody.transform.TransformPoint(connectionLocalPosition) - connectionWorldPosition;
 			connectionVelocity =  connectionMovement / Time.deltaTime;
