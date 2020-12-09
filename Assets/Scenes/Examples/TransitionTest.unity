@@ -1370,6 +1370,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.08
       objectReference: {fileID: 0}
+    - target: {fileID: 7129781970525002013, guid: d2d71eacb21d8bf4091d041e8c843ba8, type: 3}
+      propertyPath: ShapeModule.m_Texture
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8630669350956380248, guid: d2d71eacb21d8bf4091d041e8c843ba8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.86
