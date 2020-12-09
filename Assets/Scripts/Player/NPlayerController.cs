@@ -34,9 +34,11 @@ public class NPlayerController : MonoBehaviour
 	[SerializeField]
 	LayerMask probeMask = -1, stairsMask = -1;
 
-	Rigidbody body;
+	Rigidbody body, connectedBody, previousConnectedBody;
 
-	Vector3 velocity, desiredVelocity;
+	Vector3 velocity, desiredVelocity, connectionVelocity;
+
+	Vector3 connectionWorldPosition, connectionLocalPosition;
 
 	bool desiredJump;
 
@@ -127,7 +129,9 @@ public class NPlayerController : MonoBehaviour
 	void ClearState()
 	{
 		groundContactCount = steepContactCount = 0;
-		contactNormal = steepNormal = Vector3.zero;
+		contactNormal = steepNormal = connectionVelocity = Vector3.zero;
+		previousConnectedBody = connectedBody;
+		connectedBody = null;
 	}
 
 	void UpdateState()
@@ -135,6 +139,10 @@ public class NPlayerController : MonoBehaviour
 		stepsSinceLastGrounded += 1;
 		stepsSinceLastJump += 1;
 		velocity = body.velocity;
+
+		if (connectedBody && (connectedBody.isKinematic || connectedBody.mass >= body.mass))
+			UpdateConnectionState();
+
 		if (OnGround || SnapToGround() || CheckSteepContacts())
 		{
 			stepsSinceLastGrounded = 0;
@@ -183,6 +191,7 @@ public class NPlayerController : MonoBehaviour
 		{
 			velocity = (velocity - hit.normal * dot).normalized * speed;
 		}
+		connectedBody = hit.rigidbody;
 		return true;
 	}
 
@@ -206,9 +215,10 @@ public class NPlayerController : MonoBehaviour
 	{
 		Vector3 xAxis = ProjectDirectionOnPlane(worldRight, contactNormal);
 		Vector3 zAxis = ProjectDirectionOnPlane(worldForward, contactNormal);
+		Vector3 relativeVelocity = velocity - connectionVelocity;
 
-		float currentX = Vector3.Dot(velocity, xAxis);
-		float currentZ = Vector3.Dot(velocity, zAxis);
+		float currentX = Vector3.Dot(relativeVelocity, xAxis);
+		float currentZ = Vector3.Dot(relativeVelocity, zAxis);
 
 		float acceleration = OnGround ? maxAcceleration : maxAirAcceleration;
 		float maxSpeedChange = acceleration * Time.deltaTime;
@@ -279,11 +289,14 @@ public class NPlayerController : MonoBehaviour
 			{
 				groundContactCount += 1;
 				contactNormal += normal;
+				connectedBody = collision.rigidbody;
 			}
 			else if (dotUp > -0.01f)
 			{
 				steepContactCount += 1;
 				steepNormal += normal;
+				if (groundContactCount == 0)
+					connectedBody = collision.rigidbody;
 			}
 		}
 	}
@@ -297,5 +310,16 @@ public class NPlayerController : MonoBehaviour
 	{
 		return (stairsMask & (1 << layer)) == 0 ?
 			minGroundDotProduct : minStairsDotProduct;
+	}
+
+	void UpdateConnectionState() {
+
+		if (connectedBody == previousConnectedBody) {
+			Vector3 connectionMovement = connectedBody.transform.TransformPoint(connectionLocalPosition) - connectionWorldPosition;
+			connectionVelocity =  connectionMovement / Time.deltaTime;
+		}
+
+		connectionWorldPosition = body.position;
+		connectionLocalPosition = connectedBody.transform.InverseTransformPoint(connectionWorldPosition);
 	}
 }
