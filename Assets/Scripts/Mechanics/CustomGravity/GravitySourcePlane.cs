@@ -39,7 +39,7 @@ public class GravitySourcePlane : GravitySource
         Gizmos.color  = Color.green;
         Gizmos.DrawWireCube(Vector3.zero, GSize);
         if (range > 0f) {
-            Gizmos.color  = Color.blue;
+            Gizmos.color = Color.blue;
             Gizmos.DrawWireCube(Vector3.up, GSize);
         }
     }
