@@ -7,8 +7,8 @@ public class DialogueManager : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
-    private GameObject dialogueBox;
-    private bool isActive = false;
+    protected GameObject dialogueBox;
+    protected bool isActive = false;
 
     public Queue<string> sentences;
 
@@ -58,7 +58,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void EndDialogue()
+    public virtual void EndDialogue()
     {
         dialogueBox.SetActive(false);
         nameText.text = "";

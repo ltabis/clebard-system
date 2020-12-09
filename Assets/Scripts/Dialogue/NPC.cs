@@ -5,16 +5,16 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
     public Dialogue dialogue;
-    private GameObject player;
+    public GameObject player;
     public float distance = 1;
 
-    private bool isSpeaking = false;
-    private bool isBusy = false;
+    protected bool isSpeaking = false;
+    protected bool isBusy = false;
     public KeyCode tempKey = KeyCode.R;
 
     public void Start()
     {
-        player = GameObject.Find("Player");
+       // player = GameObject.Find("Player");
     }
 
     public void Update()

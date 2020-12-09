@@ -37,7 +37,7 @@ public class Mobile : Entity
 
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        //player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         timer = wanderTimer;
@@ -50,10 +50,10 @@ public class Mobile : Entity
             Scared();
         else if (isCharmed)
             Charmed();
-        else if (!playerInSightRange)
+        else //if (!playerInSightRange)
             Patroling();
-        else if (playerInSightRange)
-            ChasePlayer();
+        //else if (playerInSightRange)
+            //ChasePlayer();
     }
 
     protected void Charmed()
@@ -67,6 +67,7 @@ public class Mobile : Entity
             isCharmed = false;
         if (!isCharmedMoving)
             agent.SetDestination(player.position);
+        print("player pos : " + player.position);
         if (Input.GetMouseButtonDown(0))
         {
             Run();
@@ -188,14 +189,14 @@ public class Mobile : Entity
         agent.speed = trotSpeed;
     }
 
-    protected void Run()
+    protected virtual void Run()
     {
         anim.SetBool("isWalking", false);
         anim.SetBool("isRunning", true);
         agent.speed = runSpeed;
     }
 
-    protected void Sit()
+    protected virtual void Sit()
     {
         //anim.CrossFade("SitIdle", 0.25f);
     }
