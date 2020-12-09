@@ -12,9 +12,9 @@ public class Transporter : MonoBehaviour
     [SerializeField]
     private Transform pointB;
     [SerializeField]
-    private GameObject tunnel;
-    [SerializeField]
     private float transitionTime = 10f;
+
+    private ParticleSystem particleTunnel;
 
     private GameObject AttractedBody;
     private MonoBehaviour AttractedBodyGravityScript;
@@ -24,6 +24,22 @@ public class Transporter : MonoBehaviour
 
     private bool bodyIsBeingAttracted = false;
     private float lerpPct = 0f;
+
+    void Start()
+    {
+        particleTunnel = gameObject.GetComponent<ParticleSystem>();
+        Vector3 direction = pointA.position - pointB.position;
+
+        // create the particle system for the tunnel effect.
+        ParticleSystem.ShapeModule shape = particleTunnel.shape;
+
+        // the length of the tunnel is equal to the distance between plateforms.
+        shape.length = direction.magnitude;
+
+        // aliging the particle system in the direction of pointB starting from pointA.
+        transform.position = pointA.position;
+        transform.forward = -direction;
+    }
 
     void Update()
     {
@@ -85,7 +101,10 @@ public class Transporter : MonoBehaviour
         get { return isActive; }
         set {
             isActive = value;
-            tunnel.SetActive(isActive);
+            if (isActive)
+                particleTunnel.Play();
+            else
+                particleTunnel.Stop();
         }
     }
 }
