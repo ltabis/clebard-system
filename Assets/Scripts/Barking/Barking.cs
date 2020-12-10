@@ -6,7 +6,10 @@ public class Barking : MonoBehaviour
 {
     [SerializeField]
     private Animator anim;
+    [SerializeField]
+    private UIManager UI;
     public AudioSource[] barks;
+    public Sprite[] barkSprites;
     public int activeBark = 0;
     // Start is called before the first frame update
     public float pushDistance = 10;
@@ -29,6 +32,14 @@ public class Barking : MonoBehaviour
 
     void Start()
     {
+        Debug.Assert(
+            barks.Length == barkSprites.Length,
+            "There isn't the same number of bark sprites and bark audio sources."
+        );
+
+        foreach (Sprite sprite in barkSprites)
+            UI.SetBarkSlot(sprite);
+
         player = transform;
     }
 
@@ -47,7 +58,6 @@ public class Barking : MonoBehaviour
         activeBark += 1;
         if (activeBark == barks.Length)
             activeBark = 0;
-        print("ACTIVE BARK : " + activeBark);
     }
 
     private void PlayBarks()
