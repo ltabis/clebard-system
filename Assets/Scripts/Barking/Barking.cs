@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Barking : MonoBehaviour
 {
-    [SerializeField]
     public AudioSource[] barks;
     public int activeBark = 0;
     // Start is called before the first frame update
