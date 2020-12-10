@@ -7,14 +7,14 @@ public class DialogueManager : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
-    protected GameObject dialogueBox;
+    public GameObject dialogueBox;
     protected bool isActive = false;
 
     public Queue<string> sentences;
 
     void Start()
     {
-        dialogueBox = GameObject.Find("DialogueBox");
+        //dialogueBox = GameObject.Find("DialogueBox");
         sentences = new Queue<string>();
         dialogueBox.SetActive(false);
     }

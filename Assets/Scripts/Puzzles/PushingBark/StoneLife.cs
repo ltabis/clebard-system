@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class StoneLife : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject planet;
+    private bool counter = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,10 +16,12 @@ public class StoneLife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) > 50)
+        if (Vector3.Distance(planet.transform.position, transform.position) > 20 && counter == false)
         {
+            counter = true;
             FindObjectOfType<Spawner>().spawnNbr--;
-            Destroy(gameObject);
         }
+        if (Vector3.Distance(planet.transform.position, transform.position) > 200)
+            Destroy(gameObject);
     }
 }

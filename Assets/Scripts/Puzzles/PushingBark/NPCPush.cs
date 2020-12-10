@@ -25,7 +25,7 @@ public class NPCPush : NPC
         }
     }
 
-    public void TriggerDialogue()
+    public override void TriggerDialogue()
     {
         isBusy = true;
         FindObjectOfType<DialogueManagerPush>().StartDialogue(dialogue);

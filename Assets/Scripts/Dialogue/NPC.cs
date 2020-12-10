@@ -45,7 +45,7 @@ public class NPC : MonoBehaviour
             TriggerDialogue();
     }
 
-    public void TriggerDialogue()
+    public virtual void TriggerDialogue()
     {
         isBusy = true;
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);

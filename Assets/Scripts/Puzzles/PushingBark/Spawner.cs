@@ -6,13 +6,16 @@ using UnityEngine.UI;
 public class Spawner : MonoBehaviour
 {
     public GameObject spawnObject;
-    private float timer;
     public float spawnTime = 0;
     public Vector3 minVec;
     public Vector3 maxVec;
     public float spawnNbr = 0;
     public Text stoneText;
     public bool launch = false;
+    public float spawnMax = 50;
+
+    private float spawnedNbr = 0;
+    private float timer;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,11 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (spawnedNbr >= spawnMax)
+        {
+            endGame();
+            return;
+        }
         if (!launch)
             return;
         timer += Time.deltaTime;
@@ -45,5 +53,10 @@ public class Spawner : MonoBehaviour
 
         Instantiate(spawnObject, new Vector3(randX, randY, randZ), transform.rotation);
         spawnNbr++;
+        spawnedNbr++;
+    }
+    public void endGame()
+    {
+        print("GG WP C FINI");
     }
 }
