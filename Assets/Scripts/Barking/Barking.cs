@@ -37,8 +37,8 @@ public class Barking : MonoBehaviour
             "There isn't the same number of bark sprites and bark audio sources."
         );
 
-        foreach (Sprite sprite in barkSprites)
-            UI.SetBarkSlot(sprite);
+        for (uint i = 0; i < barks.Length; ++i)
+            UI.SetBarkSlot(barkSprites[i], barks[i].name);
 
         UI.SetActivebark((uint)activeBark);
 
@@ -52,7 +52,6 @@ public class Barking : MonoBehaviour
             PlayBarks();
         if (Input.GetKeyDown(KeyCode.Tab))
             ChangeBarks();
-
     }
 
     private void ChangeBarks()

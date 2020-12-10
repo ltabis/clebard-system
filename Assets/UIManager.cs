@@ -9,16 +9,38 @@ public class UIManager : MonoBehaviour
     private GameObject barkSlotBar;
     [SerializeField]
     private GameObject slotSprite;
+    [SerializeField]
+    private Text barkTitle;
 
     private List<GameObject> slots = new List<GameObject>();
-
     private uint currentBark = 0;
 
-    public void SetBarkSlot(Sprite barkSprite)
+    [SerializeField]
+    private float barkTitleFadeTime = 5f;
+    private float startFade = 0f;
+    private bool showTitle = false;
+
+    void Awake()
+    {
+        startFade = barkTitleFadeTime;
+    }
+
+    void Update()
+    {
+        if (startFade >= barkTitleFadeTime && showTitle) {
+            barkTitle.CrossFadeAlpha(0, 5, false);
+            showTitle = false;
+        } else
+            startFade += Time.deltaTime;
+    }
+
+    public void SetBarkSlot(Sprite barkSprite, string name)
     {
         // create a new slot for a bark.
         GameObject newSlot = Instantiate(slotSprite);
         GameObject newBark = Instantiate(slotSprite);
+
+        newSlot.name = name;
 
         // create a new bark image.
         Image barkImage = newBark.GetComponent<Image>();
@@ -45,6 +67,12 @@ public class UIManager : MonoBehaviour
         slots[(int)currentBark].GetComponent<Image>().color = Color.white;
         slots[(int)index].GetComponent<Image>().color = Color.yellow;
 
+        // setting the title of the bark to display.
+        barkTitle.text = slots[(int)index].name;
+        barkTitle.CrossFadeAlpha(1, 0, false);
+
         currentBark = index;
+        startFade = 0f;
+        showTitle = true;
     }
 }
