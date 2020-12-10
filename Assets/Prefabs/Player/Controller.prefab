@@ -727,6 +727,7 @@ GameObject:
   - component: {fileID: 7118601461900718972}
   - component: {fileID: -632816195041002952}
   - component: {fileID: 8106981381174622012}
+  - component: {fileID: 12979842411504576}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -815,6 +816,7 @@ MonoBehaviour:
   stairsMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  TimeUnilIdleAnimation: 10
 --- !u!114 &7118601461900718973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -880,6 +882,19 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   ppCamera: {fileID: 0}
   sniffingMode: 0
+--- !u!65 &12979842411504576
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118601461900718971}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19670986, y: 0.39220083, z: 0.48106003}
+  m_Center: {x: 0.000000007450581, y: 0.17949635, z: 0.042652607}
 --- !u!1 &7118601462019044519
 GameObject:
   m_ObjectHideFlags: 0

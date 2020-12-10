@@ -394,6 +394,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6859820043147925855, guid: bfec5d0d26c98284db3801616da5704a, type: 3}
+      propertyPath: m_TagString
+      value: Hole
+      objectReference: {fileID: 0}
     - target: {fileID: 6859820043147926176, guid: bfec5d0d26c98284db3801616da5704a, type: 3}
       propertyPath: hole2
       value: 
@@ -475,6 +479,10 @@ PrefabInstance:
     - target: {fileID: 6859820043147925855, guid: bfec5d0d26c98284db3801616da5704a, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859820043147925855, guid: bfec5d0d26c98284db3801616da5704a, type: 3}
+      propertyPath: m_TagString
+      value: Hole
       objectReference: {fileID: 0}
     - target: {fileID: 6859820043147926176, guid: bfec5d0d26c98284db3801616da5704a, type: 3}
       propertyPath: hole2
@@ -886,6 +894,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3253605797448512390, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3253605797833948240, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: m_Radius
       value: 0.34605223

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 6859820043147926178}
   - component: {fileID: 6859820043147926177}
   - component: {fileID: 6859820043147926176}
-  m_Layer: 0
-  m_Name: dig-test (1)
+  m_Layer: 10
+  m_Name: dig-hole
   m_TagString: Hole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ MeshCollider:
   m_GameObject: {fileID: 6859820043147925855}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
