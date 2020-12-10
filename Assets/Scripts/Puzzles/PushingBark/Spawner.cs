@@ -16,7 +16,6 @@ public class Spawner : MonoBehaviour
 
     private float spawnedNbr = 0;
     private float timer;
-    // Start is called before the first frame update
     void Start()
     {
         timer = 0f;
@@ -25,12 +24,13 @@ public class Spawner : MonoBehaviour
         stoneText.text = spawnNbr + " stone on the planet.";
     }
 
-    // Update is called once per frame
     void Update()
     {
+        stoneText.text = spawnNbr + " stone on the planet.";
         if (spawnedNbr >= spawnMax)
         {
-            endGame();
+            if (spawnedNbr <= 0)
+                endGame();
             return;
         }
         if (!launch)
@@ -41,7 +41,6 @@ public class Spawner : MonoBehaviour
             spawn();
             timer = 0;
         }
-        stoneText.text = spawnNbr + " stone on the planet.";
 
     }
 
@@ -54,6 +53,8 @@ public class Spawner : MonoBehaviour
         Instantiate(spawnObject, new Vector3(randX, randY, randZ), transform.rotation);
         spawnNbr++;
         spawnedNbr++;
+        if (spawnTime > 0.3f)
+            spawnTime -= 0.03f;
     }
     public void endGame()
     {
