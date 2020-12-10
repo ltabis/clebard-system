@@ -761,7 +761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 2922162903560988532}
-  spawnTime: 0.01
+  spawnTime: 1.6
   minVec: {x: -9, y: 18, z: -9}
   maxVec: {x: 9, y: 23, z: 9}
   spawnNbr: 0
