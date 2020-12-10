@@ -1954,6 +1954,10 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 2554361604145378304}
+    - target: {fileID: 7118601461900718972, guid: 2ceb4cb2a66631c44aeb015b953d0cb1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 7541915041765626586}
     - target: {fileID: 7118601461900718974, guid: 2ceb4cb2a66631c44aeb015b953d0cb1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
