@@ -1313,6 +1313,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3145117372336789283, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+      propertyPath: m_Name
+      value: SlotTemplate
+      objectReference: {fileID: 0}
     - target: {fileID: 3253605797448512390, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: m_Layer
       value: 10

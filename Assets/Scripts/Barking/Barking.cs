@@ -40,6 +40,8 @@ public class Barking : MonoBehaviour
         foreach (Sprite sprite in barkSprites)
             UI.SetBarkSlot(sprite);
 
+        UI.SetActivebark((uint)activeBark);
+
         player = transform;
     }
 
@@ -58,6 +60,8 @@ public class Barking : MonoBehaviour
         activeBark += 1;
         if (activeBark == barks.Length)
             activeBark = 0;
+
+        UI.SetActivebark((uint)activeBark);
     }
 
     private void PlayBarks()
