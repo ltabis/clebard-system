@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Barking : MonoBehaviour
 {
+    [SerializeField]
     public AudioSource[] barks;
     public int activeBark = 0;
     // Start is called before the first frame update
@@ -17,7 +18,9 @@ public class Barking : MonoBehaviour
     public float scareTime = 5;
     public float[] cooldownTab;
 
+    [SerializeField]
     private Transform player;
+    [SerializeField]
     private Animator anim;
     enum BarkType : int
     {
@@ -28,8 +31,6 @@ public class Barking : MonoBehaviour
 
     void Start()
     {
-        player = transform;
-        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -70,10 +71,10 @@ public class Barking : MonoBehaviour
         float mass;
         for (int i = 0; i < animalFound.Length; i++)
         {
-            if (animalFound[i].woBarks[(int)BarkType.Push] == true && Vector3.Distance(transform.position, animalFound[i].transform.position) <= pushDistance)
+            if (animalFound[i].woBarks[(int)BarkType.Push] == true && Vector3.Distance(player.transform.position, animalFound[i].transform.position) <= pushDistance)
             {
-                dir = animalFound[i].transform.position - transform.position;
-                angle = Vector3.Angle(transform.forward, dir);
+                dir = animalFound[i].transform.position - player.transform.position;
+                angle = Vector3.Angle(player.transform.forward, dir);
                 mass = animalFound[i].GetComponent<Rigidbody>().mass;
 
                 if (Mathf.Abs(angle) < 90)
@@ -90,7 +91,7 @@ public class Barking : MonoBehaviour
         Mobile[] animalFound = GameObject.FindObjectsOfType<Mobile>();
         for (int i = 0; i < animalFound.Length; i++)
         {
-            if (animalFound[i].woBarks[(int)BarkType.Charm] == true && Vector3.Distance(transform.position, animalFound[i].transform.position) <= charmDistance)
+            if (animalFound[i].woBarks[(int)BarkType.Charm] == true && Vector3.Distance(player.transform.position, animalFound[i].transform.position) <= charmDistance)
             {
                 animalFound[i].SetIsCharmed(true);
                 animalFound[i].SetTimeCharmed(charmTime);
@@ -104,7 +105,7 @@ public class Barking : MonoBehaviour
         Mobile[] animalFound = GameObject.FindObjectsOfType<Mobile>();
         for (int i = 0; i < animalFound.Length; i++)
         {
-            if (animalFound[i].woBarks[(int)BarkType.Scare] == true && Vector3.Distance(transform.position, animalFound[i].transform.position) <= scareDistance)
+            if (animalFound[i].woBarks[(int)BarkType.Scare] == true && Vector3.Distance(player.transform.position, animalFound[i].transform.position) <= scareDistance)
             {
                 animalFound[i].SetIsScared(true);
                 animalFound[i].SetTimeScared(scareTime);

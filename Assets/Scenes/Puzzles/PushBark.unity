@@ -584,7 +584,7 @@ MonoBehaviour:
     - 'I''m too stupid to bark please help me woof '
     - Bark woof stone woof waf
   player: {fileID: 1585455055}
-  distance: 3
+  distance: 2
   tempKey: 114
 --- !u!114 &829740051
 MonoBehaviour:
@@ -911,6 +911,16 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3253605797833948243, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
   m_PrefabInstance: {fileID: 2027870207}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1800508596 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7541915041765626586, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+  m_PrefabInstance: {fileID: 2027870207}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1800508598 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2554361604145378304, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+  m_PrefabInstance: {fileID: 2027870207}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2027870207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -962,6 +972,14 @@ PrefabInstance:
       propertyPath: pushDistance
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3253605797833948244, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1800508598}
+    - target: {fileID: 3253605797833948244, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1800508596}
     - target: {fileID: 3253605797833948246, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: m_LocalPosition.y
       value: 5.719
