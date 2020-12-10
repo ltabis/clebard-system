@@ -113,8 +113,11 @@ public class Transporter : MonoBehaviour
             isActive = value;
             if (isActive)
                 particleTunnel.Play();
-            else
+            else {
                 particleTunnel.Stop();
+                if (AttractedBodyGravityScript)
+                    AttractedBodyGravityScript.EnableVelocity(true);
+            }
         }
     }
 }
