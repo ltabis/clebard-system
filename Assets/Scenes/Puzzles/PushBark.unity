@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9c0264d81173afd4eb8778b81048b6da, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ae5c04a422395b0438bacdc64d5f9a31, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -598,7 +598,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 786.3, y: 502}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 300, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &408054734
 MonoBehaviour:
@@ -678,7 +678,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -340}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &512619767
@@ -788,6 +788,10 @@ PrefabInstance:
       propertyPath: dialogueText
       value: 
       objectReference: {fileID: 998452736}
+    - target: {fileID: 7274106332775117241, guid: c5f72a7c8993b824d904c897409b8843, type: 3}
+      propertyPath: dialogueBox
+      value: 
+      objectReference: {fileID: 413036524}
     - target: {fileID: 7274106332775117246, guid: c5f72a7c8993b824d904c897409b8843, type: 3}
       propertyPath: m_LocalPosition.x
       value: 53.66265
@@ -855,7 +859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 459268, guid: c675781f560c0d748aace204deae17e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.656
+      value: 14.855
       objectReference: {fileID: 0}
     - target: {fileID: 459268, guid: c675781f560c0d748aace204deae17e9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1002,10 +1006,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 26cfa71748d40954c9f034025120e6ab, type: 3}
-    m_FontSize: 14
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -1177,6 +1181,7 @@ MonoBehaviour:
   spawnNbr: 0
   stoneText: {fileID: 408054734}
   launch: 0
+  spawnMax: 50
 --- !u!4 &1072874347
 Transform:
   m_ObjectHideFlags: 0
@@ -1222,6 +1227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1513968115}
   dialogueText: {fileID: 998452736}
+  dialogueBox: {fileID: 413036524}
 --- !u!4 &1127556295
 Transform:
   m_ObjectHideFlags: 0
@@ -1359,7 +1365,7 @@ GameObject:
   - component: {fileID: 1513968113}
   - component: {fileID: 1513968114}
   - component: {fileID: 1513968115}
-  m_Layer: 5
+  m_Layer: 4
   m_Name: Name text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1416,7 +1422,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 26cfa71748d40954c9f034025120e6ab, type: 3}
     m_FontSize: 16
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -1565,6 +1571,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 257123109}
+    - target: {fileID: -8343420316352406243, guid: 90084e0e693aff84d912369fed7d15ff, type: 3}
+      propertyPath: planet
+      value: 
+      objectReference: {fileID: 380229500}
     - target: {fileID: 5107793793676008323, guid: 90084e0e693aff84d912369fed7d15ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
