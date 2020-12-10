@@ -6,6 +6,7 @@ public class NPlayerController : MonoBehaviour
 {
 	[Header("Movements")]
 	[SerializeField]
+	private GameObject modelObject = default;
 	private Transform model = default;
 	[SerializeField]
 	private Transform playerInputSpace = default;
@@ -46,6 +47,8 @@ public class NPlayerController : MonoBehaviour
 
 	Vector3 velocity, desiredVelocity, connectionVelocity;
 
+	bool velocityEnabled = true;
+
 	Vector3 connectionWorldPosition, connectionLocalPosition;
 
 	bool desiredJump;
@@ -78,7 +81,8 @@ public class NPlayerController : MonoBehaviour
 	void Awake()
 	{
 		body = GetComponent<Rigidbody>();
-        anim = GetComponent<Animator>();
+        anim = modelObject.GetComponent<Animator>();
+		model = modelObject.GetComponent<Transform>();
 
 		// we are using a custom gravity script.
 		body.useGravity = false;
@@ -147,8 +151,9 @@ public class NPlayerController : MonoBehaviour
 		}
 
 		velocity += gravity * Time.deltaTime;
+		model.position = transform.position - (worldUp * 0.3f);
 
-		body.velocity = velocity;
+		body.velocity = velocityEnabled ? velocity : Vector3.zero;
 		ClearState();
 	}
 
@@ -350,5 +355,10 @@ public class NPlayerController : MonoBehaviour
 
 		connectionWorldPosition = body.position;
 		connectionLocalPosition = connectedBody.transform.InverseTransformPoint(connectionWorldPosition);
+	}
+
+	public void EnableVelocity(bool status)
+	{
+		velocityEnabled = status;
 	}
 }

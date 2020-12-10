@@ -18,7 +18,7 @@ public class Transporter : MonoBehaviour
     private CapsuleCollider colliderTunnel;
 
     private GameObject AttractedBody;
-    private MonoBehaviour AttractedBodyGravityScript;
+    private NPlayerController AttractedBodyGravityScript;
     private Vector3 startPosition;
     private Quaternion startRotation;
     private Transform end;
@@ -65,9 +65,11 @@ public class Transporter : MonoBehaviour
             lerpPct += Time.deltaTime / transitionTime;
         } else {
             // enabling custom gravity once again.
-            if (lerpPct >= 1)
-                AttractedBodyGravityScript.enabled = true;
-            
+            if (lerpPct >= 1 && AttractedBodyGravityScript) {
+                AttractedBodyGravityScript.EnableVelocity(true);
+                AttractedBodyGravityScript = null;
+            }
+
             // reseting default values.
             lerpPct = 0;
             bodyIsBeingAttracted = false;            
@@ -95,16 +97,13 @@ public class Transporter : MonoBehaviour
         // start lerping the player toward the other point.
         bodyIsBeingAttracted = true;
 
-        // deactivate gravity script.
-        MonoBehaviour gameObjectGravityScript = AttractedBody.GetComponent<CustomGravityRigidBody>();
-        MonoBehaviour PlayerGravityScript = AttractedBody.GetComponent<NPlayerController>();
+        // deactivate gravity script for the player.
+        NPlayerController PlayerGravityScript = AttractedBody.GetComponent<NPlayerController>();
 
-        if (gameObjectGravityScript)
-            AttractedBodyGravityScript = gameObjectGravityScript;
-        else if (PlayerGravityScript)
+        if (PlayerGravityScript) {
             AttractedBodyGravityScript = PlayerGravityScript;
-
-        AttractedBodyGravityScript.enabled = false;
+            AttractedBodyGravityScript.EnableVelocity(false);
+        }
     }
 
     public bool Active
