@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Barking : MonoBehaviour
 {
+    [SerializeField]
+    private Animator anim;
     public AudioSource[] barks;
     public int activeBark = 0;
     // Start is called before the first frame update
@@ -18,7 +20,6 @@ public class Barking : MonoBehaviour
     public float[] cooldownTab;
 
     private Transform player;
-    private Animator anim;
     enum BarkType : int
     {
         Push = 0,
@@ -29,7 +30,6 @@ public class Barking : MonoBehaviour
     void Start()
     {
         player = transform;
-        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
