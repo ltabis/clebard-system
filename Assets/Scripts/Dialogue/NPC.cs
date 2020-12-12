@@ -6,16 +6,13 @@ public class NPC : MonoBehaviour
 {
     public Dialogue dialogue;
     public GameObject player;
+    [SerializeField]
+    private UIManager playerUI;
     public float distance = 1;
 
     protected bool isSpeaking = false;
     protected bool isBusy = false;
     public KeyCode tempKey = KeyCode.R;
-
-    public void Start()
-    {
-       // player = GameObject.Find("Player");
-    }
 
     public void Update()
     {
@@ -28,6 +25,8 @@ public class NPC : MonoBehaviour
             isBusy = false;
             if (Input.GetKeyDown(tempKey))
                 Interact();
+            else if (!playerUI.isUIVisible())
+                playerUI.SetUIVisible(true);
         }
         else if (isBusy)
         {
@@ -41,8 +40,10 @@ public class NPC : MonoBehaviour
         Vector3 dir = player.transform.position - transform.position;
         float angle = Vector3.Angle(transform.forward, dir);
         
-        if (Vector3.Distance(transform.position, player.transform.position) < distance && Mathf.Abs(angle) < 90)
+        if (Vector3.Distance(transform.position, player.transform.position) < distance && Mathf.Abs(angle) < 90) {
+            playerUI.SetUIVisible(false);
             TriggerDialogue();
+        }
     }
 
     public virtual void TriggerDialogue()

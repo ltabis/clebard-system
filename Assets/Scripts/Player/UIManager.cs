@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     private float barkTitleFadeTime = 5f;
     private float startFade = 0f;
     private bool showTitle = false;
+    private bool visible = true;
 
     void Awake()
     {
@@ -27,6 +28,9 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        if (!visible)
+            return;
+    
         if (startFade >= barkTitleFadeTime && showTitle) {
             barkTitle.CrossFadeAlpha(0, 5, false);
             showTitle = false;
@@ -74,5 +78,26 @@ public class UIManager : MonoBehaviour
         currentBark = index;
         startFade = 0f;
         showTitle = true;
+    }
+
+    public void SetUIVisible(bool state)
+    {
+        // don't bother reactivating the ui twice.
+        if (state == visible)
+            return;
+
+        // set all slots active/inactive.    
+        foreach (var slot in slots)
+            slot.SetActive(state);
+        visible = state;
+
+        // reset the bark title.
+        if (!state)
+            barkTitle.text = "";
+    }
+
+    public bool isUIVisible()
+    {
+        return visible;
     }
 }
