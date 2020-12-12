@@ -8,8 +8,10 @@ public class Scrap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player") {
             found = true;
+            GetComponent<MeshRenderer>().enabled = false;
+        }
     }
 
     public bool HasBeenFound()
