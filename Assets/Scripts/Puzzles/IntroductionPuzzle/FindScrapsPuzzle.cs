@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FindScraps : MonoBehaviour
+public class FindScrapsPuzzle : Puzzle
 {
     [SerializeField]
     private List<Scrap> scraps = new List<Scrap>();
-    [SerializeField]
-    private UIManager ui;
-
     private uint scrapsFound = 0;
 
-    void Start()
+    override public void OnLeavePuzzle() {}
+    override public void OnStartPuzzle()
     {
-        ui.SetObjective("Find " + scraps.Count + " more scraps. You can use your sniffing mode <A> to reveal important items.");
+        foreach (var scrap in scraps)
+            scrap.gameObject.SetActive(true);
+
+        managerRef.SetCurrentObjective("Find " + scraps.Count + " more scraps. You can use your sniffing mode <A> to reveal important items.");
     }
 
    void Update()
@@ -31,12 +32,12 @@ public class FindScraps : MonoBehaviour
 
         if (countFoundScraps != scrapsFound) {
             scrapsFound = countFoundScraps;
-            ui.SetObjective("Find " + (scraps.Count - scrapsFound) + " more scraps. You can use your sniffing mode <A> to reveal important items.");
+            managerRef.SetCurrentObjective("Find " + (scraps.Count - scrapsFound) + " more scraps. You can use your sniffing mode <A> to reveal important items.");
         }
 
         if (countFoundScraps == scraps.Count) {
-            Debug.Log("All scraps found !");
-            ui.RemoveObjective();
+            managerRef.RemoveCurrentObjective();
+            managerRef.NextPuzzle();
         }
    }
 }
