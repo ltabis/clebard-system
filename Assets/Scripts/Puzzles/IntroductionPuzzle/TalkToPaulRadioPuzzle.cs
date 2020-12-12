@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TalkToPaulPuzzle : Puzzle
+public class TalkToPaulRadioPuzzle : Puzzle
 {
     [SerializeField]
     private NPC dialog;
@@ -16,12 +16,11 @@ public class TalkToPaulPuzzle : Puzzle
     override public void OnLeavePuzzle() 
     {
         dialog.enabled = false;
-        managerRef.RemoveCurrentObjective();
     }
 
     override public void OnStartPuzzle()
     {
         dialog.enabled = true;
-        managerRef.SetCurrentObjective("Talk to Paul. Use <E> to interact with characters");
+        managerRef.SetCurrentObjective("Get back to Paul. Remember, use <E> to interact with characters");
     }
 }

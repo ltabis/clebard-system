@@ -1373,6 +1373,7 @@ MonoBehaviour:
   puzzles:
   - {fileID: 1151626148}
   - {fileID: 1748790938}
+  - {fileID: 1978150628}
   ui: {fileID: 876656396}
 --- !u!114 &876656396 stripped
 MonoBehaviour:
@@ -2133,7 +2134,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588769021}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7521698d1090f964e9ea6be20feb97ad, type: 3}
   m_Name: 
@@ -2266,6 +2267,7 @@ Transform:
   m_Children:
   - {fileID: 1151626147}
   - {fileID: 1748790937}
+  - {fileID: 1978150627}
   m_Father: {fileID: 668359021}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2317,6 +2319,68 @@ MonoBehaviour:
   - {fileID: 1497584387}
   - {fileID: 706040392}
   - {fileID: 441414685}
+--- !u!1 &1825065963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1825065964}
+  - component: {fileID: 1825065965}
+  m_Layer: 0
+  m_Name: SecondScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1825065964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825065963}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3398208802271172550}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1825065965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825065963}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7521698d1090f964e9ea6be20feb97ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 1926168354}
+  dialogue:
+    name: Paul
+    sentences:
+    - Wow, already ! Good job !
+    - But I'm affraid this woofn't be enough ...
+    - Wait a few seconds ...
+    - ...
+    - ... There !
+    - I've made talkie-walkies !
+    - We can now communicate using theses !
+    - You need to gather more scrap.
+    - This way, I can repair your ship !
+    - There is a lot around my solar system, so go fetch them.
+    - You'll be the body, I'll be the brain !
+    - Let's get moving !
+  player: {fileID: 1599151486}
+  distance: 1
+  tempKey: 101
 --- !u!1 &1841572676
 GameObject:
   m_ObjectHideFlags: 0
@@ -2586,6 +2650,51 @@ Transform:
   m_Father: {fileID: 931942457}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1978150626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1978150627}
+  - component: {fileID: 1978150628}
+  m_Layer: 0
+  m_Name: TalkToPaulRadio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1978150627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978150626}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1736679864}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1978150628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978150626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6becc9a80e62e84f9b0d2caaa1dd3ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerRef: {fileID: 0}
+  dialog: {fileID: 1825065965}
 --- !u!1 &1802742134539347
 GameObject:
   m_ObjectHideFlags: 0
@@ -3589,6 +3698,7 @@ Transform:
   m_Children:
   - {fileID: 607955502990065832}
   - {fileID: 1588769022}
+  - {fileID: 1825065964}
   m_Father: {fileID: 1925556949}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 5.936, y: 180.389, z: 0.386}
