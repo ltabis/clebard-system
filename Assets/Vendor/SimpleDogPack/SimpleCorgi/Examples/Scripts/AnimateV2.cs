@@ -32,7 +32,6 @@ public class AnimateV2 : MonoBehaviour {
 
 		anim = GetComponent<Animator> ();
 		AnimatorName = anim.name;
-		print ("name " + AnimatorName);
 	}
 
 	void Update () 

@@ -312,6 +312,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3bcd40f31ed14978a74eb80a2707a40, type: 3}
+--- !u!82 &649704120 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2223711956990008803, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+  m_PrefabInstance: {fileID: 1212191077}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &664204272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -639,6 +644,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   woBarks: 010000
+--- !u!114 &1120834652 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7176157311985494398, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+  m_PrefabInstance: {fileID: 1212191077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb7e6a2fe2ee344f98574e62330c8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1141058756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -746,15 +762,15 @@ PrefabInstance:
     - target: {fileID: 3253605797833948244, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: barks.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1404396147}
     - target: {fileID: 3253605797833948244, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: barks.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 649704120}
     - target: {fileID: 3253605797833948244, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: barks.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1363359763}
     - target: {fileID: 3253605797833948244, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: pushPower
       value: 4
@@ -974,6 +990,16 @@ Transform:
 --- !u!4 &1314973987 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7541915041765626586, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+  m_PrefabInstance: {fileID: 1212191077}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1363359763 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4225261306959219140, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+  m_PrefabInstance: {fileID: 1212191077}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1404396147 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6596976728757250530, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
   m_PrefabInstance: {fileID: 1212191077}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1469041215
@@ -1224,7 +1250,7 @@ MonoBehaviour:
     - Try to bark on this stone woof
     - But only on this stone ! woof
   player: {fileID: 981167671}
-  playerUI: {fileID: 0}
+  playerUI: {fileID: 1120834652}
   distance: 1
   tempKey: 114
 --- !u!54 &1808606837

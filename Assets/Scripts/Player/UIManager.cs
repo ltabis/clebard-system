@@ -11,6 +11,10 @@ public class UIManager : MonoBehaviour
     private GameObject slotSprite;
     [SerializeField]
     private Text barkTitle;
+    [SerializeField]
+    private GameObject objectiveIndicatorText;
+    [SerializeField]
+    private GameObject objectiveText;
 
     private List<GameObject> slots = new List<GameObject>();
     private uint currentBark = 0;
@@ -92,12 +96,28 @@ public class UIManager : MonoBehaviour
         visible = state;
 
         // reset the bark title.
-        if (!state)
+        if (!state) {
             barkTitle.text = "";
+
+        }
     }
 
     public bool isUIVisible()
     {
         return visible;
+    }
+
+    public void SetObjective(string newOjective)
+    {
+        objectiveIndicatorText.SetActive(true);
+        objectiveText.SetActive(true);
+
+        objectiveText.GetComponent<Text>().text = newOjective;
+    }
+
+    public void RemoveObjective()
+    {
+        objectiveIndicatorText.SetActive(false);
+        objectiveText.SetActive(false);
     }
 }

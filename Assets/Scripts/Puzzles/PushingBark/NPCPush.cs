@@ -5,7 +5,6 @@ using UnityEngine;
 public class NPCPush : NPC
 {
 
-
     public void Update()
     {
         isSpeaking = FindObjectOfType<DialogueManagerPush>().getIsActive();

@@ -21,7 +21,7 @@ public class NPC : MonoBehaviour
         {
             Vector3 dir = player.transform.position - transform.position;
             float angle = Vector3.Angle(transform.forward, dir);
-  
+
             isBusy = false;
             if (Input.GetKeyDown(tempKey))
                 Interact();
