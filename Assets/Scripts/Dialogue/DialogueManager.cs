@@ -8,6 +8,8 @@ public class DialogueManager : MonoBehaviour
     public Text nameText;
     public Text dialogueText;
     public GameObject dialogueBox;
+    [SerializeField]
+    private UIManager playerUI;
     protected bool isActive = false;
 
     public Queue<string> sentences;
@@ -21,6 +23,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue (Dialogue dialogue)
     {
+        playerUI.SetUIVisible(false);
         dialogueBox.SetActive(true);
         nameText.text = dialogue.name;
         isActive = true;
@@ -64,6 +67,7 @@ public class DialogueManager : MonoBehaviour
         nameText.text = "";
         dialogueText.text = "";
         isActive = false;
+        playerUI.SetUIVisible(true);
     }
 
     public bool getIsActive()

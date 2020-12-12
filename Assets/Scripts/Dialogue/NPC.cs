@@ -4,35 +4,32 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
+    [SerializeField]
+    private DialogueManager dialogueManager;
     public Dialogue dialogue;
     public GameObject player;
-    [SerializeField]
-    private UIManager playerUI;
     public float distance = 1;
 
     protected bool isSpeaking = false;
     protected bool isBusy = false;
     public KeyCode tempKey = KeyCode.R;
+    private bool doneReading = false;
 
     public void Update()
     {
-        isSpeaking = FindObjectOfType<DialogueManager>().getIsActive();
-        if (!isSpeaking)
-        {
+        isSpeaking = dialogueManager.getIsActive();
+        if (!isSpeaking) {
             Vector3 dir = player.transform.position - transform.position;
             float angle = Vector3.Angle(transform.forward, dir);
+
+            doneReading = isBusy ? true : doneReading;
 
             isBusy = false;
             if (Input.GetKeyDown(tempKey))
                 Interact();
-            else if (!playerUI.isUIVisible())
-                playerUI.SetUIVisible(true);
-        }
-        else if (isBusy)
-        {
+        } else if (isBusy)
             if (Input.GetKeyDown(tempKey))
-                FindObjectOfType<DialogueManager>().DisplayNextSentence();
-        }
+                dialogueManager.DisplayNextSentence();
     }
 
     public void Interact()
@@ -40,15 +37,18 @@ public class NPC : MonoBehaviour
         Vector3 dir = player.transform.position - transform.position;
         float angle = Vector3.Angle(transform.forward, dir);
         
-        if (Vector3.Distance(transform.position, player.transform.position) < distance && Mathf.Abs(angle) < 90) {
-            playerUI.SetUIVisible(false);
+        if (Vector3.Distance(transform.position, player.transform.position) < distance && Mathf.Abs(angle) < 90)
             TriggerDialogue();
-        }
     }
 
     public virtual void TriggerDialogue()
     {
         isBusy = true;
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        dialogueManager.StartDialogue(dialogue);
+    }
+
+    public bool HasPlayerFinishDialog()
+    {
+        return doneReading;
     }
 }
