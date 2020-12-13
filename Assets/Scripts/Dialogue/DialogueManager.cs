@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour
 
     public Queue<string> sentences;
 
-    void Start()
+    void Awake()
     {
         //dialogueBox = GameObject.Find("DialogueBox");
         sentences = new Queue<string>();

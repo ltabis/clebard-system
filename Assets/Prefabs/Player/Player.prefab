@@ -7421,6 +7421,14 @@ PrefabInstance:
       propertyPath: barkSprites.Array.data[2]
       value: 
       objectReference: {fileID: 21300000, guid: 450c3c0515b82bf4bacfa2fd665383b0, type: 3}
+    - target: {fileID: 7118601461900718972, guid: 2ceb4cb2a66631c44aeb015b953d0cb1, type: 3}
+      propertyPath: pushDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7118601461900718972, guid: 2ceb4cb2a66631c44aeb015b953d0cb1, type: 3}
+      propertyPath: pushPower
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7118601461900718974, guid: 2ceb4cb2a66631c44aeb015b953d0cb1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
