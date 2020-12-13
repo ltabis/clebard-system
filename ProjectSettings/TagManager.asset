@@ -8,6 +8,7 @@ TagManager:
   - Pushable
   - Charmable
   - PPCamera
+  - DialogueBox
   layers:
   - Default
   - TransparentFX
@@ -44,4 +45,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1540309023
+    locked: 0
+  - name: Focused
+    uniqueID: 4227205925
     locked: 0

@@ -9,6 +9,8 @@ public class NPlayerController : MonoBehaviour
 	private GameObject modelObject = default;
 	private Transform model = default;
 	[SerializeField]
+	private ParticleSystem modelSmokePS;
+	[SerializeField]
 	private Transform playerInputSpace = default;
 	[SerializeField]
 	private NPlayerCamera PlayerCamera = default;
@@ -103,8 +105,10 @@ public class NPlayerController : MonoBehaviour
                 playerInput.y < -threshold || playerInput.y > threshold) {
 				StartIdle = 0f;
 				anim.SetBool("Sit", false);
-				if (OnGround && !anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+				if (OnGround && !anim.GetCurrentAnimatorStateInfo(0).IsName("Jump")) {
+					CreateSmoke();
 					anim.Play("Run");
+				}
 			} else if (OnGround) {
 				if (TimeUnilIdleAnimation < StartIdle)
 					anim.SetBool("Sit", true);
@@ -360,5 +364,10 @@ public class NPlayerController : MonoBehaviour
 	public void EnableVelocity(bool status)
 	{
 		velocityEnabled = status;
+	}
+
+	private void CreateSmoke()
+	{
+		modelSmokePS.Play();
 	}
 }
