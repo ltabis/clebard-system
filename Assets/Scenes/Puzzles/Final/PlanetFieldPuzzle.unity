@@ -6221,6 +6221,51 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &336211263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 336211264}
+  - component: {fileID: 336211265}
+  m_Layer: 0
+  m_Name: TalkToPaulEndPlanetField
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &336211264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336211263}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1773246056}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &336211265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336211263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb4fc7142bc4e2d48b6569572f8fd988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerRef: {fileID: 0}
+  dialog: {fileID: 1439658723}
 --- !u!1001 &454370482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6559,6 +6604,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 489048315}
+  - {fileID: 1167038272}
+  - {fileID: 1439658722}
   m_Father: {fileID: 1993860198}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 5.936, y: 180.389, z: 0.386}
@@ -6628,6 +6675,120 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3599894, y: 1.6521873, z: 0.59828794}
   m_Center: {x: -0.03436267, y: -0.026651382, z: 0.20085692}
+--- !u!1001 &622912746
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 931942457}
+    m_Modifications:
+    - target: {fileID: 1246248223850300, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_Name
+      value: cereal-box
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246248223850300, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929224575583242, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.254
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929224575583242, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 34.967
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929224575583242, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 42.499
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929224575583242, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929224575583242, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929224575583242, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929224575583242, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929224575583242, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929224575583242, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929224575583242, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929224575583242, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929224575583242, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929224575583242, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929224575583242, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 65484878791918462, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+--- !u!1 &622912747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1246248223850300, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+  m_PrefabInstance: {fileID: 622912746}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &622912748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622912747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42078a5ca409c049934a79513b6e31a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raySize: 1
+  rotateSpeed: 30
+  rotationAxis: {x: 0, y: 1, z: 0}
+--- !u!4 &622912749 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4929224575583242, guid: e5a356435d6c24c088b740dc1c13b645, type: 3}
+  m_PrefabInstance: {fileID: 622912746}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &622912750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622912747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf8ed268acb2ce40bdb0cfe4350c80d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &628027667
 GameObject:
   m_ObjectHideFlags: 0
@@ -11718,6 +11879,7 @@ Transform:
   - {fileID: 99875441}
   - {fileID: 1833891263}
   - {fileID: 1033897003}
+  - {fileID: 622912749}
   m_Father: {fileID: 677959673}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14543,6 +14705,51 @@ Transform:
   m_Father: {fileID: 931942457}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1072322011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1072322012}
+  - component: {fileID: 1072322013}
+  m_Layer: 0
+  m_Name: TalkToPaulCroquette
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1072322012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072322011}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1773246056}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1072322013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072322011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0691bfd45b52a4992b33bba71ffa26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerRef: {fileID: 0}
+  dialog: {fileID: 1167038273}
 --- !u!1001 &1134026486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14879,6 +15086,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c387ddd26d08304a8adaa8fb9adb032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1167038271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1167038272}
+  - component: {fileID: 1167038273}
+  m_Layer: 0
+  m_Name: SecondScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1167038272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167038271}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 550426246}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1167038273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167038271}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7521698d1090f964e9ea6be20feb97ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 1134026487}
+  dialogue:
+    name: Paul
+    sentences:
+    - '*Crrr* Haem ...'
+    - Actually, I've made you come here to get me something ....
+    - "I've lost my PREMIUM GOLD CROQUETTES\u2122 on this last planet ..."
+    - Could you get them back to me please ?
+  player: {fileID: 5759395202848294102}
+  playerController: {fileID: 101656620}
+  distance: 1
+  tempKey: 101
 --- !u!1 &1170371322
 GameObject:
   m_ObjectHideFlags: 0
@@ -15071,6 +15333,61 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1439658721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1439658722}
+  - component: {fileID: 1439658723}
+  m_Layer: 0
+  m_Name: ThirdScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1439658722
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439658721}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 550426246}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1439658723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439658721}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7521698d1090f964e9ea6be20feb97ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 1134026487}
+  dialogue:
+    name: Paul
+    sentences:
+    - WOOOOOOF WOOFOFOFOFO WOOOOO-
+    - ... *Hum hum*
+    - I mean, thank you.
+    - Let's move on ...
+  player: {fileID: 5759395202848294102}
+  playerController: {fileID: 101656620}
+  distance: 1
+  tempKey: 101
 --- !u!1 &1449380925
 GameObject:
   m_ObjectHideFlags: 0
@@ -15484,6 +15801,9 @@ MonoBehaviour:
   puzzles:
   - {fileID: 326013995}
   - {fileID: 567960886}
+  - {fileID: 1072322013}
+  - {fileID: 2102968073}
+  - {fileID: 336211265}
   player: {fileID: 5759395202848294102}
   uiScript: {fileID: 5759395202848294101}
   barkingScript: {fileID: 5759395202848294103}
@@ -20510,6 +20830,9 @@ Transform:
   m_Children:
   - {fileID: 326013994}
   - {fileID: 567960885}
+  - {fileID: 1072322012}
+  - {fileID: 2102968072}
+  - {fileID: 336211264}
   m_Father: {fileID: 1511177998}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20885,6 +21208,51 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &2102968071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2102968072}
+  - component: {fileID: 2102968073}
+  m_Layer: 0
+  m_Name: GetCroquettes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2102968072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102968071}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1773246056}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2102968073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102968071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e818a5800e49054eac593f2b08b71a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerRef: {fileID: 0}
+  scrap: {fileID: 622912750}
 --- !u!1 &2109664868
 GameObject:
   m_ObjectHideFlags: 0
