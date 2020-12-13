@@ -22,6 +22,7 @@ public class TalkToPaulPuzzle : Puzzle
     override public void OnStartPuzzle()
     {
         dialog.enabled = true;
-        managerRef.SetCurrentObjective("Talk to Paul. Use <E> to interact with characters");
+        managerRef.SetBarksActive(false);
+        managerRef.SetCurrentObjective("Your ship is damaged. Find help. Use <E> to interact with characters");
     }
 }

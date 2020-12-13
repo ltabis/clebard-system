@@ -9,7 +9,11 @@ public class LevelObjectiveManger : MonoBehaviour
     protected int currentPuzzle = 0;
 
     [SerializeField]
-    protected UIManager ui;
+    protected GameObject player;
+    [SerializeField]
+    protected UIManager uiScript;
+    [SerializeField]
+    protected Barking barkingScript;
 
     void Awake()
     {
@@ -25,12 +29,12 @@ public class LevelObjectiveManger : MonoBehaviour
 
     public void SetCurrentObjective(string objective)
     {
-        ui.SetObjective(objective);
+        uiScript.SetObjective(objective);
     }
 
     public void RemoveCurrentObjective()
     {
-        ui.RemoveObjective();
+        uiScript.RemoveObjective();
     }
 
     public void NextPuzzle()
@@ -52,5 +56,10 @@ public class LevelObjectiveManger : MonoBehaviour
     public void SetPuzzle(int index)
     {
         currentPuzzle = index;
+    }
+
+    public void SetBarksActive(bool state)
+    {
+        barkingScript.enabled = state;
     }
 }
