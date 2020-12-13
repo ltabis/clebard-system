@@ -126,7 +126,8 @@ public class NPlayerController : MonoBehaviour
 			worldForward = ProjectDirectionOnPlane(playerInputSpace.forward, worldUp);
 
 			// aligning the player model to the forward direction.
-			model.rotation = PlayerCamera.GetModelRotation;
+			if (controllsEnabled)
+				model.rotation = PlayerCamera.GetModelRotation;
 
 			if (debugPlayerAxis) {
 				Debug.DrawLine(transform.position, transform.position + worldForward.normalized, Color.blue, 0.01f);
