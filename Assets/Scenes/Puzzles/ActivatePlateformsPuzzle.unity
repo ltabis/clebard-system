@@ -1781,6 +1781,17 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &101656620 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3253605797833948241, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+  m_PrefabInstance: {fileID: 5759395202848294100}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d8178e74cd83843b27041e46a0a16b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &103137107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8973,6 +8984,7 @@ MonoBehaviour:
     - Find it's switches and turn them all on !
     - Search the planet, they should be obvious.
   player: {fileID: 5759395202848294102}
+  playerController: {fileID: 101656620}
   distance: 1
   tempKey: 101
 --- !u!1001 &494263982
@@ -9903,6 +9915,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 489048315}
+  - {fileID: 1614172921}
   m_Father: {fileID: 1993860198}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 5.936, y: 180.389, z: 0.386}
@@ -20057,6 +20070,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 842cf9fab1e1bc9448b7b238adb58c31, type: 3}
   m_PrefabInstance: {fileID: 1190791733}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1191866696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1191866697}
+  - component: {fileID: 1191866698}
+  m_Layer: 0
+  m_Name: TalkToPaulFinishedPlateforms
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1191866697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191866696}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1773246056}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1191866698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191866696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea31eb144703706409cdb063021f27ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerRef: {fileID: 0}
+  dialog: {fileID: 1614172922}
 --- !u!1001 &1192592027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25214,9 +25272,11 @@ MonoBehaviour:
   puzzles:
   - {fileID: 326013995}
   - {fileID: 1609717986}
+  - {fileID: 1191866698}
   player: {fileID: 5759395202848294102}
   uiScript: {fileID: 5759395202848294101}
   barkingScript: {fileID: 5759395202848294103}
+  controllerScript: {fileID: 101656620}
 --- !u!1001 &1545271488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26543,6 +26603,62 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: bee3f8acd3a046042a5670ab964f3372, type: 3}
   m_PrefabInstance: {fileID: 1613612783}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1614172920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1614172921}
+  - component: {fileID: 1614172922}
+  m_Layer: 0
+  m_Name: SecondScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1614172921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614172920}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 550426246}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1614172922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614172920}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7521698d1090f964e9ea6be20feb97ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 1134026487}
+  dialogue:
+    name: Paul
+    sentences:
+    - '*Crrrrr* Woff! *Zzzzzt* Haaaa ... *Zzzzzt*'
+    - '*Crrrrr* ... There ! I can hear you.'
+    - You activated the Transporter ? Good job Pup !
+    - Now you can go on SpaceDump.
+    - Go fetch some scraps !
+  player: {fileID: 5759395202848294102}
+  playerController: {fileID: 101656620}
+  distance: 1
+  tempKey: 101
 --- !u!1001 &1614250811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30936,6 +31052,7 @@ Transform:
   m_Children:
   - {fileID: 326013994}
   - {fileID: 1609717985}
+  - {fileID: 1191866697}
   m_Father: {fileID: 1511177998}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -35735,6 +35852,10 @@ PrefabInstance:
     - target: {fileID: 3253605797833948243, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253605797833948246, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.139
       objectReference: {fileID: 0}
     - target: {fileID: 5759395203061417355, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: m_Name

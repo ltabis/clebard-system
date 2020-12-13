@@ -1334,6 +1334,7 @@ MonoBehaviour:
   player: {fileID: 1604955309}
   uiScript: {fileID: 876656396}
   barkingScript: {fileID: 1599151490}
+  controllerScript: {fileID: 0}
 --- !u!114 &876656396 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7176157311985494398, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
@@ -7137,6 +7138,7 @@ MonoBehaviour:
     - We need to repair thoes if you want to go back home ...
     - Search around here, I think I've got scrap that could help us !
   player: {fileID: 1599151486}
+  playerController: {fileID: 1599151491}
   distance: 1
   tempKey: 101
 --- !u!1 &1599151486 stripped
@@ -7153,6 +7155,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d801e7f53c79a1b40b3db104a1285d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1599151491 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3253605797833948241, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+  m_PrefabInstance: {fileID: 5759395202848294100}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599151486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d8178e74cd83843b27041e46a0a16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1604955309 stripped
@@ -7362,6 +7375,7 @@ MonoBehaviour:
     - You'll be the body, I'll be the brain !
     - Let's get moving !
   player: {fileID: 1599151486}
+  playerController: {fileID: 1599151491}
   distance: 1
   tempKey: 101
 --- !u!1 &1841572676

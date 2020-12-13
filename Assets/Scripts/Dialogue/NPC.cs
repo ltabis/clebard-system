@@ -8,6 +8,8 @@ public class NPC : MonoBehaviour
     private DialogueManager dialogueManager;
     public Dialogue dialogue;
     public GameObject player;
+    [SerializeField]
+    private NPlayerController playerController;
     public float distance = 1;
 
     protected bool isSpeaking = false;
@@ -22,7 +24,10 @@ public class NPC : MonoBehaviour
             Vector3 dir = player.transform.position - transform.position;
             float angle = Vector3.Angle(transform.forward, dir);
 
-            doneReading = isBusy ? true : doneReading;
+            if (isBusy) {
+                playerController.EnableControlls(true);
+                doneReading = true;
+            }
 
             isBusy = false;
             if (Input.GetKeyDown(tempKey))
@@ -44,6 +49,7 @@ public class NPC : MonoBehaviour
     public virtual void TriggerDialogue()
     {
         isBusy = true;
+        playerController.EnableControlls(false);
         dialogueManager.StartDialogue(dialogue);
     }
 

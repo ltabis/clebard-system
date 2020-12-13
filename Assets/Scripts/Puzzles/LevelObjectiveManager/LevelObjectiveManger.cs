@@ -14,6 +14,8 @@ public class LevelObjectiveManger : MonoBehaviour
     protected UIManager uiScript;
     [SerializeField]
     protected Barking barkingScript;
+    [SerializeField]
+    protected NPlayerController controllerScript;
 
     void Awake()
     {
@@ -70,5 +72,15 @@ public class LevelObjectiveManger : MonoBehaviour
     public void SetBarksActive(bool state)
     {
         barkingScript.enabled = state;
+    }
+
+    public void SetPlayerMovements(bool state)
+    {
+        controllerScript.EnableControlls(state);
+    }
+
+    public void SetPlayerVelocity(bool state)
+    {
+        controllerScript.EnableVelocity(state);
     }
 }

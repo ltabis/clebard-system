@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TalkToPaulPlateformsPuzzle : Puzzle
+public class TalkToPaulTransporterPuzzle : Puzzle
 {
     [SerializeField]
     private NPC dialog;
@@ -16,17 +16,17 @@ public class TalkToPaulPlateformsPuzzle : Puzzle
     override public void OnLeavePuzzle() 
     {
         dialog.enabled = false;
-        managerRef.RemoveCurrentObjective();
         managerRef.SetPlayerMovements(true);
     }
 
     override public void OnStartPuzzle()
     {
         dialog.enabled = true;
-        dialog.TriggerDialogue();
         managerRef.SetPlayerMovements(false);
-        managerRef.SetBarksActive(false);
-        managerRef.SetCurrentObjective("Instructions", "Listen to Paul's advices");
+        dialog.TriggerDialogue();
         managerRef.RemoveCurrentTip();
+        managerRef.RemoveCurrentObjective();
+        // managerRef.SetCurrentObjective("Space dump", "Reach the Transporter");
+        // managerRef.SetCurrentTip("You can use 'Transporters' to easly travel between planets");
     }
 }

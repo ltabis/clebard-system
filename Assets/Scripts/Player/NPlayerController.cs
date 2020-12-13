@@ -49,7 +49,7 @@ public class NPlayerController : MonoBehaviour
 
 	Vector3 velocity, desiredVelocity, connectionVelocity;
 
-	bool velocityEnabled = true;
+	bool velocityEnabled = true, controllsEnabled = true;
 
 	Vector3 connectionWorldPosition, connectionLocalPosition;
 
@@ -92,10 +92,13 @@ public class NPlayerController : MonoBehaviour
 
 	void Update()
 	{
-		Vector2 playerInput;
-		playerInput.x = Input.GetAxis("Horizontal");
-		playerInput.y = Input.GetAxis("Vertical");
-		playerInput = Vector2.ClampMagnitude(playerInput, 1f);
+		Vector2 playerInput= new Vector2(0f, 0f);
+
+		if (controllsEnabled) {
+			playerInput.x = Input.GetAxis("Horizontal");
+			playerInput.y = Input.GetAxis("Vertical");
+			playerInput = Vector2.ClampMagnitude(playerInput, 1f);
+		}
 
 		if (playerInputSpace)
 		{
@@ -364,6 +367,11 @@ public class NPlayerController : MonoBehaviour
 	public void EnableVelocity(bool status)
 	{
 		velocityEnabled = status;
+	}
+
+	public void EnableControlls(bool status)
+	{
+		controllsEnabled = status;
 	}
 
 	private void CreateSmoke()
