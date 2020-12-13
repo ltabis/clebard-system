@@ -1334,7 +1334,7 @@ MonoBehaviour:
   player: {fileID: 1604955309}
   uiScript: {fileID: 876656396}
   barkingScript: {fileID: 1599151490}
-  controllerScript: {fileID: 0}
+  controllerScript: {fileID: 1599151491}
   nextScene: ActivatePlateformsPuzzle
 --- !u!114 &876656396 stripped
 MonoBehaviour:

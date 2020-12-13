@@ -35652,9 +35652,13 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3253605797833948244, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 5759395202848294104}
     - target: {fileID: 3253605797833948246, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.139
+      value: -1.401
       objectReference: {fileID: 0}
     - target: {fileID: 5759395203061417355, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: m_Name
@@ -35741,6 +35745,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d801e7f53c79a1b40b3db104a1285d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5759395202848294104 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5759395203061417396, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+  m_PrefabInstance: {fileID: 5759395202848294100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &7718390322465792572
 MeshRenderer:
   m_ObjectHideFlags: 0

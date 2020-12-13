@@ -17,14 +17,12 @@ public class TalkToPaulPlateformsPuzzle : Puzzle
     {
         dialog.enabled = false;
         managerRef.RemoveCurrentObjective();
-        managerRef.SetPlayerMovements(true);
     }
 
     override public void OnStartPuzzle()
     {
         dialog.enabled = true;
         dialog.TriggerDialogue();
-        managerRef.SetPlayerMovements(false);
         managerRef.SetBarksActive(false);
         managerRef.SetCurrentObjective("Instructions", "Listen to Paul's advices");
         managerRef.RemoveCurrentTip();

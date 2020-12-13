@@ -7624,6 +7624,10 @@ PrefabInstance:
       propertyPath: pushPower
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7118601461900718972, guid: 2ceb4cb2a66631c44aeb015b953d0cb1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 5759395203061417396}
     - target: {fileID: 7118601461900718974, guid: 2ceb4cb2a66631c44aeb015b953d0cb1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
