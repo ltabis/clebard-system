@@ -5,6 +5,8 @@ using UnityEngine;
 public class ActivatePlateformsPuzzle : Puzzle
 {
     [SerializeField]
+    private Transporter transporter;
+    [SerializeField]
     private List<Plateform> plateforms = new List<Plateform>();
 
     void Update()
@@ -19,6 +21,8 @@ public class ActivatePlateformsPuzzle : Puzzle
             managerRef.SetCurrentObjective("Switches", "Activate " + (plateforms.Count - countActivatedPlaterforms) + " more Transporter's switches.");
         } else {
             managerRef.RemoveCurrentObjective();
+            managerRef.RemoveCurrentTip();
+            transporter.Active = true;
             managerRef.NextPuzzle();
         }
     }

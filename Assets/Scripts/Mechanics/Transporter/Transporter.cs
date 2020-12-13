@@ -12,6 +12,10 @@ public class Transporter : MonoBehaviour
     [SerializeField]
     private Transform pointB;
     [SerializeField]
+    private ParticleSystem PSA;
+    [SerializeField]
+    private ParticleSystem PSB;
+    [SerializeField]
     private float transitionTime = 10f;
 
     private ParticleSystem particleTunnel;
@@ -51,6 +55,9 @@ public class Transporter : MonoBehaviour
         colliderTunnel.center = Vector3.forward * distance;
         colliderTunnel.height = distance * 2;
         colliderTunnel.radius = 1.5f;
+
+        if (!isActive)
+            EnableParticles(false);
     }
 
     void Update()
@@ -111,13 +118,26 @@ public class Transporter : MonoBehaviour
         get { return isActive; }
         set {
             isActive = value;
-            if (isActive)
-                particleTunnel.Play();
-            else {
-                particleTunnel.Stop();
+            if (isActive) {
+                EnableParticles(true);
+            } else {
+                EnableParticles(false);
                 if (AttractedBodyGravityScript)
                     AttractedBodyGravityScript.EnableVelocity(true);
             }
+        }
+    }
+
+    void EnableParticles(bool state)
+    {
+        if (state) {
+            PSA.Play();
+            PSB.Play();
+            particleTunnel.Play();
+        } else {
+            PSA.Stop();
+            PSB.Stop();
+            particleTunnel.Stop();
         }
     }
 }
