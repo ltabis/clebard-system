@@ -16,6 +16,7 @@ public class TalkToPaulRadioPuzzle : Puzzle
     override public void OnLeavePuzzle() 
     {
         dialog.enabled = false;
+        managerRef.RemoveCurrentObjective();
     }
 
     override public void OnStartPuzzle()
