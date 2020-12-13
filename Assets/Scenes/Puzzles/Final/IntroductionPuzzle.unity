@@ -1927,6 +1927,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1533075637}
     m_Modifications:
+    - target: {fileID: 3585491444689401504, guid: 1a65ffb64f9825f499d7647480d9ef01, type: 3}
+      propertyPath: m_Text
+      value: <E> Next
+      objectReference: {fileID: 0}
     - target: {fileID: 4945604343241480958, guid: 1a65ffb64f9825f499d7647480d9ef01, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2014,6 +2018,14 @@ PrefabInstance:
     - target: {fileID: 4945604343241480959, guid: 1a65ffb64f9825f499d7647480d9ef01, type: 3}
       propertyPath: m_Name
       value: DialogueBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552094677691638482, guid: 1a65ffb64f9825f499d7647480d9ef01, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -151.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552094677691638482, guid: 1a65ffb64f9825f499d7647480d9ef01, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 242.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a65ffb64f9825f499d7647480d9ef01, type: 3}
