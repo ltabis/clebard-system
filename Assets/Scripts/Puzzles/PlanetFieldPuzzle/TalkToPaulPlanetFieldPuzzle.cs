@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TalkToPaulEndActivatePlateformsPuzzle : Puzzle
+public class TalkToPaulPlanetFieldPuzzle : Puzzle
 {
     [SerializeField]
     private NPC dialog;
@@ -22,9 +22,11 @@ public class TalkToPaulEndActivatePlateformsPuzzle : Puzzle
     override public void OnStartPuzzle()
     {
         dialog.enabled = true;
-        managerRef.SetPlayerMovements(false);
         dialog.TriggerDialogue();
-        managerRef.RemoveCurrentTip();
-        managerRef.RemoveCurrentObjective();
+        managerRef.SetPlayerMovements(false);
+        managerRef.SetBarksActive(false);
+        managerRef.SetCurrentObjective("Instructions", "Listen to Paul's advices");
+        // managerRef.SetCurrentObjective("Flying dog", "Make your way across the planet field");
+        // managerRef.SetCurrentTip("Gather momentum by running. Use it to jump higher");
     }
 }

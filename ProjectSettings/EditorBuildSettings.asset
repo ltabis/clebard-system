@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Puzzles/Final/ActivatePlateformsPuzzle.unity
     guid: 17f116fd4d78c3846a6a0fa44a50e0c7
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Final/PlanetFieldPuzzle.unity
+    guid: 95e04441b56ae4f45bc5dd0821be2c10
   m_configObjects: {}
