@@ -7445,10 +7445,6 @@ PrefabInstance:
       propertyPath: m_Cameras.Array.data[0]
       value: 
       objectReference: {fileID: 1080943595100616729}
-    - target: {fileID: 2361449179808412600, guid: cc987b55ff9fdad4db38e6c3df02311f, type: 3}
-      propertyPath: m_VolumeLayerMask.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
     - target: {fileID: 4678451753546577400, guid: cc987b55ff9fdad4db38e6c3df02311f, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 512
