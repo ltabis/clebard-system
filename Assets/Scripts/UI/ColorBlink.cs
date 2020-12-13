@@ -10,12 +10,16 @@ public class ColorBlink : MonoBehaviour
     public float min = 0f;
     public float max = 1f;
     private bool increasing = true;
+    public float startAt = 1;
     Color color;
     void Start()
     {
         text = GetComponent<TMP_Text>();
         color = text.color;
         speed *= 0.1f;
+        color.r = startAt;
+        color.g = startAt;
+        color.b = startAt;
     }
 
     void Update()
