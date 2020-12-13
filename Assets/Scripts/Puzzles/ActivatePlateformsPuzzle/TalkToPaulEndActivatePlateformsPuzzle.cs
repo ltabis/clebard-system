@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TalkToPaulTransporterPuzzle : Puzzle
+public class TalkToPaulEndActivatePlateformsPuzzle : Puzzle
 {
     [SerializeField]
     private NPC dialog;
@@ -26,5 +26,7 @@ public class TalkToPaulTransporterPuzzle : Puzzle
         dialog.TriggerDialogue();
         managerRef.RemoveCurrentTip();
         managerRef.RemoveCurrentObjective();
+        // managerRef.SetCurrentObjective("Space dump", "Reach the Transporter");
+        // managerRef.SetCurrentTip("You can use 'Transporters' to easly travel between planets");
     }
 }
