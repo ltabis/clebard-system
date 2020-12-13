@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     private float startFade = 0f;
     private bool showTitle = false;
     private bool visible = true;
+    private bool readyForSceneTransition = false;
 
     void Awake()
     {
@@ -134,5 +135,16 @@ public class UIManager : MonoBehaviour
     public void RemoveTip()
     {
         tipText.SetActive(false);
+    }
+
+    public void OnFadeComplete()
+    {
+        readyForSceneTransition = true;
+    }
+
+    public bool ReadyForSceneTransition {
+        get {
+            return readyForSceneTransition;
+        }
     }
 }

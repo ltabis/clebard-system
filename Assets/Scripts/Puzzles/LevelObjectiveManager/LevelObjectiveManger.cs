@@ -1,21 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelObjectiveManger : MonoBehaviour
 {
     [SerializeField]
-    protected List<Puzzle> puzzles = new List<Puzzle>();
-    protected int currentPuzzle = 0;
+    private List<Puzzle> puzzles = new List<Puzzle>();
+    private int currentPuzzle = 0;
 
     [SerializeField]
-    protected GameObject player;
+    private GameObject player;
     [SerializeField]
-    protected UIManager uiScript;
+    private UIManager uiScript;
     [SerializeField]
-    protected Barking barkingScript;
+    private Barking barkingScript;
     [SerializeField]
-    protected NPlayerController controllerScript;
+    private NPlayerController controllerScript;
+    [SerializeField]
+    private string nextScene = "";
+    private bool changingScene = false;
 
     void Awake()
     {
@@ -27,6 +31,12 @@ public class LevelObjectiveManger : MonoBehaviour
 
         puzzles[currentPuzzle].enabled = true;
         puzzles[currentPuzzle].OnStartPuzzle();
+    }
+
+    void Update()
+    {
+        if (changingScene)
+            SwapLevel();
     }
 
     public void SetCurrentObjective(string title, string objective)
@@ -55,7 +65,8 @@ public class LevelObjectiveManger : MonoBehaviour
         puzzles[currentPuzzle++].enabled = false;
 
         if (currentPuzzle >= puzzles.Count) {
-            Debug.Log("End of level");
+            changingScene = true;
+            FadeOut();
             return;
         }
 
@@ -82,5 +93,17 @@ public class LevelObjectiveManger : MonoBehaviour
     public void SetPlayerVelocity(bool state)
     {
         controllerScript.EnableVelocity(state);
+    }
+
+    public void SwapLevel()
+    {
+        if (nextScene.Length != 0 && uiScript.ReadyForSceneTransition)
+            SceneManager.LoadScene(nextScene);
+        else if (nextScene.Length == 0)
+            Application.Quit();
+    }
+    public void FadeOut()
+    {
+        uiScript.GetComponent<Animator>().SetTrigger("FadeOut");
     }
 }

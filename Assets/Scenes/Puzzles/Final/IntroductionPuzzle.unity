@@ -1335,6 +1335,7 @@ MonoBehaviour:
   uiScript: {fileID: 876656396}
   barkingScript: {fileID: 1599151490}
   controllerScript: {fileID: 0}
+  nextScene: ActivatePlateformsPuzzle
 --- !u!114 &876656396 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7176157311985494398, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
