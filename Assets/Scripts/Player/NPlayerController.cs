@@ -142,7 +142,8 @@ public class NPlayerController : MonoBehaviour
 		}
 
 		desiredVelocity = new Vector3(playerInput.x, 0f, playerInput.y) * maxSpeed;
-		desiredJump |= Input.GetButtonDown("Jump");
+		if (controllsEnabled)
+			desiredJump |= Input.GetButtonDown("Jump");
 	}
 
 	void FixedUpdate()
