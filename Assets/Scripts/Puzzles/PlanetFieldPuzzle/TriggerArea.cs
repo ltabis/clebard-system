@@ -10,6 +10,11 @@ public class TriggerArea : MonoBehaviour
         if (other.tag == "Player") hasBeenEntered = true;
     }
 
+    public void ResetArea()
+    {
+        hasBeenEntered = false;
+    }
+
     public bool HasBeenEntered {
         get {
             return hasBeenEntered;

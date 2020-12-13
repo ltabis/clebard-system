@@ -12,8 +12,10 @@ public class PlanetFieldPuzzle : Puzzle
     void Update()
     {
         foreach (var deathArea in deathAreas)
-            if (deathArea.HasBeenEntered)
+            if (deathArea.HasBeenEntered) {
+                deathArea.ResetArea();
                 Respawn();
+            }
     }
 
     void Respawn()
