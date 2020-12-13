@@ -8,13 +8,19 @@ public class FindScrapsPuzzle : Puzzle
     private List<Scrap> scraps = new List<Scrap>();
     private uint scrapsFound = 0;
 
-    override public void OnLeavePuzzle() {}
+    override public void OnLeavePuzzle()
+    {
+        managerRef.RemoveCurrentObjective();
+        managerRef.RemoveCurrentTip();
+    }
+
     override public void OnStartPuzzle()
     {
         foreach (var scrap in scraps)
             scrap.gameObject.SetActive(true);
 
-        managerRef.SetCurrentObjective("Find " + scraps.Count + " more scraps. You can use your sniffing mode <A> to reveal important items.");
+        managerRef.SetCurrentObjective("Fetch scrap", "Find " + scraps.Count + " more scraps for Paul.");
+        managerRef.SetCurrentTip("You can use your Sniffing Mode <A> to reveal important items");
     }
 
    void Update()
@@ -32,7 +38,7 @@ public class FindScrapsPuzzle : Puzzle
 
         if (countFoundScraps != scrapsFound) {
             scrapsFound = countFoundScraps;
-            managerRef.SetCurrentObjective("Find " + (scraps.Count - scrapsFound) + " more scraps. You can use your sniffing mode <A> to reveal important items.");
+            managerRef.SetCurrentObjective("Fetch scrap", "Find " + (scraps.Count - scrapsFound) + " more scraps for Paul.");
         }
 
         if (countFoundScraps == scraps.Count) {

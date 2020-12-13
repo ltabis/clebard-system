@@ -17,12 +17,14 @@ public class TalkToPaulPuzzle : Puzzle
     {
         dialog.enabled = false;
         managerRef.RemoveCurrentObjective();
+        managerRef.RemoveCurrentTip();
     }
 
     override public void OnStartPuzzle()
     {
         dialog.enabled = true;
         managerRef.SetBarksActive(false);
-        managerRef.SetCurrentObjective("Your ship is damaged. Find help. Use <E> to interact with characters");
+        managerRef.SetCurrentObjective("Stranded", "Your ship is damaged. Find help.");
+        managerRef.SetCurrentTip("Use <E> to interact with characters");
     }
 }

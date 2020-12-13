@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     private GameObject objectiveIndicatorText;
     [SerializeField]
     private GameObject objectiveText;
+    [SerializeField]
+    private GameObject tipText;
 
     private List<GameObject> slots = new List<GameObject>();
     private uint currentBark = 0;
@@ -107,11 +109,12 @@ public class UIManager : MonoBehaviour
         return visible;
     }
 
-    public void SetObjective(string newOjective)
+    public void SetObjective(string title, string newOjective)
     {
         objectiveIndicatorText.SetActive(true);
         objectiveText.SetActive(true);
 
+        objectiveIndicatorText.GetComponent<Text>().text = "Objective - " + title;
         objectiveText.GetComponent<Text>().text = newOjective;
     }
 
@@ -119,5 +122,17 @@ public class UIManager : MonoBehaviour
     {
         objectiveIndicatorText.SetActive(false);
         objectiveText.SetActive(false);
+    }
+
+    public void SetTip(string newTip)
+    {
+        tipText.SetActive(true);
+
+        tipText.GetComponent<Text>().text = "Tip: " + newTip;
+    }
+
+    public void RemoveTip()
+    {
+        tipText.SetActive(false);
     }
 }

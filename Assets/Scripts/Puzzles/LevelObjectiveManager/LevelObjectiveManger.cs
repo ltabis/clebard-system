@@ -27,14 +27,23 @@ public class LevelObjectiveManger : MonoBehaviour
         puzzles[currentPuzzle].OnStartPuzzle();
     }
 
-    public void SetCurrentObjective(string objective)
+    public void SetCurrentObjective(string title, string objective)
     {
-        uiScript.SetObjective(objective);
+        uiScript.SetObjective(title, objective);
+    }
+
+    public void SetCurrentTip(string tip)
+    {
+        uiScript.SetTip(tip);
     }
 
     public void RemoveCurrentObjective()
     {
         uiScript.RemoveObjective();
+    }
+    public void RemoveCurrentTip()
+    {
+        uiScript.RemoveTip();
     }
 
     public void NextPuzzle()

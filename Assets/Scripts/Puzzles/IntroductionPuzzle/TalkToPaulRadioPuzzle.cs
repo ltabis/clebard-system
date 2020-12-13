@@ -17,11 +17,13 @@ public class TalkToPaulRadioPuzzle : Puzzle
     {
         dialog.enabled = false;
         managerRef.RemoveCurrentObjective();
+        managerRef.RemoveCurrentTip();
     }
 
     override public void OnStartPuzzle()
     {
         dialog.enabled = true;
-        managerRef.SetCurrentObjective("Get back to Paul. Remember, use <E> to interact with characters");
+        managerRef.SetCurrentObjective("Fetch scrap", "Get back to Paul");
+        managerRef.SetCurrentTip("Remember, use <E> to interact with characters");
     }
 }
