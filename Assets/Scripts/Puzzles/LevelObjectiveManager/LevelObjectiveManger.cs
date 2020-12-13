@@ -23,6 +23,8 @@ public class LevelObjectiveManger : MonoBehaviour
 
     void Awake()
     {
+        Cursor.visible = false;
+
         // initiating all puzzles.
         foreach (var puzzle in puzzles) {
             puzzle.managerRef = this;
