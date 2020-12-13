@@ -52,8 +52,8 @@ public class Transporter : MonoBehaviour
         // adjusting the collider to fit the transporter.
         colliderTunnel.direction = 2;
         colliderTunnel.isTrigger = true;
-        colliderTunnel.center = Vector3.forward * distance;
-        colliderTunnel.height = distance * 2;
+        colliderTunnel.center = Vector3.forward * (distance / 2);
+        colliderTunnel.height = distance;
         colliderTunnel.radius = 1.5f;
 
         if (!isActive)
@@ -87,7 +87,7 @@ public class Transporter : MonoBehaviour
     {
         if (!isActive)
             return;
-        
+
         AttractedBody = other.gameObject;
 
         // computing the point nearest to the player.

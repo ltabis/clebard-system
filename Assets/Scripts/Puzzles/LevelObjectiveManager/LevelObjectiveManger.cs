@@ -97,6 +97,11 @@ public class LevelObjectiveManger : MonoBehaviour
         controllerScript.EnableVelocity(state);
     }
 
+    public void SetPlayerPosition(Vector3 position)
+    {
+        controllerScript.transform.position = position;
+    }
+
     public void SwapLevel()
     {
         if (nextScene.Length != 0 && uiScript.ReadyForSceneTransition)
