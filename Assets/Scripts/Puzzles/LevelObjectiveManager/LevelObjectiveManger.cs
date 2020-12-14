@@ -28,9 +28,6 @@ public class LevelObjectiveManger : MonoBehaviour
         float soundVolume = PlayerPrefs.GetFloat(AudioManager.MusicPref);
         float musicVolume = PlayerPrefs.GetFloat(AudioManager.SoundsPref);
 
-        Debug.Log("soundVolume: " + soundVolume);
-        Debug.Log("musicVolume: " + musicVolume);
-
         foreach (var audioSource in audioSources) {
             if (audioSource.tag == "Sound")
                 audioSource.volume = soundVolume;
