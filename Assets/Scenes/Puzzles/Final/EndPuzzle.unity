@@ -8754,7 +8754,7 @@ MonoBehaviour:
   uiScript: {fileID: 876656396}
   barkingScript: {fileID: 1599151490}
   controllerScript: {fileID: 1599151491}
-  nextScene: ActivatePlateformsPuzzle
+  nextScene: 
 --- !u!1001 &862995079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14988,7 +14988,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1151626146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 799b2220e5df1404ca455df4c5e27ce0, type: 3}
+  m_Script: {fileID: 11500000, guid: eb4fc7142bc4e2d48b6569572f8fd988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   managerRef: {fileID: 0}
@@ -47587,7 +47587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5759395203061417396, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.18
       objectReference: {fileID: 0}
     - target: {fileID: 5759395203061417396, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: m_LocalPosition.y
@@ -47595,7 +47595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5759395203061417396, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.62
+      value: -4.12
       objectReference: {fileID: 0}
     - target: {fileID: 5759395203061417396, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: m_LocalRotation.x
