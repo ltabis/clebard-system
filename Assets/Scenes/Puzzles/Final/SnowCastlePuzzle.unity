@@ -3319,6 +3319,7 @@ Transform:
   - {fileID: 1521154452}
   - {fileID: 1708038170}
   - {fileID: 504490057}
+  - {fileID: 1930720997}
   - {fileID: 773170294}
   - {fileID: 496475359}
   - {fileID: 2058752697}
@@ -3328,26 +3329,25 @@ Transform:
   - {fileID: 1504612773}
   - {fileID: 30372305}
   - {fileID: 195444600}
-  - {fileID: 1930720997}
   - {fileID: 289550431}
   - {fileID: 396812871}
+  - {fileID: 1337337029}
   - {fileID: 2135723611}
   - {fileID: 1094961338}
-  - {fileID: 1337337029}
   - {fileID: 165819649}
   - {fileID: 1368393686}
   - {fileID: 2010567472}
+  - {fileID: 477448831}
   - {fileID: 569075111}
   - {fileID: 2104153624}
   - {fileID: 1754968876}
   - {fileID: 1488939089}
   - {fileID: 118569655}
+  - {fileID: 495302790}
   - {fileID: 1398454734}
   - {fileID: 1511464442}
   - {fileID: 1602107253}
   - {fileID: 1336099841}
-  - {fileID: 477448831}
-  - {fileID: 495302790}
   - {fileID: 679261589}
   m_Father: {fileID: 931942457}
   m_RootOrder: 3
@@ -5486,11 +5486,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a9fb193f459d9f947a98c709b81b1f41, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 286667cd68835ba4fa853f95a1da9644, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -5993,7 +5993,7 @@ Transform:
   m_LocalScale: {x: 1.4767, y: 1, z: 3.3670688}
   m_Children: []
   m_Father: {fileID: 130027098}
-  m_RootOrder: 43
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &477448832
 BoxCollider:
@@ -6119,7 +6119,7 @@ Transform:
   m_LocalScale: {x: 1.4767, y: 1, z: 3.3670688}
   m_Children: []
   m_Father: {fileID: 130027098}
-  m_RootOrder: 44
+  m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &495302791
 BoxCollider:
@@ -15256,7 +15256,7 @@ Transform:
   m_LocalScale: {x: 6.8434157, y: 1, z: 3.3670688}
   m_Children: []
   m_Father: {fileID: 130027098}
-  m_RootOrder: 30
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1337337030
 BoxCollider:
@@ -30884,7 +30884,7 @@ Transform:
   m_LocalScale: {x: 1.4767, y: 1, z: 3.3670688}
   m_Children: []
   m_Father: {fileID: 130027098}
-  m_RootOrder: 25
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1930720998
 BoxCollider:
