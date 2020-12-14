@@ -12,6 +12,7 @@ public class EnterCastle : Puzzle
 
     override public void OnLeavePuzzle() 
     {
+        GetComponent<BoxCollider>().enabled = false;
     }
 
     override public void OnStartPuzzle()
