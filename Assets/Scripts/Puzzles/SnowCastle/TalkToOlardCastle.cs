@@ -11,22 +11,22 @@ public class TalkToOlardCastle : Puzzle
 
     void Update()
     {
-        if (dialog.HasPlayerFinishDialog()) {
+        if (dialog.HasPlayerFinishDialog())
             managerRef.NextPuzzle();
-            olard.SetActive(false);
-        }
     }
 
     override public void OnLeavePuzzle() 
     {
         dialog.enabled = false;
+        olard.SetActive(false);
+        managerRef.SetBarksActive(false);
+        managerRef.SetBarksUIVisible(false);
     }
 
     override public void OnStartPuzzle()
     {
         dialog.enabled = true;
         dialog.TriggerDialogue();
-        managerRef.SetBarksActive(false);
         olard.SetActive(true);
     }
 }

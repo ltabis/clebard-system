@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnterCastle : Puzzle
+public class GoToStash : Puzzle
 {
     void OnTriggerEnter(Collider other)
     {
@@ -17,8 +17,7 @@ public class EnterCastle : Puzzle
 
     override public void OnStartPuzzle()
     {
-        managerRef.SetCurrentObjective("sneaky beaky like", "Find a way inside the castle");
-        managerRef.SetBarksActive(false);
-        managerRef.SetBarksUIVisible(false);
+        managerRef.SetBarksUIVisible(true);
+        managerRef.SetBarksActive(true);
     }
 }

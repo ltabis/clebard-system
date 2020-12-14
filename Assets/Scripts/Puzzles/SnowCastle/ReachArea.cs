@@ -23,6 +23,8 @@ public class ReachArea : Puzzle
 
     override public void OnStartPuzzle()
     {
+        managerRef.SetBarksUIVisible(false);
+        managerRef.SetBarksActive(false);
         managerRef.RemoveCurrentObjective();
         managerRef.RemoveCurrentTip();
     }
