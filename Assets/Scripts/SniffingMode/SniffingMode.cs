@@ -23,12 +23,11 @@ public class SniffingMode : MonoBehaviour {
     void GetImportantItems()
     {
         importantItems = new List<GameObject>();
-        GameObject[] go = GameObject.FindObjectsOfType<GameObject>();
+        GameObject[] go = Resources.FindObjectsOfTypeAll<GameObject>();
+
         foreach (GameObject gameObject in go)
-        {
             if (gameObject.layer == LayerMask.NameToLayer("Focused"))
                 importantItems.Add(gameObject);
-        }
     }
 
     void Update() {
@@ -42,8 +41,7 @@ public class SniffingMode : MonoBehaviour {
                 ppCameraURP.renderPostProcessing = false;
                 foreach (GameObject item in importantItems)
                     item.layer = LayerMask.NameToLayer("Focused");
-            }
-            else {
+            } else {
                 mainCameraURP.renderPostProcessing = true;
                 ppCameraURP.renderPostProcessing = true;
                 foreach (GameObject item in importantItems)
