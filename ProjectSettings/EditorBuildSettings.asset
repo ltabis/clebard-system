@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Puzzles/Final/PlanetFieldPuzzle.unity
     guid: 95e04441b56ae4f45bc5dd0821be2c10
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Final/SnowPlanetPuzzle.unity
+    guid: 9cc8fab99785bdd42a43882a33e8731d
   m_configObjects: {}
