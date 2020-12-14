@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Puzzles/Final/SnowPlanetPuzzle.unity
     guid: 9cc8fab99785bdd42a43882a33e8731d
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Final/SnowTransitionPuzzle.unity
+    guid: 52476d5cb72df824c853c9d8e957afbd
   m_configObjects: {}
