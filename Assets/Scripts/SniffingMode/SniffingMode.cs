@@ -19,7 +19,6 @@ public class SniffingMode : MonoBehaviour {
         GetImportantItems();
     }
 
-
     void GetImportantItems()
     {
         importantItems = new List<GameObject>();
