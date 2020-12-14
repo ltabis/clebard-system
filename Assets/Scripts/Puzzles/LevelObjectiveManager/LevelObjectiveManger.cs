@@ -23,6 +23,21 @@ public class LevelObjectiveManger : MonoBehaviour
 
     void Start()
     {
+        AudioSource[] audioSources = Resources.FindObjectsOfTypeAll<AudioSource>();
+
+        float soundVolume = PlayerPrefs.GetFloat(AudioManager.MusicPref);
+        float musicVolume = PlayerPrefs.GetFloat(AudioManager.SoundsPref);
+
+        Debug.Log("soundVolume: " + soundVolume);
+        Debug.Log("musicVolume: " + musicVolume);
+
+        foreach (var audioSource in audioSources) {
+            if (audioSource.tag == "Sound")
+                audioSource.volume = soundVolume;
+            else if (audioSource.tag == "Music")
+                audioSource.volume = musicVolume;
+        }
+
         Cursor.visible = false;
 
         // initiating all puzzles.

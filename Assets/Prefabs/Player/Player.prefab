@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 4225261306959219140}
   m_Layer: 0
   m_Name: Scare
-  m_TagString: Untagged
+  m_TagString: Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -927,7 +927,7 @@ GameObject:
   - component: {fileID: 6596976728757250530}
   m_Layer: 0
   m_Name: Push
-  m_TagString: Untagged
+  m_TagString: Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7098,7 +7098,7 @@ GameObject:
   - component: {fileID: 2223711956990008803}
   m_Layer: 0
   m_Name: Charm
-  m_TagString: Untagged
+  m_TagString: Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

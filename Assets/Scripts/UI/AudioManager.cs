@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class AudioManager : MonoBehaviour
 {
-    private static readonly string FirstPlay = "FirstPlay";
-    private static readonly string MusicPref = "MusicPref";
-    private static readonly string SoundsPref = "SoundsPref";
+    public static readonly string FirstPlay = "FirstPlay";
+    public static readonly string MusicPref = "MusicPref";
+    public static readonly string SoundsPref = "SoundsPref";
     private int firstPlayInt;
     public Slider musicsSlider, soundsSlider;
     private float musicsFloat, soundsFloat;

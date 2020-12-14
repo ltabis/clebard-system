@@ -9,6 +9,8 @@ TagManager:
   - Charmable
   - PPCamera
   - DialogueBox
+  - Music
+  - Sound
   layers:
   - Default
   - TransparentFX
