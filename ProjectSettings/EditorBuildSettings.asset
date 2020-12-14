@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Puzzles/Final/SnowCastlePuzzle.unity
     guid: 79b9822d69002634bbf8588edcb62bda
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Final/EndPuzzle.unity
+    guid: 5e8f3ff1f08318a4eac39a6075d9d869
   m_configObjects: {}

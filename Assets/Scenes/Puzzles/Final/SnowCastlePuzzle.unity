@@ -31325,7 +31325,7 @@ MonoBehaviour:
   uiScript: {fileID: 1004515707}
   barkingScript: {fileID: 962598415}
   controllerScript: {fileID: 962598416}
-  nextScene: 
+  nextScene: EndPuzzle
 --- !u!1001 &2104153621
 PrefabInstance:
   m_ObjectHideFlags: 0
