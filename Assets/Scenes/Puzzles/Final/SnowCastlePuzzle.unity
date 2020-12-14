@@ -4145,6 +4145,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.61158997
       objectReference: {fileID: 0}
+    - target: {fileID: 64790701801008406, guid: bfdb7f6f4f8e87c4f8287a9ef7203e9a, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfdb7f6f4f8e87c4f8287a9ef7203e9a, type: 3}
 --- !u!4 &195444600 stripped
@@ -15187,7 +15191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 472580, guid: bfdb7f6f4f8e87c4f8287a9ef7203e9a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.35
+      value: 14.55
       objectReference: {fileID: 0}
     - target: {fileID: 472580, guid: bfdb7f6f4f8e87c4f8287a9ef7203e9a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15232,6 +15236,10 @@ PrefabInstance:
     - target: {fileID: 472580, guid: bfdb7f6f4f8e87c4f8287a9ef7203e9a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61435956
+      objectReference: {fileID: 0}
+    - target: {fileID: 64790701801008406, guid: bfdb7f6f4f8e87c4f8287a9ef7203e9a, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfdb7f6f4f8e87c4f8287a9ef7203e9a, type: 3}
@@ -30994,7 +31002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 472580, guid: bfdb7f6f4f8e87c4f8287a9ef7203e9a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.91
+      value: 8.47
       objectReference: {fileID: 0}
     - target: {fileID: 472580, guid: bfdb7f6f4f8e87c4f8287a9ef7203e9a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -31038,11 +31046,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 472580, guid: bfdb7f6f4f8e87c4f8287a9ef7203e9a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.09251641
+      value: 0.15964153
       objectReference: {fileID: 0}
     - target: {fileID: 472580, guid: bfdb7f6f4f8e87c4f8287a9ef7203e9a, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.81287
+      objectReference: {fileID: 0}
+    - target: {fileID: 64790701801008406, guid: bfdb7f6f4f8e87c4f8287a9ef7203e9a, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfdb7f6f4f8e87c4f8287a9ef7203e9a, type: 3}
