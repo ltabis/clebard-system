@@ -7,15 +7,14 @@ public class Dig : MonoBehaviour
     public Animator anim;
     private GameObject[] holes;
     private float diggingTime = 2f;
-    // Start is called before the first frame update
-    void Start()
+
+    void Awake()
     {
         if (holes == null)
             holes = GameObject.FindGameObjectsWithTag("Hole");
         diggingTime = 2f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
@@ -30,42 +29,38 @@ public class Dig : MonoBehaviour
         {
             diggingTime = 2f;
         }
-       // if (diggingTime < 0)
-         //   DogDig();
-
     }
 
     private void DogDig()
     {
-        Vector3 dir;
-        float angle;
         foreach (GameObject hole in holes)
         {
-            dir = hole.transform.position - transform.position;
-            angle = Vector3.Angle(transform.forward, dir);
-            if (Vector3.Distance(transform.position, hole.transform.position) < 1 && Mathf.Abs(angle) < 90)
-            {
+            bool playerInArea = hole.GetComponent<DigHole>().PlayerInArea;
+            if (playerInArea) {
                 anim.Play("IdleDig");
                 if (diggingTime > 0)
                 {
                     diggingTime -= Time.deltaTime;
-                    //DigParticle(hole);
+                    DigParticle(hole, true);
                 }
                 else
                 {
-                    transform.position = hole.GetComponent<DigHole>().hole2.transform.position;
-                    // GetComponent<SC_TPSController>().Teleportation(hole.GetComponent<DigHole>().Teleportation());
+                    transform.position = hole.GetComponent<DigHole>().TeleportationSameScene();
                     anim.Play("Idle");
                     diggingTime = 2f;
+                    DigParticle(hole, false);
                 }
             }
         }
     }
 
-    private void DigParticle(GameObject hole)
+    private void DigParticle(GameObject hole, bool status)
     {
         ParticleSystem diggy = hole.GetComponent<ParticleSystem>();
 
-        diggy.Play();
+        if (status)
+            diggy.Play();
+        else
+            diggy.Stop();
     }
 }

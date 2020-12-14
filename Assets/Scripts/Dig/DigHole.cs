@@ -8,16 +8,20 @@ public class DigHole : MonoBehaviour
     public GameObject hole2;
     public bool sameScene;
     public string sceneName = "";
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private bool hasBeenDug = false;
+    private bool playerInArea = false;
+
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.tag == "Player")
+            playerInArea = true;
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+            playerInArea = false;
     }
 
     public Vector3 Teleportation()
@@ -28,8 +32,9 @@ public class DigHole : MonoBehaviour
             return(TeleportationOtherScene());
     }
 
-    private Vector3 TeleportationSameScene()
+    public Vector3 TeleportationSameScene()
     {
+        hasBeenDug = true;
         return (hole2.transform.position);
     }
 
@@ -37,5 +42,17 @@ public class DigHole : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
         return (Vector3.zero);
-;    }
+    }
+
+    public bool HasBeenDug {
+        get {
+            return hasBeenDug;
+        }
+    }
+    
+    public bool PlayerInArea {
+        get {
+            return playerInArea;
+        }
+    }
 }
