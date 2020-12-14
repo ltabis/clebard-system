@@ -24,6 +24,7 @@ public class TalkToPaulPlateformsPuzzle : Puzzle
         dialog.enabled = true;
         dialog.TriggerDialogue();
         managerRef.SetBarksActive(false);
+        managerRef.SetBarksUIVisible(false);
         managerRef.SetCurrentObjective("Instructions", "Listen to Paul's advices");
         managerRef.RemoveCurrentTip();
     }

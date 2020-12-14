@@ -99,10 +99,8 @@ public class UIManager : MonoBehaviour
         visible = state;
 
         // reset the bark title.
-        if (!state) {
+        if (!state)
             barkTitle.text = "";
-
-        }
     }
 
     public bool isUIVisible()
@@ -145,6 +143,9 @@ public class UIManager : MonoBehaviour
     public bool ReadyForSceneTransition {
         get {
             return readyForSceneTransition;
+        }
+        set {
+            readyForSceneTransition = value;
         }
     }
 }

@@ -46577,6 +46577,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3253605797833948244, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+      propertyPath: barks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253605797833948244, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+      propertyPath: barkSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3253605797833948246, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.98

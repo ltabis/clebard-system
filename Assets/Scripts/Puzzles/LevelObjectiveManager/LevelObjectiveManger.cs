@@ -21,7 +21,7 @@ public class LevelObjectiveManger : MonoBehaviour
     private string nextScene = "";
     private bool changingScene = false;
 
-    void Awake()
+    void Start()
     {
         Cursor.visible = false;
 
@@ -84,7 +84,12 @@ public class LevelObjectiveManger : MonoBehaviour
 
     public void SetBarksActive(bool state)
     {
-        barkingScript.enabled = state;
+        barkingScript.SetBarkActive(state);
+    }
+
+    public void SetBarksUIVisible(bool state)
+    {
+        barkingScript.SetBarkUIVisible(state);
     }
 
     public void SetPlayerMovements(bool state)

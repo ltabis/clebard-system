@@ -6511,10 +6511,12 @@ MonoBehaviour:
     - I've dropped you there for a reason hehe ...
     - The next scraps location isn't far, but you'll need to cross this planet field
       first.
-    - Use your momentum to jump from planet to planet
-    - Fun isn't it ?
+    - Use your momentum to jump from planet to planet.
+    - It's gonna be fun !
     - Just, don't go to fast, or you'll be thrown off into the void ...
-    - Good luck :)
+    - Or fall on the sun ...
+    - Or suffocate ...
+    - Anywoof, good luck :)
   player: {fileID: 5759395202848294102}
   playerController: {fileID: 101656620}
   distance: 1
@@ -21422,6 +21424,14 @@ PrefabInstance:
     - target: {fileID: 3253605797833948243, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253605797833948244, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+      propertyPath: barks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253605797833948244, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
+      propertyPath: barkSprites.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3253605797833948244, guid: be51f732dac882b4a80b2a8e6caa5f20, type: 3}
       propertyPath: player

@@ -30,8 +30,9 @@ public class Barking : MonoBehaviour
         Charm = 1,
         Scare = 2
     }
+    bool isActive = true;
 
-    void Start()
+    void Awake()
     {
         Debug.Assert(
             barks.Length == barkSprites.Length,
@@ -49,6 +50,8 @@ public class Barking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isActive)
+            return;
         if (Input.GetKeyDown(KeyCode.R))
             PlayBarks();
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -125,5 +128,15 @@ public class Barking : MonoBehaviour
 
             }
         }
+    }
+
+    public void SetBarkActive(bool state)
+    {
+        isActive = state;
+    }
+
+    public void SetBarkUIVisible(bool state)
+    {
+        UI.SetUIVisible(state);
     }
 }
