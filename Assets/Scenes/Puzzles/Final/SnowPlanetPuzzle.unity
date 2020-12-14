@@ -557,6 +557,7 @@ Transform:
   m_LocalScale: {x: 0.44264004, y: 0.44264, z: 0.44264}
   m_Children:
   - {fileID: 995763889}
+  - {fileID: 1847835625}
   m_Father: {fileID: 1459611814}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0.298, y: -95.35, z: 9.986}
@@ -22964,6 +22965,7 @@ Transform:
   - {fileID: 1731455714}
   - {fileID: 917704204}
   - {fileID: 803547359}
+  - {fileID: 1521442894}
   m_Father: {fileID: 846712162}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24867,6 +24869,51 @@ Transform:
   m_Father: {fileID: 677959673}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1521442893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1521442894}
+  - component: {fileID: 1521442895}
+  m_Layer: 0
+  m_Name: TalkToOlardGotSnow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1521442894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521442893}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1223358521}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1521442895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521442893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350afd814244f2a47b9d867e3fb9ef10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerRef: {fileID: 0}
+  dialog: {fileID: 1847835626}
 --- !u!4 &1522716383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4940661873698624, guid: 4f9a091cbde2e4c129b9945d7bb4a612, type: 3}
@@ -31778,6 +31825,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000013120400126, guid: 6db9821e25ed86e4caad860bddfe5b5b, type: 3}
   m_PrefabInstance: {fileID: 1760166731}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1847835624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1847835625}
+  - component: {fileID: 1847835626}
+  m_Layer: 0
+  m_Name: SecondScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1847835625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847835624}
+  m_LocalRotation: {x: -0.015641341, y: 0.6706403, z: -0.018433321, w: -0.74138874}
+  m_LocalPosition: {x: -0.03, y: 0.66, z: 0}
+  m_LocalScale: {x: 2.2591724, y: 2.259172, z: 2.259172}
+  m_Children: []
+  m_Father: {fileID: 56139319}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1847835626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847835624}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7521698d1090f964e9ea6be20feb97ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 1313141481}
+  dialogue:
+    name: Olard
+    sentences:
+    - Mmh ...
+    - That is plenty !
+    - Thanks you ...
+    - Now, I can rebuild my lost Empire ...
+    - Foulish dog ... do you think I am only a snowman ?
+    - I am ...
+    - The Grand Duc Prince des Neiges !
+    - ...
+    - Does it ring any bells to you ? No ?
+    - ...
+    - Anyway.
+    - Behold my Fortress !
+  player: {fileID: 962598411}
+  playerController: {fileID: 1219111675}
+  distance: 1
+  tempKey: 101
 --- !u!1001 &1850302571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34131,6 +34241,7 @@ MonoBehaviour:
   - {fileID: 1731455715}
   - {fileID: 917704205}
   - {fileID: 803547360}
+  - {fileID: 1521442895}
   player: {fileID: 91065825}
   uiScript: {fileID: 1040017053}
   barkingScript: {fileID: 1219111674}
