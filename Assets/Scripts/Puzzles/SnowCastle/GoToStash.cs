@@ -17,6 +17,8 @@ public class GoToStash : Puzzle
 
     override public void OnStartPuzzle()
     {
+        managerRef.SetCurrentObjective("sneaky beaky like", "Find Olard's stash and steal his scrap");
+        managerRef.SetCurrentTip("Use <R> to push objects by barking");
         managerRef.SetBarksUIVisible(true);
         managerRef.SetBarksActive(true);
     }

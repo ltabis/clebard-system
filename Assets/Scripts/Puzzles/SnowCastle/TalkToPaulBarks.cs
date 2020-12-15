@@ -17,7 +17,6 @@ public class TalkToPaulBarks : Puzzle
     {
         dialog.enabled = false;
         managerRef.SetPlayerMovements(true);
-        managerRef.SetCurrentTip("Use <R> to bark");
     }
 
     override public void OnStartPuzzle()
